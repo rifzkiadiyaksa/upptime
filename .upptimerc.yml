@@ -25,43 +25,43 @@ sites:
     port: 53
   - name: Singapore Server
     check: "tcp-ping"
-    url: 1.1.1.1
+    url: 103.20.184.82
     port: 53
   - name: Osaka Server
     check: "tcp-ping"
-    url: 8.8.8.8
+    url: 36.89.125.12
     port: 53
   - name: Kuala Lumpur Server
     check: "tcp-ping"
-    url: 1.1.1.1
+    url: 103.110.8.142
     port: 53
   - name: Karawang Server
     check: "tcp-ping"
-    url: 8.8.8.8
+    url: 114.141.52.234
     port: 53
   - name: Mumbai Server
     check: "tcp-ping"
-    url: 1.1.1.1
+    url: 103.168.119.181
     port: 53
   - name: Hongkong Server
     check: "tcp-ping"
-    url: 8.8.8.8
+    url: 103.214.54.206
     port: 53
   - name: Seoul Server
     check: "tcp-ping"
-    url: 1.1.1.1
+    url: 119.110.71.221
     port: 53
   - name: CDN Asia Server
     check: "tcp-ping"
-    url: 8.8.8.8
+    url: 121.100.25.249
     port: 53
   - name: CDN US Server
     check: "tcp-ping"
-    url: 8.8.8.8
+    url: 103.106.219.62
     port: 53
   - name: CDN EU Server
     check: "tcp-ping"
-    url: 1.1.1.1
+    url: 103.126.201.1
     port: 53
 
 status-website:
