@@ -15,8 +15,6 @@ sites:
   - name: Music Rifzki Adiyaksa
     url: https://google.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-    
-sites:
   - name: US Server
     check: "tcp-ping"
     url: 1.1.1.1
