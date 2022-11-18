@@ -2,7 +2,7 @@
   {
     "name": "Rifzki Adiyaksa",
     "url": "https://rifzki.my.id",
-    "icon": "https://icons.duckduckgo.com/ip3/rifzki.my.id.ico",
+    "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "rifzki-adiyaksa",
     "status": "up",
     "uptime": "100.00%",
@@ -10,71 +10,71 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
-    "time": 304,
-    "timeDay": 304,
-    "timeWeek": 304,
-    "timeMonth": 304,
-    "timeYear": 304,
+    "time": 274,
+    "timeDay": 274,
+    "timeWeek": 274,
+    "timeMonth": 274,
+    "timeYear": 274,
     "dailyMinutesDown": {}
   },
   {
     "name": "Blog Rifzki Adiyaksa",
     "url": "https://blog.rifzki.my.id",
-    "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
+    "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "blog-rifzki-adiyaksa",
     "status": "down",
-    "uptime": "0.57%",
-    "uptimeDay": "0.57%",
-    "uptimeWeek": "0.57%",
-    "uptimeMonth": "0.57%",
-    "uptimeYear": "0.57%",
+    "uptime": "0.12%",
+    "uptimeDay": "0.12%",
+    "uptimeWeek": "0.12%",
+    "uptimeMonth": "0.12%",
+    "uptimeYear": "0.12%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-11-18": 3
+      "2022-11-18": 12
     }
   },
   {
     "name": "Games Rifzki Adiyaksa",
     "url": "https://game.rifzki.my.id",
-    "icon": "https://icons.duckduckgo.com/ip3/game.rifzki.my.id.ico",
+    "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "games-rifzki-adiyaksa",
     "status": "down",
-    "uptime": "0.71%",
-    "uptimeDay": "0.71%",
-    "uptimeWeek": "0.71%",
-    "uptimeMonth": "0.71%",
-    "uptimeYear": "0.71%",
+    "uptime": "0.15%",
+    "uptimeDay": "0.15%",
+    "uptimeWeek": "0.15%",
+    "uptimeMonth": "0.15%",
+    "uptimeYear": "0.15%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-11-18": 3
+      "2022-11-18": 12
     }
   },
   {
     "name": "Music Rifzki Adiyaksa",
     "url": "https://music.rifzki.my.id",
-    "icon": "https://icons.duckduckgo.com/ip3/music.rifzki.my.id.ico",
+    "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "music-rifzki-adiyaksa",
     "status": "down",
-    "uptime": "0.25%",
-    "uptimeDay": "0.25%",
-    "uptimeWeek": "0.25%",
-    "uptimeMonth": "0.25%",
-    "uptimeYear": "0.25%",
+    "uptime": "0.19%",
+    "uptimeDay": "0.19%",
+    "uptimeWeek": "0.19%",
+    "uptimeMonth": "0.19%",
+    "uptimeYear": "0.19%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-11-18": 3
+      "2022-11-18": 12
     }
   }
 ]
