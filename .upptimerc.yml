@@ -3,26 +3,65 @@ owner: rifzkiadiyaksa # Your GitHub organization or username, where this reposit
 repo: upptime # The name of this repository
 
 sites:
-  - name: Rifzki Adiyaksa
+  - name: 🔵 Rifzki Adiyaksa
     url: https://rifzki.my.id
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: Blog Rifzki Adiyaksa
+  - name: 🔵 Blog Rifzki Adiyaksa
     url: https://rifzkia.blogspot.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: Games Rifzki Adiyaksa
+  - name: 🔵 Games Rifzki Adiyaksa
     url: https://google.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: Music Rifzki Adiyaksa
+  - name: 🔵 Music Rifzki Adiyaksa
     url: https://google.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
- Sites text:
-  - name: US Server
+  - name: Canada Server
     check: "tcp-ping"
     url: 1.1.1.1
     port: 53
-  - name: ID Server
+  - name: Jakarta Server
     check: "tcp-ping"
     url: 8.8.8.8
+    port: 53
+  - name: Singapore Server
+    check: "tcp-ping"
+    url: 1.1.1.1
+    port: 53
+  - name: Osaka Server
+    check: "tcp-ping"
+    url: 8.8.8.8
+    port: 53
+  - name: Kuala Lumpur Server
+    check: "tcp-ping"
+    url: 1.1.1.1
+    port: 53
+  - name: Karawang Server
+    check: "tcp-ping"
+    url: 8.8.8.8
+    port: 53
+  - name: Mumbai Server
+    check: "tcp-ping"
+    url: 1.1.1.1
+    port: 53
+  - name: Hongkong Server
+    check: "tcp-ping"
+    url: 8.8.8.8
+    port: 53
+  - name: Seoul Server
+    check: "tcp-ping"
+    url: 1.1.1.1
+    port: 53
+  - name: CDN Asia Server
+    check: "tcp-ping"
+    url: 8.8.8.8
+    port: 53
+  - name: CDN US Server
+    check: "tcp-ping"
+    url: 8.8.8.8
+    port: 53
+  - name: CDN EU Server
+    check: "tcp-ping"
+    url: 1.1.1.1
     port: 53
 
 status-website:
