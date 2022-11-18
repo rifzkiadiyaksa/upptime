@@ -23,18 +23,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
     "slug": "blog-rifzki-adiyaksa",
     "status": "down",
-    "uptime": "6.04%",
-    "uptimeDay": "6.04%",
-    "uptimeWeek": "6.04%",
-    "uptimeMonth": "6.04%",
-    "uptimeYear": "6.04%",
+    "uptime": "0.63%",
+    "uptimeDay": "0.63%",
+    "uptimeWeek": "0.63%",
+    "uptimeMonth": "0.63%",
+    "uptimeYear": "0.63%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-11-18": 0
+      "2022-11-18": 2
     }
   },
   {
@@ -43,18 +43,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/game.rifzki.my.id.ico",
     "slug": "games-rifzki-adiyaksa",
     "status": "down",
-    "uptime": "3.48%",
-    "uptimeDay": "3.48%",
-    "uptimeWeek": "3.48%",
-    "uptimeMonth": "3.48%",
-    "uptimeYear": "3.48%",
+    "uptime": "1.00%",
+    "uptimeDay": "1.00%",
+    "uptimeWeek": "1.00%",
+    "uptimeMonth": "1.00%",
+    "uptimeYear": "1.00%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-11-18": 0
+      "2022-11-18": 2
     }
   },
   {
@@ -63,18 +63,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/music.rifzki.my.id.ico",
     "slug": "music-rifzki-adiyaksa",
     "status": "down",
-    "uptime": "7.56%",
-    "uptimeDay": "7.56%",
-    "uptimeWeek": "7.56%",
-    "uptimeMonth": "7.56%",
-    "uptimeYear": "7.56%",
+    "uptime": "0.52%",
+    "uptimeDay": "0.52%",
+    "uptimeWeek": "0.52%",
+    "uptimeMonth": "0.52%",
+    "uptimeYear": "0.52%",
     "time": 0,
     "timeDay": 0,
     "timeWeek": 0,
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2022-11-18": 0
+      "2022-11-18": 2
     }
   }
 ]
