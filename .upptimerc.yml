@@ -7,14 +7,24 @@ sites:
     url: https://rifzki.my.id
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
   - name: Blog Rifzki Adiyaksa
-    url: https://blog.rifzki.my.id
+    url: https://rifzkia.blogspot.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
   - name: Games Rifzki Adiyaksa
-    url: https://game.rifzki.my.id
+    url: https://google.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
   - name: Music Rifzki Adiyaksa
-    url: https://music.rifzki.my.id
+    url: https://google.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
+    
+sites:
+  - name: US Server
+    check: "tcp-ping"
+    url: 1.1.1.1
+    port: 53
+  - name: ID Server
+    check: "tcp-ping"
+    url: 8.8.8.8
+    port: 53
 
 status-website:
   # Add your custom domain name, or remove the `cname` line if you don't have a domain
