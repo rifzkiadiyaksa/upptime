@@ -16,7 +16,7 @@
     "timeMonth": 277,
     "timeYear": 296,
     "dailyMinutesDown": {
-      "2023-01-15": 1301,
+      "2023-01-15": 1344,
       "2023-01-14": 1440,
       "2023-01-13": 1440,
       "2023-01-12": 1440,
@@ -230,10 +230,10 @@
     "url": "103.110.8.142",
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "kuala-lumpur-server",
-    "status": "up",
+    "status": "down",
     "uptime": "96.03%",
-    "uptimeDay": "33.11%",
-    "uptimeWeek": "68.68%",
+    "uptimeDay": "34.98%",
+    "uptimeWeek": "68.66%",
     "uptimeMonth": "92.79%",
     "uptimeYear": "96.03%",
     "time": 228,
@@ -242,7 +242,7 @@
     "timeMonth": 220,
     "timeYear": 228,
     "dailyMinutesDown": {
-      "2023-01-15": 867,
+      "2023-01-15": 869,
       "2023-01-14": 944,
       "2023-01-13": 849,
       "2023-01-12": 497,
@@ -278,15 +278,15 @@
     "url": "103.168.119.181",
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "mumbai-server",
-    "status": "up",
-    "uptime": "68.64%",
-    "uptimeDay": "43.76%",
-    "uptimeWeek": "49.23%",
+    "status": "down",
+    "uptime": "69.02%",
+    "uptimeDay": "43.74%",
+    "uptimeWeek": "49.32%",
     "uptimeMonth": "54.80%",
-    "uptimeYear": "68.64%",
+    "uptimeYear": "69.02%",
     "time": 926,
     "timeDay": 866,
-    "timeWeek": 912,
+    "timeWeek": 916,
     "timeMonth": 923,
     "timeYear": 926,
     "dailyMinutesDown": {
@@ -339,8 +339,7 @@
       "2022-11-28": 402,
       "2022-11-27": 411,
       "2022-11-26": 271,
-      "2022-11-25": 417,
-      "2022-11-24": 312
+      "2022-11-25": 417
     }
   },
   {
