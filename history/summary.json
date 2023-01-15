@@ -16,7 +16,7 @@
     "timeMonth": 277,
     "timeYear": 296,
     "dailyMinutesDown": {
-      "2023-01-15": 892,
+      "2023-01-15": 907,
       "2023-01-14": 1440,
       "2023-01-13": 1440,
       "2023-01-12": 1440,
@@ -232,7 +232,7 @@
     "slug": "kuala-lumpur-server",
     "status": "up",
     "uptime": "96.30%",
-    "uptimeDay": "31.49%",
+    "uptimeDay": "32.58%",
     "uptimeWeek": "71.07%",
     "uptimeMonth": "93.34%",
     "uptimeYear": "96.30%",
@@ -278,12 +278,12 @@
     "url": "103.168.119.181",
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "mumbai-server",
-    "status": "up",
-    "uptime": "68.55%",
-    "uptimeDay": "45.24%",
+    "status": "down",
+    "uptime": "68.96%",
+    "uptimeDay": "45.22%",
     "uptimeWeek": "49.22%",
     "uptimeMonth": "54.93%",
-    "uptimeYear": "68.55%",
+    "uptimeYear": "68.96%",
     "time": 926,
     "timeDay": 866,
     "timeWeek": 916,
@@ -340,8 +340,7 @@
       "2022-11-27": 411,
       "2022-11-26": 271,
       "2022-11-25": 417,
-      "2022-11-24": 312,
-      "2022-11-23": 340
+      "2022-11-24": 312
     }
   },
   {
