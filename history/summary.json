@@ -16,7 +16,7 @@
     "timeMonth": 129,
     "timeYear": 262,
     "dailyMinutesDown": {
-      "2023-02-02": 551,
+      "2023-02-02": 590,
       "2023-02-01": 1440,
       "2023-01-31": 1440,
       "2023-01-30": 1440,
@@ -300,12 +300,12 @@
     "url": "103.168.119.181",
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "mumbai-server",
-    "status": "up",
-    "uptime": "71.14%",
-    "uptimeDay": "48.64%",
-    "uptimeWeek": "51.06%",
+    "status": "down",
+    "uptime": "71.31%",
+    "uptimeDay": "48.61%",
+    "uptimeWeek": "51.05%",
     "uptimeMonth": "48.57%",
-    "uptimeYear": "71.14%",
+    "uptimeYear": "71.31%",
     "time": 928,
     "timeDay": 843,
     "timeWeek": 910,
@@ -356,8 +356,7 @@
       "2022-12-22": 721,
       "2022-12-21": 691,
       "2022-12-20": 784,
-      "2022-12-19": 743,
-      "2022-12-18": 174
+      "2022-12-19": 743
     }
   },
   {
