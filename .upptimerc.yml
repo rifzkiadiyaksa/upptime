@@ -31,10 +31,6 @@ sites:
     check: "tcp-ping"
     url: 114.141.52.234
     port: 53
-  - name: Mumbai Server
-    check: "tcp-ping"
-    url: 180.252.115.155
-    port: 53
   - name: Hongkong Server
     check: "tcp-ping"
     url: 103.214.54.206
