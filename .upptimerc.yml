@@ -41,7 +41,7 @@ sites:
     port: 53
   - name: CDN Asia Server
     check: "tcp-ping"
-    url: 121.100.25.249
+    url: 104.237.198.198
     port: 53
   - name: CDN US Server
     check: "tcp-ping"
