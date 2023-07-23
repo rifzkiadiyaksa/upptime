@@ -388,7 +388,7 @@
     "timeMonth": 0,
     "timeYear": 232,
     "dailyMinutesDown": {
-      "2023-07-23": 634,
+      "2023-07-23": 645,
       "2023-07-22": 1440,
       "2023-07-21": 1440,
       "2023-07-20": 1440,
@@ -592,11 +592,11 @@
     "url": "103.126.201.1",
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "cdn-eu-server",
-    "status": "up",
+    "status": "down",
     "uptime": "99.90%",
-    "uptimeDay": "91.58%",
-    "uptimeWeek": "98.80%",
-    "uptimeMonth": "99.72%",
+    "uptimeDay": "92.27%",
+    "uptimeWeek": "98.90%",
+    "uptimeMonth": "99.75%",
     "uptimeYear": "99.90%",
     "time": 225,
     "timeDay": 632,
@@ -604,7 +604,7 @@
     "timeMonth": 237,
     "timeYear": 225,
     "dailyMinutesDown": {
-      "2023-07-23": 121,
+      "2023-07-23": 111,
       "2023-04-18": 98,
       "2023-03-16": 89,
       "2022-12-15": 47
