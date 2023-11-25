@@ -19,19 +19,11 @@ sites:
     check: "tcp-ping"
     url: 103.20.184.82
     port: 53
-  - name: Osaka Server
-    check: "tcp-ping"
-    url: 36.89.125.12
-    port: 53
   - name: Kuala Lumpur Server
     check: "tcp-ping"
     url: 103.110.8.142
     port: 53
   - name: Karawang Server
-    check: "tcp-ping"
-    url: 114.141.52.234
-    port: 53
-  - name: Hongkong Server
     check: "tcp-ping"
     url: 103.214.54.206
     port: 53
@@ -41,15 +33,11 @@ sites:
     port: 53
   - name: CDN Asia Server
     check: "tcp-ping"
-    url: 104.237.198.198
+    url: 103.126.201.1
     port: 53
   - name: CDN US Server
     check: "tcp-ping"
     url: 103.106.219.62
-    port: 53
-  - name: CDN EU Server
-    check: "tcp-ping"
-    url: 103.126.201.1
     port: 53
 
 status-website:
