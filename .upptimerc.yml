@@ -19,9 +19,9 @@ sites:
     check: "tcp-ping"
     url: 103.20.184.82
     port: 53
-  - name: Kuala Lumpur Server New
+  - name: Kuala Lumpur Server
     check: "tcp-ping"
-    url: 	34.117.55.18
+    url: 	118.97.119.133
     port: 53
     ipv6: false
   - name: Karawang Server
