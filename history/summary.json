@@ -4,19 +4,19 @@
     "url": "https://rifzki.my.id",
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "rifzki-adiyaksa",
-    "status": "up",
-    "uptime": "99.11%",
-    "uptimeDay": "53.11%",
-    "uptimeWeek": "26.88%",
-    "uptimeMonth": "74.89%",
-    "uptimeYear": "97.91%",
+    "status": "down",
+    "uptime": "99.12%",
+    "uptimeDay": "53.91%",
+    "uptimeWeek": "27.00%",
+    "uptimeMonth": "74.99%",
+    "uptimeYear": "97.92%",
     "time": 258,
-    "timeDay": 176,
+    "timeDay": 178,
     "timeWeek": 212,
     "timeMonth": 210,
     "timeYear": 243,
     "dailyMinutesDown": {
-      "2025-03-29": 642,
+      "2025-03-29": 643,
       "2025-03-28": 656,
       "2025-03-27": 610,
       "2025-03-26": 1168,
@@ -26,8 +26,7 @@
       "2025-03-22": 1440,
       "2025-03-21": 738,
       "2025-03-20": 664,
-      "2025-03-19": 781,
-      "2025-03-18": 43
+      "2025-03-19": 781
     }
   },
   {
@@ -97,7 +96,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "singapore-server",
     "status": "down",
-    "uptime": "58.40%",
+    "uptime": "58.39%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "4.67%",
@@ -108,7 +107,7 @@
     "timeMonth": 0,
     "timeYear": 212,
     "dailyMinutesDown": {
-      "2025-03-29": 1404,
+      "2025-03-29": 1418,
       "2025-03-28": 1440,
       "2025-03-27": 1440,
       "2025-03-26": 1440,
@@ -483,7 +482,7 @@
     "timeMonth": 0,
     "timeYear": 259,
     "dailyMinutesDown": {
-      "2025-03-29": 1405,
+      "2025-03-29": 1418,
       "2025-03-28": 1440,
       "2025-03-27": 1440,
       "2025-03-26": 1440,
@@ -885,7 +884,7 @@
     "timeMonth": 0,
     "timeYear": 284,
     "dailyMinutesDown": {
-      "2025-03-29": 1405,
+      "2025-03-29": 1418,
       "2025-03-28": 1440,
       "2025-03-27": 1440,
       "2025-03-26": 1440,
