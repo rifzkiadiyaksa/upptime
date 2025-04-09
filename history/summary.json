@@ -4,19 +4,19 @@
     "url": "https://rifzki.my.id",
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "rifzki-adiyaksa",
-    "status": "up",
+    "status": "down",
     "uptime": "99.71%",
-    "uptimeDay": "89.09%",
-    "uptimeWeek": "91.47%",
-    "uptimeMonth": "91.61%",
-    "uptimeYear": "99.30%",
+    "uptimeDay": "88.98%",
+    "uptimeWeek": "91.45%",
+    "uptimeMonth": "91.66%",
+    "uptimeYear": "99.31%",
     "time": 249,
-    "timeDay": 266,
-    "timeWeek": 259,
+    "timeDay": 265,
+    "timeWeek": 261,
     "timeMonth": 222,
     "timeYear": 242,
     "dailyMinutesDown": {
-      "2025-04-09": 19,
+      "2025-04-09": 21,
       "2025-04-08": 211,
       "2025-04-07": 88,
       "2025-04-06": 98,
@@ -28,7 +28,7 @@
       "2025-03-31": 707,
       "2025-03-30": 679,
       "2025-03-29": 642,
-      "2025-03-28": 470
+      "2025-03-28": 443
     }
   },
   {
@@ -109,7 +109,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-04-09": 283,
+      "2025-04-09": 295,
       "2025-04-08": 1440,
       "2025-04-07": 1440,
       "2025-04-06": 1440,
@@ -493,7 +493,7 @@
     "timeMonth": 0,
     "timeYear": 261,
     "dailyMinutesDown": {
-      "2025-04-09": 283,
+      "2025-04-09": 295,
       "2025-04-08": 1440,
       "2025-04-07": 1440,
       "2025-04-06": 1440,
@@ -906,7 +906,7 @@
     "timeMonth": 0,
     "timeYear": 290,
     "dailyMinutesDown": {
-      "2025-04-09": 283,
+      "2025-04-09": 295,
       "2025-04-08": 1440,
       "2025-04-07": 1440,
       "2025-04-06": 1440,
