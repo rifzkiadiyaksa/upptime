@@ -4,7 +4,7 @@ repo: upptime # The name of this repository
 
 sites:
   - name: 🔵 Rifzki Adiyaksa
-    url: https://rifzki.my.id
+    url: https://rifzki.my.id/photo
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
   - name: 🔵 Blog Rifzki Adiyaksa
     url: https://blog.rifzki.my.id
@@ -17,11 +17,11 @@ sites:
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
   - name: Singapore Server
     check: "tcp-ping"
-    url: 103.20.184.82
+    url: 114.129.17.90
     port: 53
   - name: Kuala Lumpur Server
     check: "tcp-ping"
-    url: 	118.97.119.133
+    url: 	203.160.56.18
     port: 53
     ipv6: false
   - name: Karawang Server
