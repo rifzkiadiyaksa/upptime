@@ -17,16 +17,16 @@ sites:
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
   - name: Singapore Server
     check: "tcp-ping"
-    url: 114.129.17.90
+    url: 43.255.154.40
     port: 53
   - name: Kuala Lumpur Server
     check: "tcp-ping"
-    url: 	203.160.56.18
+    url: 203.160.56.18
     port: 53
     ipv6: false
   - name: Karawang Server
     check: "tcp-ping"
-    url: 103.214.54.206
+    url: 1.1.1.1
     port: 53
   - name: Seoul Server
     check: "tcp-ping"
@@ -34,7 +34,7 @@ sites:
     port: 53
   - name: CDN Asia Server
     check: "tcp-ping"
-    url: 103.126.201.1
+    url: 1.0.0.1
     port: 53
   - name: CDN US Server
     check: "tcp-ping"
