@@ -5,18 +5,19 @@
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "rifzki-adiyaksa",
     "status": "down",
-    "uptime": "93.40%",
+    "uptime": "93.34%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "83.07%",
+    "uptimeYear": "82.88%",
     "time": 246,
-    "timeDay": 277,
-    "timeWeek": 258,
-    "timeMonth": 225,
+    "timeDay": 261,
+    "timeWeek": 251,
+    "timeMonth": 220,
     "timeYear": 239,
     "dailyMinutesDown": {
-      "2025-06-12": 526,
+      "2025-06-13": 56,
+      "2025-06-12": 1440,
       "2025-06-11": 1440,
       "2025-06-10": 1440,
       "2025-06-09": 1440,
@@ -106,9 +107,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.98%",
     "time": 461,
-    "timeDay": 464,
-    "timeWeek": 419,
-    "timeMonth": 335,
+    "timeDay": 421,
+    "timeWeek": 414,
+    "timeMonth": 338,
     "timeYear": 496,
     "dailyMinutesDown": {
       "2024-10-04": 40,
@@ -127,9 +128,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 167,
-    "timeDay": 121,
-    "timeWeek": 158,
-    "timeMonth": 165,
+    "timeDay": 243,
+    "timeWeek": 187,
+    "timeMonth": 168,
     "timeYear": 159,
     "dailyMinutesDown": {
       "2024-07-28": 41
@@ -147,9 +148,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 174,
-    "timeDay": 151,
-    "timeWeek": 141,
-    "timeMonth": 166,
+    "timeDay": 148,
+    "timeWeek": 142,
+    "timeMonth": 160,
     "timeYear": 181,
     "dailyMinutesDown": {}
   },
@@ -159,7 +160,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "singapore-server",
     "status": "down",
-    "uptime": "53.76%",
+    "uptime": "53.72%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -170,7 +171,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-06-12": 526,
+      "2025-06-13": 57,
+      "2025-06-12": 1440,
       "2025-06-11": 1440,
       "2025-06-10": 1440,
       "2025-06-09": 1440,
@@ -533,8 +535,7 @@
       "2024-06-17": 1440,
       "2024-06-16": 1440,
       "2024-06-15": 1440,
-      "2024-06-14": 1440,
-      "2024-06-13": 1440
+      "2024-06-14": 1440
     }
   },
   {
@@ -551,8 +552,8 @@
     "time": 245,
     "timeDay": 180,
     "timeWeek": 194,
-    "timeMonth": 209,
-    "timeYear": 209,
+    "timeMonth": 208,
+    "timeYear": 208,
     "dailyMinutesDown": {
       "2025-05-12": 332,
       "2025-05-11": 1440,
@@ -886,8 +887,7 @@
       "2024-06-17": 1440,
       "2024-06-16": 1440,
       "2024-06-15": 1440,
-      "2024-06-14": 1440,
-      "2024-06-13": 1440
+      "2024-06-14": 1440
     }
   },
   {
@@ -904,7 +904,7 @@
     "time": 218,
     "timeDay": 2,
     "timeWeek": 2,
-    "timeMonth": 4,
+    "timeMonth": 3,
     "timeYear": 212,
     "dailyMinutesDown": {
       "2025-05-12": 67,
@@ -929,8 +929,7 @@
       "2024-07-13": 62,
       "2024-07-04": 30,
       "2024-06-30": 188,
-      "2024-06-29": 40,
-      "2024-06-13": 33
+      "2024-06-29": 40
     }
   },
   {
@@ -947,7 +946,7 @@
     "time": 239,
     "timeDay": 183,
     "timeWeek": 199,
-    "timeMonth": 215,
+    "timeMonth": 214,
     "timeYear": 235,
     "dailyMinutesDown": {
       "2025-05-14": 639,
@@ -966,16 +965,16 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "cdn-asia-server",
     "status": "up",
-    "uptime": "40.85%",
+    "uptime": "40.90%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "20.64%",
-    "time": 234,
-    "timeDay": 2,
+    "time": 233,
+    "timeDay": 4,
     "timeWeek": 3,
     "timeMonth": 4,
-    "timeYear": 129,
+    "timeYear": 127,
     "dailyMinutesDown": {
       "2025-05-12": 337,
       "2025-05-11": 1440,
@@ -1284,8 +1283,8 @@
     "time": 248,
     "timeDay": 221,
     "timeWeek": 216,
-    "timeMonth": 233,
-    "timeYear": 240,
+    "timeMonth": 232,
+    "timeYear": 238,
     "dailyMinutesDown": {
       "2025-06-12": 25,
       "2025-05-28": 47,
@@ -1309,8 +1308,7 @@
       "2024-07-18": 101,
       "2024-07-17": 18,
       "2024-06-25": 396,
-      "2024-06-14": 93,
-      "2024-06-13": 83
+      "2024-06-14": 93
     }
   }
 ]
