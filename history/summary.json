@@ -5,18 +5,19 @@
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "rifzki-adiyaksa",
     "status": "down",
-    "uptime": "92.25%",
+    "uptime": "92.16%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "79.87%",
+    "uptimeYear": "79.59%",
     "time": 246,
-    "timeDay": 310,
-    "timeWeek": 295,
-    "timeMonth": 252,
+    "timeDay": 269,
+    "timeWeek": 285,
+    "timeMonth": 250,
     "timeYear": 239,
     "dailyMinutesDown": {
-      "2025-06-24": 57,
+      "2025-06-25": 57,
+      "2025-06-24": 1440,
       "2025-06-23": 1440,
       "2025-06-22": 1440,
       "2025-06-21": 1440,
@@ -118,10 +119,10 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.98%",
     "time": 465,
-    "timeDay": 755,
-    "timeWeek": 483,
-    "timeMonth": 400,
-    "timeYear": 502,
+    "timeDay": 302,
+    "timeWeek": 462,
+    "timeMonth": 397,
+    "timeYear": 501,
     "dailyMinutesDown": {
       "2024-10-04": 40,
       "2024-07-28": 41
@@ -139,9 +140,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 169,
-    "timeDay": 288,
-    "timeWeek": 280,
-    "timeMonth": 215,
+    "timeDay": 130,
+    "timeWeek": 253,
+    "timeMonth": 209,
     "timeYear": 163,
     "dailyMinutesDown": {
       "2024-07-28": 41
@@ -159,9 +160,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 176,
-    "timeDay": 189,
-    "timeWeek": 176,
-    "timeMonth": 152,
+    "timeDay": 141,
+    "timeWeek": 177,
+    "timeMonth": 153,
     "timeYear": 182,
     "dailyMinutesDown": {}
   },
@@ -171,7 +172,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "singapore-server",
     "status": "down",
-    "uptime": "53.10%",
+    "uptime": "53.04%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -182,7 +183,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-06-24": 57,
+      "2025-06-25": 58,
+      "2025-06-24": 1440,
       "2025-06-23": 1440,
       "2025-06-22": 1440,
       "2025-06-21": 1440,
@@ -545,8 +547,7 @@
       "2024-06-29": 1440,
       "2024-06-28": 1440,
       "2024-06-27": 1440,
-      "2024-06-26": 1440,
-      "2024-06-25": 1440
+      "2024-06-26": 1440
     }
   },
   {
@@ -560,10 +561,10 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "0.00%",
-    "time": 242,
-    "timeDay": 218,
-    "timeWeek": 226,
-    "timeMonth": 210,
+    "time": 239,
+    "timeDay": 180,
+    "timeWeek": 218,
+    "timeMonth": 208,
     "timeYear": 211,
     "dailyMinutesDown": {
       "2025-05-12": 332,
@@ -886,8 +887,7 @@
       "2024-06-29": 1440,
       "2024-06-28": 1440,
       "2024-06-27": 1440,
-      "2024-06-26": 1440,
-      "2024-06-25": 1440
+      "2024-06-26": 1440
     }
   },
   {
@@ -903,7 +903,7 @@
     "uptimeYear": "99.22%",
     "time": 213,
     "timeDay": 2,
-    "timeWeek": 5,
+    "timeWeek": 4,
     "timeMonth": 4,
     "timeYear": 205,
     "dailyMinutesDown": {
@@ -944,9 +944,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.59%",
     "time": 238,
-    "timeDay": 223,
-    "timeWeek": 233,
-    "timeMonth": 216,
+    "timeDay": 184,
+    "timeWeek": 225,
+    "timeMonth": 214,
     "timeYear": 235,
     "dailyMinutesDown": {
       "2025-05-14": 639,
@@ -965,16 +965,16 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "cdn-asia-server",
     "status": "up",
-    "uptime": "41.58%",
+    "uptime": "41.64%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "20.64%",
-    "time": 217,
-    "timeDay": 3,
-    "timeWeek": 5,
+    "time": 216,
+    "timeDay": 2,
+    "timeWeek": 4,
     "timeMonth": 4,
-    "timeYear": 96,
+    "timeYear": 93,
     "dailyMinutesDown": {
       "2025-05-12": 337,
       "2025-05-11": 1440,
@@ -1281,9 +1281,9 @@
     "uptimeMonth": "98.99%",
     "uptimeYear": "99.25%",
     "time": 247,
-    "timeDay": 233,
-    "timeWeek": 244,
-    "timeMonth": 233,
+    "timeDay": 199,
+    "timeWeek": 238,
+    "timeMonth": 226,
     "timeYear": 237,
     "dailyMinutesDown": {
       "2025-06-16": 217,
@@ -1307,8 +1307,7 @@
       "2024-08-06": 413,
       "2024-08-01": 195,
       "2024-07-18": 101,
-      "2024-07-17": 18,
-      "2024-06-25": 396
+      "2024-07-17": 18
     }
   }
 ]
