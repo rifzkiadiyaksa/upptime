@@ -5,18 +5,19 @@
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "rifzki-adiyaksa",
     "status": "down",
-    "uptime": "88.49%",
+    "uptime": "88.40%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "68.24%",
+    "uptimeYear": "67.97%",
     "time": 243,
-    "timeDay": 377,
-    "timeWeek": 303,
-    "timeMonth": 260,
+    "timeDay": 285,
+    "timeWeek": 323,
+    "timeMonth": 259,
     "timeYear": 235,
     "dailyMinutesDown": {
-      "2025-08-21": 52,
+      "2025-08-22": 54,
+      "2025-08-21": 1440,
       "2025-08-20": 1440,
       "2025-08-19": 1440,
       "2025-08-18": 1440,
@@ -162,9 +163,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.99%",
     "time": 463,
-    "timeDay": 233,
-    "timeWeek": 347,
-    "timeMonth": 340,
+    "timeDay": 293,
+    "timeWeek": 353,
+    "timeMonth": 341,
     "timeYear": 495,
     "dailyMinutesDown": {
       "2024-10-04": 40
@@ -182,9 +183,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 170,
-    "timeDay": 167,
-    "timeWeek": 212,
-    "timeMonth": 193,
+    "timeDay": 224,
+    "timeWeek": 220,
+    "timeMonth": 194,
     "timeYear": 172,
     "dailyMinutesDown": {}
   },
@@ -200,9 +201,9 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "100.00%",
     "time": 177,
-    "timeDay": 128,
-    "timeWeek": 155,
-    "timeMonth": 157,
+    "timeDay": 185,
+    "timeWeek": 164,
+    "timeMonth": 158,
     "timeYear": 177,
     "dailyMinutesDown": {}
   },
@@ -212,7 +213,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "singapore-server",
     "status": "down",
-    "uptime": "50.04%",
+    "uptime": "49.99%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -223,7 +224,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-08-21": 53,
+      "2025-08-22": 54,
+      "2025-08-21": 1440,
       "2025-08-20": 1440,
       "2025-08-19": 1440,
       "2025-08-18": 1440,
@@ -586,8 +588,7 @@
       "2024-08-26": 1440,
       "2024-08-25": 1440,
       "2024-08-24": 1440,
-      "2024-08-23": 1440,
-      "2024-08-22": 1440
+      "2024-08-23": 1440
     }
   },
   {
@@ -601,9 +602,9 @@
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
     "uptimeYear": "0.00%",
-    "time": 227,
-    "timeDay": 239,
-    "timeWeek": 218,
+    "time": 226,
+    "timeDay": 216,
+    "timeWeek": 214,
     "timeMonth": 222,
     "timeYear": 214,
     "dailyMinutesDown": {
@@ -869,8 +870,7 @@
       "2024-08-26": 1440,
       "2024-08-25": 1440,
       "2024-08-24": 1440,
-      "2024-08-23": 1440,
-      "2024-08-22": 1440
+      "2024-08-23": 1440
     }
   },
   {
@@ -885,7 +885,7 @@
     "uptimeMonth": "100.00%",
     "uptimeYear": "99.28%",
     "time": 188,
-    "timeDay": 1,
+    "timeDay": 3,
     "timeWeek": 5,
     "timeMonth": 5,
     "timeYear": 172,
@@ -923,9 +923,9 @@
     "uptimeMonth": "95.33%",
     "uptimeYear": "99.37%",
     "time": 236,
-    "timeDay": 240,
-    "timeWeek": 220,
-    "timeMonth": 225,
+    "timeDay": 222,
+    "timeWeek": 217,
+    "timeMonth": 224,
     "timeYear": 224,
     "dailyMinutesDown": {
       "2025-08-10": 1427,
@@ -944,13 +944,13 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "cdn-asia-server",
     "status": "up",
-    "uptime": "44.94%",
+    "uptime": "45.00%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "27.61%",
-    "time": 147,
-    "timeDay": 3,
+    "uptimeYear": "27.89%",
+    "time": 145,
+    "timeDay": 2,
     "timeWeek": 5,
     "timeMonth": 5,
     "timeYear": 4,
@@ -1218,8 +1218,7 @@
       "2024-08-26": 1440,
       "2024-08-25": 1440,
       "2024-08-24": 1440,
-      "2024-08-23": 1440,
-      "2024-08-22": 1440
+      "2024-08-23": 1440
     }
   },
   {
@@ -1234,8 +1233,8 @@
     "uptimeMonth": "99.55%",
     "uptimeYear": "99.51%",
     "time": 240,
-    "timeDay": 251,
-    "timeWeek": 232,
+    "timeDay": 232,
+    "timeWeek": 228,
     "timeMonth": 237,
     "timeYear": 234,
     "dailyMinutesDown": {
