@@ -5,18 +5,19 @@
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "rifzki-adiyaksa",
     "status": "down",
-    "uptime": "86.77%",
+    "uptime": "86.76%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "62.78%",
+    "uptimeYear": "62.76%",
     "time": 242,
     "timeDay": 202,
     "timeWeek": 231,
     "timeMonth": 286,
     "timeYear": 235,
     "dailyMinutesDown": {
-      "2025-09-09": 1391,
+      "2025-09-10": 50,
+      "2025-09-09": 1440,
       "2025-09-08": 1440,
       "2025-09-07": 1440,
       "2025-09-06": 1440,
@@ -176,17 +177,18 @@
     "slug": "blog-rifzki-adiyaksa",
     "status": "down",
     "uptime": "99.66%",
-    "uptimeDay": "43.90%",
-    "uptimeWeek": "51.52%",
-    "uptimeMonth": "88.62%",
-    "uptimeYear": "99.05%",
+    "uptimeDay": "39.17%",
+    "uptimeWeek": "50.54%",
+    "uptimeMonth": "88.40%",
+    "uptimeYear": "99.03%",
     "time": 455,
-    "timeDay": 408,
+    "timeDay": 417,
     "timeWeek": 456,
     "timeMonth": 448,
     "timeYear": 474,
     "dailyMinutesDown": {
-      "2025-09-09": 776,
+      "2025-09-10": 50,
+      "2025-09-09": 825,
       "2025-09-08": 891,
       "2025-09-07": 793,
       "2025-09-06": 595,
@@ -238,7 +240,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "singapore-server",
     "status": "down",
-    "uptime": "49.07%",
+    "uptime": "49.06%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -249,7 +251,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-09-09": 1391,
+      "2025-09-10": 50,
+      "2025-09-09": 1440,
       "2025-09-08": 1440,
       "2025-09-07": 1440,
       "2025-09-06": 1440,
@@ -612,8 +615,7 @@
       "2024-09-14": 1440,
       "2024-09-13": 1440,
       "2024-09-12": 1440,
-      "2024-09-11": 1440,
-      "2024-09-10": 1440
+      "2024-09-11": 1440
     }
   },
   {
@@ -626,7 +628,7 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "13.33%",
+    "uptimeYear": "13.37%",
     "time": 220,
     "timeDay": 220,
     "timeWeek": 228,
@@ -876,8 +878,7 @@
       "2024-09-14": 1440,
       "2024-09-13": 1440,
       "2024-09-12": 1440,
-      "2024-09-11": 1440,
-      "2024-09-10": 1440
+      "2024-09-11": 1440
     }
   },
   {
@@ -922,7 +923,7 @@
     "uptime": "99.41%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
-    "uptimeMonth": "96.63%",
+    "uptimeMonth": "96.86%",
     "uptimeYear": "99.37%",
     "time": 234,
     "timeDay": 220,
@@ -946,11 +947,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "cdn-asia-server",
     "status": "up",
-    "uptime": "46.01%",
+    "uptime": "46.02%",
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "33.07%",
+    "uptimeYear": "33.09%",
     "time": 98,
     "timeDay": 3,
     "timeWeek": 5,
@@ -1201,8 +1202,7 @@
       "2024-09-14": 1440,
       "2024-09-13": 1440,
       "2024-09-12": 1440,
-      "2024-09-11": 1440,
-      "2024-09-10": 1440
+      "2024-09-11": 1440
     }
   },
   {
