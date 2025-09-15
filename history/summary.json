@@ -16,7 +16,7 @@
     "timeMonth": 282,
     "timeYear": 235,
     "dailyMinutesDown": {
-      "2025-09-15": 526,
+      "2025-09-15": 537,
       "2025-09-14": 1440,
       "2025-09-13": 1440,
       "2025-09-12": 1440,
@@ -180,19 +180,19 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "up",
+    "status": "down",
     "uptime": "99.64%",
-    "uptimeDay": "70.66%",
-    "uptimeWeek": "62.84%",
-    "uptimeMonth": "87.64%",
+    "uptimeDay": "70.55%",
+    "uptimeWeek": "62.94%",
+    "uptimeMonth": "87.69%",
     "uptimeYear": "98.97%",
     "time": 464,
-    "timeDay": 511,
-    "timeWeek": 475,
-    "timeMonth": 460,
-    "timeYear": 478,
+    "timeDay": 506,
+    "timeWeek": 476,
+    "timeMonth": 461,
+    "timeYear": 479,
     "dailyMinutesDown": {
-      "2025-09-15": 121,
+      "2025-09-15": 122,
       "2025-09-14": 343,
       "2025-09-13": 456,
       "2025-09-12": 405,
@@ -201,7 +201,7 @@
       "2025-09-09": 825,
       "2025-09-08": 891,
       "2025-09-07": 793,
-      "2025-09-06": 552
+      "2025-09-06": 529
     }
   },
   {
@@ -257,7 +257,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2025-09-15": 526,
+      "2025-09-15": 537,
       "2025-09-14": 1440,
       "2025-09-13": 1440,
       "2025-09-12": 1440,
