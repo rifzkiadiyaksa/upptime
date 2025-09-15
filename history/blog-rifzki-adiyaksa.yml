@@ -1,7 +1,7 @@
 url: https://blog.rifzki.my.id
-status: up
-code: 200
-responseTime: 95
-lastUpdated: 2025-09-15T14:49:56.100Z
+status: down
+code: 429
+responseTime: 648
+lastUpdated: 2025-09-15T15:30:48.656Z
 startTime: 2022-11-18T07:50:52.000Z
 generator: Upptime <https://github.com/upptime/upptime>
