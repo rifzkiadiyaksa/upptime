@@ -4,7 +4,7 @@ repo: upptime # The name of this repository
 
 sites:
   - name: 🔵 Rifzki Adiyaksa
-    url: https://rifzki.my.id/
+    url: https://rifzki.my.id
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
   - name: 🔵 Blog Rifzki Adiyaksa
     url: https://blog.rifzki.my.id
@@ -15,31 +15,40 @@ sites:
   - name: 🔵 Music Rifzki Adiyaksa
     url: https://google.com
     icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: Singapore Server
+  - name: Primary Server
     check: "tcp-ping"
     url: rifzki.my.id
     port: 443
-  - name: Kuala Lumpur Server
+  - name: SG Server
+    check: "tcp-ping"
+    url: 2606:4700:3034::ac43:c5b2
+    port: 53
+    ipv6: true
+  - name: KL Server
+    check: "tcp-ping"
+    url: 2606:4700:3033::6815:5cca
+    port: 53
+    ipv6: true
+  - name: KRW Server
+    check: "tcp-ping"
+    url: 1.1.1.1
+    port: 53
+    ipv6: false
+  - name: AI Int-Access Server
     check: "tcp-ping"
     url: 203.160.56.18
     port: 53
     ipv6: false
-  - name: Karawang Server
-    check: "tcp-ping"
-    url: 1.1.1.1
-    port: 53
-  - name: Seoul Server
-    check: "tcp-ping"
-    url: 119.110.71.221
-    port: 53
   - name: CDN Asia Server
     check: "tcp-ping"
     url: 1.0.0.1
     port: 53
+    ipv6: false
   - name: CDN US Server
     check: "tcp-ping"
     url: 103.106.219.62
     port: 53
+    ipv6: false
 
 status-website:
   # Add your custom domain name, or remove the `cname` line if you don't have a domain
