@@ -21,12 +21,12 @@ sites:
     port: 443
   - name: SG Server
     check: "tcp-ping"
-    url: 2606:4700:3034::ac43:c5b2
+    url: rifzki.my.id
     port: 53
     ipv6: true
   - name: KL Server
     check: "tcp-ping"
-    url: 2606:4700:3033::6815:5cca
+    url: rifzki.my.id
     port: 53
     ipv6: true
   - name: KRW Server
