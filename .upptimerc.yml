@@ -59,6 +59,94 @@ status-website:
   logoUrl: https://m.rifzki.my.id/assets/img/icon/72x72.png
   name: Status Server
   introTitle: "**Status Server** check the server status and Rifzki Adiyaksa site."
+  customThemeCss: |
+    :root {
+      --text-color: #333333;
+      --bg-color: #f9f9f9;
+      --card-bg-color: #ffffff;
+      --border-color: #e0e0e0;
+      --navbar-bg: #ffffff;
+      --navbar-text: #333333;
+      --footer-bg: #f9f9f9;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-color: #e0e0e0;
+        --bg-color: #121212;
+        --card-bg-color: #1e1e1e;
+        --border-color: #333333;
+        --navbar-bg: #1e1e1e;
+        --navbar-text: #e0e0e0;
+        --footer-bg: #121212;
+      }
+    }
+
+    body {
+      color: var(--text-color) !important;
+      background-color: var(--bg-color) !important;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    .card, article {
+      background-color: var(--card-bg-color) !important;
+      border-color: var(--border-color) !important;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover, article:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    nav {
+      background-color: var(--navbar-bg) !important;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    nav a {
+      color: var(--navbar-text) !important;
+    }
+
+    footer {
+      background-color: var(--footer-bg) !important;
+      border-top: 1px solid var(--border-color);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-color) !important;
+    }
+
+    a {
+      color: #007bff;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #0056b3;
+      text-decoration: none;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      a {
+        color: #4da3ff;
+      }
+      a:hover {
+        color: #80bfff;
+      }
+    }
+
+    table {
+      color: var(--text-color) !important;
+    }
+
+    table th, table td {
+      border-color: var(--border-color) !important;
+    }
+
   navbar:
     - title: Status
       href: /
