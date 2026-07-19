@@ -26,7 +26,7 @@ sites:
     ipv6: false
   - name: KL Server
     check: "tcp-ping"
-    url: [2602:fb54:1b06:1::1]
+    url: 2602:fb54:1b06:1::1
     port: 53
     ipv6: true
   - name: KRW Server
