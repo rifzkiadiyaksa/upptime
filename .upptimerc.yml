@@ -59,7 +59,7 @@ status-website:
   logoUrl: https://m.rifzki.my.id/assets/img/icon/72x72.png
   name: Status Server
   introTitle: "**Status Server** check the server status and Rifzki Adiyaksa site."
-  customThemeCss: |
+  css: |
     :root {
       --text-color: #333333;
       --bg-color: #f9f9f9;
