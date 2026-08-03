@@ -9,11 +9,11 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "24.34%",
+    "uptimeYear": "24.35%",
     "time": 257,
     "timeDay": 168,
     "timeWeek": 305,
-    "timeMonth": 232,
+    "timeMonth": 234,
     "timeYear": 253,
     "dailyMinutesDown": {
       "2026-05-06": 239,
@@ -291,8 +291,7 @@
       "2025-08-07": 1440,
       "2025-08-06": 1440,
       "2025-08-05": 1440,
-      "2025-08-04": 1440,
-      "2025-08-03": 1440
+      "2025-08-04": 1440
     }
   },
   {
@@ -300,16 +299,16 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "down",
+    "status": "up",
     "uptime": "99.63%",
-    "uptimeDay": "42.57%",
-    "uptimeWeek": "71.81%",
-    "uptimeMonth": "92.91%",
-    "uptimeYear": "98.64%",
+    "uptimeDay": "42.92%",
+    "uptimeWeek": "70.98%",
+    "uptimeMonth": "92.72%",
+    "uptimeYear": "98.62%",
     "time": 442,
-    "timeDay": 450,
-    "timeWeek": 426,
-    "timeMonth": 377,
+    "timeDay": 419,
+    "timeWeek": 419,
+    "timeMonth": 376,
     "timeYear": 452,
     "dailyMinutesDown": {
       "2025-09-12": 92,
@@ -345,7 +344,8 @@
       "2026-07-30": 369,
       "2026-07-31": 427,
       "2026-08-01": 768,
-      "2026-08-02": 819
+      "2026-08-02": 827,
+      "2026-08-03": 76
     }
   },
   {
@@ -425,7 +425,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-02": 1432,
+      "2026-08-03": 81,
+      "2026-08-02": 1440,
       "2026-08-01": 1440,
       "2026-07-31": 1440,
       "2026-07-30": 1440,
@@ -570,7 +571,8 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-02": 1432,
+      "2026-08-03": 81,
+      "2026-08-02": 1440,
       "2026-08-01": 1440,
       "2026-07-31": 1440,
       "2026-07-30": 1440,
@@ -730,7 +732,7 @@
     "time": 213,
     "timeDay": 237,
     "timeWeek": 203,
-    "timeMonth": 215,
+    "timeMonth": 214,
     "timeYear": 213,
     "dailyMinutesDown": {}
   },
@@ -758,11 +760,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "cdn-us-server",
     "status": "down",
-    "uptime": "92.32%",
+    "uptime": "92.31%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
-    "uptimeYear": "73.44%",
+    "uptimeYear": "73.42%",
     "time": 234,
     "timeDay": 0,
     "timeWeek": 0,
@@ -788,7 +790,8 @@
       "2026-04-01": 68,
       "2026-03-31": 15,
       "2026-04-21": 61,
-      "2026-08-02": 1432,
+      "2026-08-03": 81,
+      "2026-08-02": 1440,
       "2026-08-01": 1440,
       "2026-07-31": 1440,
       "2026-07-30": 1440,
