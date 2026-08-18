@@ -9,7 +9,7 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "28.51%",
+    "uptimeYear": "28.52%",
     "time": 251,
     "timeDay": 139,
     "timeWeek": 166,
@@ -284,15 +284,15 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://m.rifzki.my.id/assets/img/icon/72x72.png",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "down",
-    "uptime": "99.17%",
-    "uptimeDay": "88.20%",
-    "uptimeWeek": "64.76%",
-    "uptimeMonth": "67.46%",
+    "status": "up",
+    "uptime": "99.16%",
+    "uptimeDay": "86.45%",
+    "uptimeWeek": "64.81%",
+    "uptimeMonth": "67.40%",
     "uptimeYear": "96.87%",
     "time": 440,
-    "timeDay": 415,
-    "timeWeek": 440,
+    "timeDay": 413,
+    "timeWeek": 439,
     "timeMonth": 407,
     "timeYear": 450,
     "dailyMinutesDown": {
@@ -340,7 +340,7 @@
       "2026-08-15": 205,
       "2026-08-16": 201,
       "2026-08-17": 166,
-      "2026-08-18": 63
+      "2026-08-18": 88
     }
   },
   {
@@ -421,7 +421,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-18": 326,
+      "2026-08-18": 356,
       "2026-08-17": 1440,
       "2026-08-16": 1440,
       "2026-08-15": 1440,
@@ -582,7 +582,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-18": 326,
+      "2026-08-18": 356,
       "2026-08-17": 1440,
       "2026-08-16": 1440,
       "2026-08-15": 1440,
@@ -815,7 +815,7 @@
       "2026-04-01": 68,
       "2026-03-31": 15,
       "2026-04-21": 61,
-      "2026-08-18": 326,
+      "2026-08-18": 356,
       "2026-08-17": 1440,
       "2026-08-16": 1440,
       "2026-08-15": 1440,
