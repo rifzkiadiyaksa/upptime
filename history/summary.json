@@ -9,7 +9,7 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "29.27%",
+    "uptimeYear": "29.28%",
     "time": 250,
     "timeDay": 96,
     "timeWeek": 186,
@@ -283,10 +283,10 @@
     "slug": "blog-rifzki-adiyaksa",
     "status": "down",
     "uptime": "99.17%",
-    "uptimeDay": "97.06%",
-    "uptimeWeek": "87.26%",
-    "uptimeMonth": "66.99%",
-    "uptimeYear": "96.87%",
+    "uptimeDay": "94.32%",
+    "uptimeWeek": "86.87%",
+    "uptimeMonth": "66.90%",
+    "uptimeYear": "96.86%",
     "time": 440,
     "timeDay": 579,
     "timeWeek": 445,
@@ -340,7 +340,7 @@
       "2026-08-18": 193,
       "2026-08-19": 29,
       "2026-08-20": 41,
-      "2026-08-21": 1
+      "2026-08-21": 41
     }
   },
   {
@@ -422,7 +422,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-21": 1,
+      "2026-08-21": 41,
       "2026-08-20": 1440,
       "2026-08-19": 1440,
       "2026-08-18": 1440,
@@ -586,7 +586,7 @@
     "timeMonth": 0,
     "timeYear": 0,
     "dailyMinutesDown": {
-      "2026-08-21": 1,
+      "2026-08-21": 41,
       "2026-08-20": 1440,
       "2026-08-19": 1440,
       "2026-08-18": 1440,
@@ -793,7 +793,7 @@
     "icon": "https://icons.duckduckgo.com/ip3/null.ico",
     "slug": "cdn-us-server",
     "status": "down",
-    "uptime": "91.11%",
+    "uptime": "91.10%",
     "uptimeDay": "0.00%",
     "uptimeWeek": "0.00%",
     "uptimeMonth": "0.00%",
@@ -822,7 +822,7 @@
       "2026-04-01": 68,
       "2026-03-31": 15,
       "2026-04-21": 61,
-      "2026-08-21": 2,
+      "2026-08-21": 41,
       "2026-08-20": 1440,
       "2026-08-19": 1440,
       "2026-08-18": 1440,
