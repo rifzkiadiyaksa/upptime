@@ -1,3 +1,4 @@
+import {createHash} from 'node:crypto';
 import {buildArchive} from './archive-build.mjs';
 import { readFile, mkdir, cp, writeFile, rm } from 'node:fs/promises';
 import { parse } from 'yaml';
@@ -80,6 +81,8 @@ for(const service of services){service.outageIntervals=incidents.filter(i=>i.ser
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist',{recursive:true});
 for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','i18n.mjs','catalog.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
+const cssRevision=createHash('sha256').update(await readFile('dist/styles.css')).digest('hex').slice(0,12);
+await writeFile('dist/index.html',(await readFile('dist/index.html','utf8')).replace('./styles.css','./styles.css?v='+cssRevision));
 await mkdir('dist/public',{recursive:true});for(const asset of ['logo.svg','favicon.svg'])await cp('frontend/public/'+asset,'dist/public/'+asset);
 const archive=buildArchive(incidents,operations.maintenance,now);
 for(const [path,value]of Object.entries(archive.files)){await mkdir(path.slice(0,path.lastIndexOf('/')).replace(/^archive/,'dist/archive'),{recursive:true});await writeFile('dist/'+path,JSON.stringify(value));}
