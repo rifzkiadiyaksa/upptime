@@ -55,9 +55,9 @@ status-website:
   # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
   cname: status.rifzki.my.id
   # baseUrl: /your-repo-name
-  favicon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  logoUrl: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  name: Rifzki
+  favicon: /public/favicon.svg
+  logoUrl: /public/logo.svg
+  name: Rifzki System Status
   introTitle: "**Rifzki** service status and infrastructure updates."
   customThemeCss: |
     :root {

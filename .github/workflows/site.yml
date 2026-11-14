@@ -2,6 +2,7 @@
 name: Rifzki Status CI
 on:
   push:
+    branches: [master]
     paths:
       - "frontend/**"
       - "package*.json"
@@ -26,7 +27,7 @@ permissions:
   contents: write
   issues: read
 concurrency:
-  group: ${{ github.repository }}-${{ github.head_ref || github.ref_name }}-upptime
+  group: ${{ github.repository }}-${{ github.head_ref || github.ref_name }}-rifzki-frontend
   cancel-in-progress: false
 jobs:
   release:
@@ -61,6 +62,7 @@ jobs:
       - run: npm run build
         env:
           GITHUB_TOKEN: ${{ github.token }}
+          CARTO_API_KEY: ${{ vars.CARTO_API_KEY }}
       - uses: peaceiris/actions-gh-pages@v4
         name: GitHub Pages Deploy
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'

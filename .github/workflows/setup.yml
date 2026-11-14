@@ -17,6 +17,7 @@
 name: Setup CI
 on:
   push:
+    branches: [master]
     paths:
       - ".upptimerc.yml"
   repository_dispatch:
@@ -48,12 +49,7 @@ jobs:
         with:
           ref: ${{ github.head_ref || github.ref_name }}
           token: ${{ steps.app_token.outputs.token || secrets.GH_PAT || github.token }}
-      - name: Update template
-        uses: upptime/uptime-monitor@v1.46.5
-        with:
-          command: "update-template"
-        env:
-          GH_PAT: ${{ steps.app_token.outputs.token || secrets.GH_PAT || github.token }}
+      # Custom frontend workflow files are maintained manually.
       - name: Update response time
         uses: upptime/uptime-monitor@v1.46.5
         with:
