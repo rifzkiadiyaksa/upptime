@@ -3,62 +3,55 @@ owner: rifzkiadiyaksa # Your GitHub organization or username, where this reposit
 repo: upptime # The name of this repository
 
 sites:
-  - name: 🔵 Rifzki Adiyaksa
+  - name: rifzki.my.id
     url: https://rifzki.my.id
-    icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: 🔵 Blog Rifzki Adiyaksa
+    slug: rifzki-adiyaksa
+  - name: laci.rifzki.my.id
+    url: https://laci.rifzki.my.id
+    slug: laci-rifzki-my-id
+  - name: link.rifzki.my.id
+    url: https://link.rifzki.my.id
+    slug: link-rifzki-my-id
+  - name: s.rifzki.my.id
+    url: https://s.rifzki.my.id
+    slug: s-rifzki-my-id
+  - name: s3.rifzki.my.id
+    url: https://s3.rifzki.my.id
+    slug: s3-rifzki-my-id
+  - name: ai.rifzki.my.id
+    url: https://ai.rifzki.my.id
+    slug: ai-rifzki-my-id
+  - name: blog.rifzki.my.id
     url: https://blog.rifzki.my.id
-    icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: 🔵 Games Rifzki Adiyaksa
-    url: https://congklak.game.rifzki.my.id
-    icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: 🔵 Music Rifzki Adiyaksa
-    url: https://google.com
-    icon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  - name: Primary Server
-    check: "tcp-ping"
-    url: rifzki.my.id
-    port: 443
-  - name: SG Server
-    check: "tcp-ping"
-    url: 208.84.102.206
-    port: 53
-    ipv6: false
-  - name: KL Server
-    check: "tcp-ping"
-    url: 2602:fb54:1b06:1::1
-    port: 53
-    ipv6: true
-  - name: KRW Server
-    check: "tcp-ping"
-    url: 1.1.1.1
-    port: 53
-    ipv6: false
-  - name: AI Int-Access Server
-    check: "tcp-ping"
-    url: 203.160.56.18
-    port: 53
-    ipv6: false
-  - name: CDN Asia Server
-    check: "tcp-ping"
-    url: 1.0.0.1
-    port: 53
-    ipv6: false
-  - name: CDN US Server
-    check: "tcp-ping"
-    url: 103.106.219.62
-    port: 53
-    ipv6: false
+    slug: blog-rifzki-adiyaksa
+  - name: jejak.rifzki.my.id
+    url: https://jejak.rifzki.my.id
+    slug: jejak-rifzki-my-id
+  - name: meet.rifzki.my.id
+    url: https://meet.rifzki.my.id
+    slug: meet-rifzki-my-id
+  - name: speed.rifzki.my.id
+    url: https://speed.rifzki.my.id
+    slug: speed-rifzki-my-id
+  - name: webmail.rifzki.my.id
+    url: https://webmail.rifzki.my.id
+    slug: webmail-rifzki-my-id
+  - name: cpanel.rifzki.my.id
+    url: https://cpanel.rifzki.my.id
+    slug: cpanel-rifzki-my-id
+  - name: panel.rifzki.my.id
+    url: https://panel.rifzki.my.id
+    slug: panel-rifzki-my-id
 
 status-website:
   # Add your custom domain name, or remove the `cname` line if you don't have a domain
   # Uncomment the `baseUrl` line if you don't have a custom domain and add your repo name there
   cname: status.rifzki.my.id
   # baseUrl: /your-repo-name
-  favicon: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  logoUrl: https://m.rifzki.my.id/assets/img/icon/72x72.png
-  name: Status Server
-  introTitle: "**Status Server** check the server status and Rifzki Adiyaksa site."
+  favicon: /public/favicon.svg
+  logoUrl: /public/logo.svg
+  name: Rifzki System Status
+  introTitle: "**Rifzki** service status and infrastructure updates."
   customThemeCss: |
     :root {
       --text-color: #333333;

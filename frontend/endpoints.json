@@ -1,0 +1,67 @@
+[
+  {
+    "host": "rifzki.my.id",
+    "group": "Dashboard & Core App",
+    "slug": "rifzki-adiyaksa"
+  },
+  {
+    "host": "laci.rifzki.my.id",
+    "group": "Dashboard & Core App",
+    "slug": "laci-rifzki-my-id"
+  },
+  {
+    "host": "link.rifzki.my.id",
+    "group": "Dashboard & Core App",
+    "slug": "link-rifzki-my-id"
+  },
+  {
+    "host": "s.rifzki.my.id",
+    "group": "Dashboard & Core App",
+    "slug": "s-rifzki-my-id"
+  },
+  {
+    "host": "s3.rifzki.my.id",
+    "group": "Dashboard & Core App",
+    "slug": "s3-rifzki-my-id"
+  },
+  {
+    "host": "ai.rifzki.my.id",
+    "group": "Public Service & App",
+    "slug": "ai-rifzki-my-id"
+  },
+  {
+    "host": "blog.rifzki.my.id",
+    "group": "Public Service & App",
+    "slug": "blog-rifzki-adiyaksa"
+  },
+  {
+    "host": "jejak.rifzki.my.id",
+    "group": "Public Service & App",
+    "slug": "jejak-rifzki-my-id"
+  },
+  {
+    "host": "meet.rifzki.my.id",
+    "group": "Public Service & App",
+    "slug": "meet-rifzki-my-id"
+  },
+  {
+    "host": "speed.rifzki.my.id",
+    "group": "Public Service & App",
+    "slug": "speed-rifzki-my-id"
+  },
+  {
+    "host": "webmail.rifzki.my.id",
+    "group": "Public Service & App",
+    "slug": "webmail-rifzki-my-id"
+  },
+  {
+    "host": "cpanel.rifzki.my.id",
+    "group": "Hosting App",
+    "slug": "cpanel-rifzki-my-id"
+  },
+  {
+    "host": "panel.rifzki.my.id",
+    "group": "Hosting App",
+    "slug": "panel-rifzki-my-id"
+  }
+]
