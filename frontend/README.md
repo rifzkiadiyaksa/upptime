@@ -29,3 +29,9 @@ The public snapshot remained at 10:25 UTC until a manual rerun published fresh c
 Uptime runs are requested at minutes 2,7,...,57; public snapshot fallback at 4,9,...,59. Successful master-branch Uptime completion also triggers snapshot collection. Scheduled/completion triggers skip expensive builds only when every configured service has a real check less than three minutes old. Push, PR and manual checks always run. API reads retry transient failures at most three times. A stale-data notice remains visible across all tabs and last-check time remains readable on mobile; the thirty-minute uncertainty threshold is unchanged. An open Upptime incident may coexist with a passing independent HTTP check, so incident reports require follow-up rather than asserting every visitor is affected.
 
 No external scheduler, credentials, paid bindings, or plan changes were introduced. These changes reduce missed refreshes but cannot guarantee five-minute execution when GitHub's scheduler itself is delayed. Verify automatic events separately from successful manual/push runs.
+
+## Native scheduler recovery
+
+The monitor now lives at `.github/workflows/monitor.yml`, retaining the workflow name `Uptime CI` so successful completion still refreshes the public dashboard. The previous `uptime.yml` definition is removed in the same commit to prevent duplicate polling. This registers a fresh workflow identity after re-enabling the old workflow did not produce schedule events. It uses only GitHub's native schedule, existing credentials and standard runner. Jobs record their actual event, cron and UTC start time, with an eight-minute timeout.
+
+A successful push/manual run is not proof of automatic scheduling. Confirm new `event=schedule` runs on the fresh workflow and their timestamps before claiming recovery. No external scheduler or self-dispatch loop is installed.

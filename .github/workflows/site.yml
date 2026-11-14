@@ -8,6 +8,7 @@ on:
       - "backend/**"
       - "package*.json"
       - ".github/workflows/site.yml"
+      - ".github/workflows/monitor.yml"
       - ".upptimerc.yml"
   schedule:
     - cron: "4-59/5 * * * *"
@@ -23,6 +24,7 @@ on:
       - "backend/**"
       - "package*.json"
       - ".github/workflows/site.yml"
+      - ".github/workflows/monitor.yml"
   workflow_dispatch:
 permissions:
   contents: write
