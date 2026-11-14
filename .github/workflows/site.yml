@@ -63,6 +63,8 @@ jobs:
       - name: Avoid duplicate monitoring builds
         id: freshness
         run: node frontend/freshness.mjs
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
       - run: npm ci
         if: steps.freshness.outputs.refresh == 'true'
       - run: npm test

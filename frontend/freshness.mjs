@@ -14,7 +14,8 @@ if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   if(['schedule','workflow_run'].includes(process.env.GITHUB_EVENT_NAME)){
     try{
       const endpoints=JSON.parse(await readFile('frontend/endpoints.json','utf8'));
-      const response=await fetch('https://status.rifzki.my.id/status.json',{headers:{'Cache-Control':'no-cache'},signal:AbortSignal.timeout(10000)});
+      // Read the published branch directly: Pages/CDN propagation can lag behind the previous build.
+      const response=await fetch('https://api.github.com/repos/rifzkiadiyaksa/upptime/contents/status.json?ref=gh-pages',{headers:{Accept:'application/vnd.github.raw+json','Cache-Control':'no-cache',...(process.env.GITHUB_TOKEN?{Authorization:'Bearer '+process.env.GITHUB_TOKEN}:{})},signal:AbortSignal.timeout(10000)});
       if(response.ok)refresh=needsRefresh(await response.json(),endpoints);
     }catch{/* Missing or unreachable data always warrants a new check. */}
   }
