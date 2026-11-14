@@ -1,0 +1,13 @@
+{
+  "name": "rifzki-status",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node frontend/build.mjs",
+    "test": "node --test frontend/model.test.mjs",
+    "preview": "node frontend/serve.mjs"
+  },
+  "dependencies": {
+    "yaml": "2.9.1"
+  }
+}
