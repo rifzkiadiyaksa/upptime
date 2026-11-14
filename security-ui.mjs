@@ -1,0 +1,28 @@
+const securityEscape=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const securityMark='<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/></svg>';
+export function securityBadges(service){
+  const {http,ssl,security}=service,code=http?.code;
+  const codeLabel=code===200?'200 OK':code>=300&&code<400?code+' Redirect':code?String(code):'Unverified';
+  const httpsTone=http?.httpsReachable===true&&code<400?'':http?.httpsReachable===null?'muted':code>=400?'red':'muted';
+  const expiration=ssl?.expires?Math.ceil((Date.parse(ssl.expires)-Date.now())/86400000):null;
+  const expired=ssl?.errorCode==='CERT_HAS_EXPIRED'||!!ssl?.expires&&Date.parse(ssl.expires)<=Date.now();
+  const sslLabel=expired?'SSL Expired':ssl?.valid===false?'SSL Invalid':ssl?.valid===true?`SSL Valid${expiration!==null?' · '+expiration+'d left':''}`:'SSL Unverified';
+  const issuer=ssl?.issuer&&!/Cloudflare|Upptime|Instatus/i.test(ssl.issuer)?ssl.issuer:'Certificate issuer details are available in the security report.';
+  const score=security?.score;
+  return `<span class="badge ${httpsTone}">HTTPS · ${securityEscape(codeLabel)}</span><span class="badge ${http?.redirectToHttps===true?'':http?.redirectToHttps===false?'amber':'muted'}">HTTP → HTTPS ${http?.redirectToHttps===true?'✓':http?.redirectToHttps===false?'✗':'—'}</span><span class="badge ${expired||ssl?.valid===false?'red':expiration!==null&&expiration<14?'amber':ssl?.valid?'':'muted'}" title="${securityEscape(issuer)}">${securityMark}${securityEscape(sslLabel)}${ssl?.grade?' · Grade '+securityEscape(ssl.grade):''}</span><span class="badge blue">${securityEscape(http?.protocol||'Protocol unverified')}</span>${http?.http3Advertised?'<span class="badge purple" title="Advertised by the endpoint; not a completed HTTP/3 request">HTTP/3 advertised</span>':''}<button class="badge security-score ${score?.tone||'muted'}" type="button" data-security="${securityEscape(service.slug)}" aria-label="Security score for ${securityEscape(service.host||service.name)}">${securityMark}${score?score.passed+'/10':'—/10'} ${securityEscape(score?.label||'Unverified')}${score?.unknown?' · '+score.unknown+' unknown':''}</button>`;
+}
+export function securityOverview(services){
+  const results=services.filter(s=>s.security?.score),total=results.reduce((n,s)=>n+s.security.score.passed,0),unknown=results.reduce((n,s)=>n+s.security.score.unknown,0);
+  return `<div class="card-heading"><div><div class="micro-label">WEB SECURITY INSPECTION</div><h2>Security posture across your services</h2></div><span class="badge ${unknown?'muted':'orange'}">${results.length}/${services.length} inspected</span></div><div class="security-summary"><div><strong>${results.length?(total/results.length).toFixed(1):'—'}<small>/ 10</small></strong><p>Mean verified checks</p></div><div><strong>${results.filter(s=>s.http?.httpsReachable===true).length}<small>/ ${services.length}</small></strong><p>HTTPS reachable</p></div><div><strong>${results.filter(s=>s.ssl?.valid===true).length}<small>/ ${services.length}</small></strong><p>Certificates validated</p></div><div><strong>${unknown}</strong><p>Checks awaiting evidence</p></div></div><p class="data-note">A verified check earns one point. Unknown checks are shown separately and never marked as passed. Select a service score to inspect all ten checks.</p>`;
+}
+export function openSecurityDetails(service){
+  let dialog=document.getElementById('security-dialog');
+  if(!dialog){dialog=document.createElement('dialog');dialog.id='security-dialog';document.body.append(dialog);dialog.addEventListener('click',event=>{if(event.target===dialog){const r=dialog.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)dialog.close();}});}
+  const evidence=service.security;
+  const groups=['HTTP Headers','Network (SSL & DNS/IPv6)','Email Auth (SPF/DMARC)','security.txt'];
+  const expiry=service.ssl?.expires?new Date(service.ssl.expires).toLocaleString():'Unverified';
+  dialog.innerHTML=`<button class="icon-button close-dialog" aria-label="Close security details">×</button><div class="micro-label">RIFZKI SECURITY INSPECTOR</div><h2 id="security-dialog-title">${securityEscape(service.host||service.name)}</h2><p class="security-report-intro">Ten observed checks. A point is earned only by a verified pass.</p><div class="security-report-badges">${securityBadges(service)}</div><div class="security-check-grid">${groups.map(group=>`<section class="security-check-group"><h3>${group}</h3>${(evidence?.checks||[]).filter(c=>c.group===group).map(c=>`<div class="security-check ${c.status}"><span class="check-mark">${c.status==='pass'?'✓':c.status==='fail'?'✗':'?'}</span><div><strong>${securityEscape(c.label)}</strong><span class="check-state">${c.status==='pass'?'Passed':c.status==='fail'?'Not passed':'Not verified'}</span><p>${securityEscape(c.detail)}</p></div></div>`).join('')}</section>`).join('')}</div><div class="security-report-meta"><span>${securityEscape(service.ssl?.protocol||'unverified')}</span><span>Certificate expires ${securityEscape(expiry)}</span><span>Inspected ${securityEscape(evidence?.checkedAt?new Date(evidence.checkedAt).toLocaleString():'unverified')}</span></div>`;
+  dialog.setAttribute('aria-labelledby','security-dialog-title');dialog.querySelector('.close-dialog').addEventListener('click',()=>dialog.close());
+  dialog.querySelector('[data-security]')?.setAttribute('disabled','');
+  dialog.showModal();
+}
