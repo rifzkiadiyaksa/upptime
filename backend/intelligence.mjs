@@ -69,7 +69,7 @@ export async function collectLocation(region,token,{fetcher=fetch,now=new Date()
  const result=normalizeIntelligence(Object.fromEntries(entries),region,now);return {...result,status:entries.every(([k,v])=>datasetValid(k,v))?'ready':entries.some(([k,v])=>datasetValid(k,v))?'partial':'unavailable'};
 }
 
-const INFRA_HOSTS=["rifzki.my.id", "laci.rifzki.my.id", "link.rifzki.my.id", "s.rifzki.my.id", "s3.rifzki.my.id", "ai.rifzki.my.id", "blog.rifzki.my.id", "jejak.rifzki.my.id", "meet.rifzki.my.id", "speed.rifzki.my.id", "webmail.rifzki.my.id", "cpanel.rifzki.my.id", "panel.rifzki.my.id"];
+const INFRA_HOSTS=["rifzki.my.id", "laci.rifzki.my.id", "s.rifzki.my.id", "ai.rifzki.my.id", "blog.rifzki.my.id", "jejak.rifzki.my.id", "meet.rifzki.my.id", "speed.rifzki.my.id", "webmail.rifzki.my.id", "cpanel.rifzki.my.id", "panel.rifzki.my.id"];
 export async function collectInfrastructure(token,{fetcher=fetch,now=new Date()}={}){
  if(!token)return {source:SOURCE,status:'unconfigured',checkedAt:now.toISOString(),networks:[]};
  const observations=[];

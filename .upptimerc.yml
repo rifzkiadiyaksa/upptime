@@ -9,15 +9,9 @@ sites:
   - name: laci.rifzki.my.id
     url: https://laci.rifzki.my.id
     slug: laci-rifzki-my-id
-  - name: link.rifzki.my.id
-    url: https://link.rifzki.my.id
-    slug: link-rifzki-my-id
   - name: s.rifzki.my.id
     url: https://s.rifzki.my.id
     slug: s-rifzki-my-id
-  - name: s3.rifzki.my.id
-    url: https://s3.rifzki.my.id
-    slug: s3-rifzki-my-id
   - name: ai.rifzki.my.id
     url: https://ai.rifzki.my.id
     slug: ai-rifzki-my-id

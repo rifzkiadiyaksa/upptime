@@ -3,7 +3,7 @@ export const LANGUAGES=['en-US','id-ID','zh-CN','ko-KR','th-TH','ar-SA'];
 let locale='en-US',observer;
 const originals=new WeakMap(),attributes=new WeakMap();
 const escapeRegex=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-const patterns=rows.filter(r=>r[0].includes('{')).map(r=>({r,regex:new RegExp('^'+r[0].split(/(\{\d+\})/).map(s=>/^\{/.test(s)?'([^·]+?)':escapeRegex(s)).join('')+'$')}));
+const patterns=rows.filter(r=>r[0].includes('{')).sort((a,b)=>b[0].replace(/\{\d+\}/g,'').length-a[0].replace(/\{\d+\}/g,'').length).map(r=>({r,regex:new RegExp('^'+r[0].split(/(\{\d+\})/).map(s=>/^\{/.test(s)?'([^·]+?)':escapeRegex(s)).join('')+'$')}));
 export function translate(source,language=locale){
  const col=LANGUAGES.indexOf(language);if(col<=0)return source;
  const exact=rows.find(r=>r[0]===source);if(exact)return exact[col];

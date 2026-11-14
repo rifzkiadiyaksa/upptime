@@ -4,7 +4,7 @@
 
 - `/api/network-intelligence?region=ID|SG`: regional aggregates, five major ISPs, actual ASN names and ASN-specific event/latency evidence.
 - `/api/location-intelligence?region=CC`: four datasets for a fixed 30-country directory allowlist.
-- `/api/infrastructure`: current public DNS edge ownership for the 13 configured service hosts, plus up to four ASN-specific speed/event queries. Registration country is not physical server location.
+- `/api/infrastructure`: current public DNS edge ownership for the 11 configured service hosts, plus up to four ASN-specific speed/event queries. Registration country is not physical server location.
 
 The existing compatibility aliases return normalized branded snapshots. Supported browsers retain exact-origin CORS; unknown methods, paths and query parameters are rejected. All upstream responses are bounded to 2 MiB, DNS queries use a fixed host allowlist, and every fetch has a timeout. Missing or malformed metrics stay null. A result cap makes event coverage partial, never conclusively clean.
 
@@ -14,3 +14,5 @@ Secret `RADAR_API_TOKEN` is installed in the Worker only. Upload metadata retain
 
 Country speed/IQI data is a published aggregate measurement, not a direct edge ping. ASN-specific active reports, country context and direct service checks are separate evidence. No lack of reports establishes that a route or network is 100% healthy.
 
+
+The current frontend no longer exposes Locations or invokes the country/infrastructure collection routes. Only ID/SG overview snapshots remain scheduled. Removed monitoring hosts are excluded from the fixed inventory.

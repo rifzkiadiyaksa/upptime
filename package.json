@@ -4,12 +4,10 @@
   "type": "module",
   "scripts": {
     "build": "node frontend/build.mjs",
-    "test": "node --test frontend/model.test.mjs frontend/workflow.test.mjs frontend/security.test.mjs frontend/endpoints.test.mjs backend/intelligence.test.mjs frontend/i18n-network.test.mjs",
+    "test": "node --test frontend/model.test.mjs frontend/workflow.test.mjs frontend/security.test.mjs frontend/endpoints.test.mjs backend/intelligence.test.mjs frontend/i18n-network.test.mjs frontend/archive.test.mjs",
     "preview": "node frontend/serve.mjs"
   },
   "dependencies": {
-    "leaflet": "1.9.4",
     "yaml": "2.9.1"
   }
 }
-

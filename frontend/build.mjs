@@ -1,3 +1,4 @@
+import {buildArchive} from './archive-build.mjs';
 import { readFile, mkdir, cp, writeFile, rm } from 'node:fs/promises';
 import { parse } from 'yaml';
 import { mergeSamples } from './model.mjs';
@@ -5,12 +6,8 @@ import { inspectEndpoint } from './inspect.mjs';
 import { collectIntelligence } from '../backend/intelligence.mjs';
 const config = parse(await readFile('.upptimerc.yml', 'utf8'));
 const operations = JSON.parse(await readFile('frontend/operations.json', 'utf8'));
-const locations = JSON.parse(await readFile('frontend/locations.json', 'utf8'));
 for (const m of operations.maintenance) {
   if (!m.id || !m.title || !Array.isArray(m.services) || !(Date.parse(m.end)>Date.parse(m.start))) throw new Error('Invalid maintenance entry');
-}
-for (const p of operations.probes) {
-  if (!locations.some(l=>l.code===p.code) || !Number.isFinite(p.ping) || p.ping<0 || !Number.isFinite(Date.parse(p.checkedAt)) || !['Operational','Re-routed','Down'].includes(p.routing)) throw new Error('Invalid regional probe');
 }
 const now = new Date();
 const repo = `${config.owner}/${config.repo}`;
@@ -45,10 +42,6 @@ const proxyUrl=process.env.INTELLIGENCE_PROXY_URL||operations.intelligence?.prox
 if(proxyUrl){
   intelligence=await Promise.all(['ID','SG'].map(async region=>{try{const u=new URL(proxyUrl);if(u.protocol!=='https:')throw Error('HTTPS required');u.searchParams.set('region',region);const r=await fetch(u,{signal:AbortSignal.timeout(15000)});const value=await r.json();if(value.source!=='Rifzki Network Intelligence'||value.region!==region)throw Error('Invalid proxy snapshot');return value;}catch{return {source:'Rifzki Network Intelligence',region,status:'unavailable'};}}));
 }else intelligence=await Promise.all(['ID','SG'].map(region=>collectIntelligence(region,process.env.RADAR_API_TOKEN)));
-let infrastructure={networks:[]};
-if(proxyUrl){try{const r=await fetch(new URL('/api/infrastructure',proxyUrl),{signal:AbortSignal.timeout(60000)});const value=await r.json();if(value.source==='Rifzki Network Intelligence')infrastructure=value;}catch{}}
-const regionalTelemetry=[];
-if(proxyUrl){const countries=[...new Set(locations.map(l=>l.countryCode))];for(let i=0;i<countries.length;i+=3)regionalTelemetry.push(...await Promise.all(countries.slice(i,i+3).map(async region=>{try{const u=new URL('/api/location-intelligence',proxyUrl);u.searchParams.set('region',region);const r=await fetch(u,{signal:AbortSignal.timeout(20000)});const value=await r.json();if(value.source!=='Rifzki Network Intelligence'||value.region!==region)throw Error('Invalid snapshot');return value;}catch{return {region,status:'unavailable'};}})));}
 let incidents=[],incidentsAvailable=false,incidentsUpdatedAt=null;
 try {
   // Keep recent and active incidents, with pagination, independent of visitors' API quotas.
@@ -78,22 +71,24 @@ try {
   incidents=[];
   try{
     const cached=JSON.parse(await readFile('dist/status.json','utf8'));
-    if(cached.incidentsAvailable){incidents=cached.incidents;incidentsAvailable=true;incidentsUpdatedAt=cached.incidentsUpdatedAt||cached.generatedAt;}
+    if(cached.incidentsAvailable){incidents=cached.incidents;if(cached.archiveVersion){const idx=JSON.parse(await readFile('dist/archive/index.json','utf8')),stored=[];for(const [month,meta]of Object.entries(idx.months))for(let page=1;page<=meta.pages;page++){const payload=JSON.parse(await readFile(`dist/archive/${idx.version}/${month}/${page}.json`,'utf8'));stored.push(...payload.entries.filter(i=>i.kind==='incident'));}incidents=[...new Map(stored.map(i=>[i.number,i])).values()];}incidentsAvailable=true;incidentsUpdatedAt=cached.incidentsUpdatedAt||cached.generatedAt;}
   }catch{}
   console.warn(`Incident API unavailable (${error.message}); ${incidentsAvailable?'using the previous verified local snapshot':'showing unavailable state'}.`);
 }
 incidents=incidents.filter(i=>i.services?.some(slug=>services.some(s=>s.slug===slug)));
 for(const service of services){service.outageIntervals=incidents.filter(i=>i.services.includes(service.slug)&&(i.closed||service.status==='down')).map(i=>({start:i.created,end:i.closed||service.lastUpdated}));}
 await rm('dist',{recursive:true,force:true});
-await mkdir('dist/vendor',{recursive:true});
-for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','i18n.mjs','catalog.mjs','locations-ui.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
-await cp('frontend/public','dist/public',{recursive:true});
-for (const file of ['leaflet.css','leaflet.js']) await cp(`node_modules/leaflet/dist/${file}`,`dist/vendor/${file}`);
-await cp('node_modules/leaflet/LICENSE','dist/vendor/leaflet-LICENSE.txt');
-await writeFile('dist/status.json',JSON.stringify({generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,intelligence,regionalTelemetry,infrastructure,incidents,incidentsAvailable,incidentsUpdatedAt,locations,maintenance:operations.maintenance,probes:operations.probes,map:{cartoApiKey:process.env.CARTO_API_KEY||operations.map.cartoApiKey||''}}));
+await mkdir('dist',{recursive:true});
+for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','i18n.mjs','catalog.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
+await mkdir('dist/public',{recursive:true});for(const asset of ['logo.svg','favicon.svg'])await cp('frontend/public/'+asset,'dist/public/'+asset);
+const archive=buildArchive(incidents,operations.maintenance,now);
+for(const [path,value]of Object.entries(archive.files)){await mkdir(path.slice(0,path.lastIndexOf('/')).replace(/^archive/,'dist/archive'),{recursive:true});await writeFile('dist/'+path,JSON.stringify(value));}
+await mkdir('dist/archive',{recursive:true});await writeFile('dist/archive/index.json',JSON.stringify(archive.index));
+const publicIncidents=incidents.filter((i,index)=>i.state==='open'||index<3).map(i=>i.state==='open'?i:{...i,timeline:[]});
+await writeFile('dist/status.json',JSON.stringify({measurementOrigin:process.env.GITHUB_ACTIONS?'GitHub Actions runner':'Local preview runner',generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,intelligence,archiveVersion:archive.index.version,incidents:publicIncidents,incidentsAvailable,incidentsUpdatedAt,maintenance:operations.maintenance}));
 await writeFile('dist/telemetry.json',JSON.stringify(telemetry));
 await writeFile('dist/manifest.webmanifest',JSON.stringify({name:'Rifzki System Status',short_name:'Rifzki Status',start_url:'./',display:'standalone',background_color:'#09090b',theme_color:'#f97316',icons:[{src:'./public/logo.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]}));
 await writeFile('dist/.nojekyll','');
 if (config['status-website']?.cname) await writeFile('dist/CNAME',config['status-website'].cname+'\n');
-console.log(`Built Rifzki System Status: ${services.length} services, ${incidents.length} incidents, ${locations.length} locations.`);
+console.log(`Built Rifzki System Status: ${services.length} services, ${incidents.length} incidents, paginated archive.`);
 
