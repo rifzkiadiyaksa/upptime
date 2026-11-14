@@ -1,51 +1,77 @@
 # Rifzki System Status
 
-A static multi-tab status dashboard published by the existing GitHub Pages workflow. The public product is branded Rifzki. Footer text is exactly `Runs on the infrastructure of Rifzki Adiyaksa`.
+Static public dashboard, GitHub monitoring configuration, scheduled security inspection and a credential-protecting regional telemetry proxy.
 
-## Local development
+## Monitored services
 
-Use Node 22+: `npm ci`, `npm test`, `npm run build`, `npm run preview`.
-Open http://127.0.0.1:4173. The build retrieves public incident records without credentials locally; CI uses `GITHUB_TOKEN`. API failures in CI fail the build instead of publishing a misleading empty incident history.
+Exactly 13 HTTPS roots, in the requested order and groups:
 
-## Dashboard
+| Group | Hosts |
+| --- | --- |
+| Dashboard & Core App | rifzki.my.id, laci.rifzki.my.id, link.rifzki.my.id, s.rifzki.my.id, s3.rifzki.my.id |
+| Public Service & App | ai.rifzki.my.id, blog.rifzki.my.id, jejak.rifzki.my.id, meet.rifzki.my.id, speed.rifzki.my.id, webmail.rifzki.my.id |
+| Hosting App | cpanel.rifzki.my.id, panel.rifzki.my.id |
 
-- Overview: verified aggregate health, stale-data warning, incident timelines, component groups, maintenance and service-selectable latency overview.
-- Services & Sites: grouped accordions, 30/60/90-day UTC availability, tap/hover/keyboard tooltips, TLS expiry, and per-service response charts with 24h/7d/30d/90d ranges.
-- Locations: 39 locations reused from the user's SpeedTest directory, Leaflet map, theme-aware basemaps, region filters and selected-location cards.
-- History: monthly calendar, day filters, incident timelines and full-report links.
-- Light/dark themes, saved language preference (EN/ID), desktop pill tabs and an icon-only glass bottom dock at widths up to 768px. Brand logo and favicon are downloaded local SVG assets. The web manifest uses the local logo; no offline status caching is introduced.
+`.upptimerc.yml` controls the engine; `frontend/endpoints.json` controls public grouping. Tests require both lists to match exactly. Removed services are excluded from public data, charts, incident archives and active counts. Historical repository records are retained without continuing to monitor removed endpoints. Existing root/blog slugs retain their actual history. New services start without invented uptime history.
 
-## Data accuracy and limitations
+A root HTTP status outside 200–399 is a failed application check. In the authoring inspection, s3.rifzki.my.id returned 404. A different known health-check path or an intentional status-code policy must be explicitly configured before treating that response as healthy.
 
-Current status/check times come from `history/<slug>.yml`, aggregate availability and daily history from `history/summary.json`, and incident history from status-labeled GitHub issues. Data older than 30 minutes is marked unconfirmed. The snapshot includes up to 500 recently updated incidents plus open issues; use Full archive for older records. Legacy open incidents for removed services stay in History but are excluded from the active monitored-service count.
+## Running locally
 
-Daily downtime combines summary values with the union of recorded incident intervals. Open incident intervals stop at the last actual monitoring check; overlaps are not double-counted. Today and the first monitored day use only their observed minutes. A down endpoint with missing outage boundaries is unknown rather than green. The UI shows both day coverage and incident context in tooltips. Historical source summaries follow their existing update schedule.
+Node 22+: `npm ci`, `npm test`, `npm run build`, `npm run preview`. Open http://127.0.0.1:4173.
 
-Response charts use actual collected samples. `telemetry.json` is carried forward from the previous gh-pages snapshot, deduplicated by monitoring timestamp and retained for 90 days. Collection starts with the first custom dashboard deployment. Old chart images and aggregate response-time badges cannot produce true historical percentiles, so no backfilled curves are invented. P50 uses measured successful responses; P95 requires at least 20 samples and P99 at least 100. Failed checks are excluded from latency percentiles and represented in availability. Charts leave gaps between checks more than 20 minutes apart. These are HTTP/TCP response times from monitoring runners, not per-city ICMP pings.
+Build checks each of the 13 endpoints with bounded TLS, HTTP/HTTPS, DNS and security.txt requests. Status and latency are measured from these actual requests. Engine history/summary files supply historical context; an absent history file produces unknown historical bars. Telemetry samples are retained from the prior gh-pages snapshot for 90 days and deduplicated by check timestamp. The latest actual inspection supplies current status; checks older than 30 minutes are unconfirmed.
 
-SSL validity and certificate expiry are checked through validated TLS connections at build time. Timeout/network failures are unknown, not valid. Domain expiry has no existing source in this repository and stays unavailable unless a verified ISO date is supplied in operations.json. The SpeedTest location directory supplies city coordinates, not independently addressable regional probe endpoints. No city pings or rerouting statuses are fabricated.
+The frontend remains on GitHub Pages. Monitoring/build schedule is five minutes; the browser checks for updates every 60 seconds while visible and not interacting with open details. No 30-second process was introduced. GitHub schedules may be delayed.
 
-## Operations configuration
+## Security inspection and score
 
-Edit `frontend/operations.json` in GitHub:
+`frontend/inspect.mjs` performs the checks. `frontend/security-model.mjs` evaluates evidence, and every service's score badge opens its grouped detail panel. Each verified pass earns one point out of ten:
 
-- `maintenance`: entries `{id,title,start,end,services}`; start/end must be ISO datetimes, end after start, services are existing slugs. Active and upcoming windows drive banners, countdowns, affected component tags and blue daily bars. Past entries can be retained for historical maintenance coloring.
-- `domainExpiry`: map a hostname to a verified ISO expiry date.
-- `probes`: entries `{code,ping,routing,checkedAt}`. Code must match locations.json; ping is measured ms; routing is `Operational`, `Re-routed` or `Down`. A trusted external collector must populate this file; data older than 30 minutes is unconfirmed. This frontend does not deploy regional agents.
-- `map.cartoApiKey`: optional public, origin-restricted CARTO basemap key, or set the repository variable `CARTO_API_KEY`. Theme switching selects dark_all/light_all. CARTO now requires an API key. Without one, the interactive map uses bundled Natural Earth geometry, with all city markers and filters still working. Required map data attribution is retained; it is not platform branding.
+1. A verified HTTPS response (an HTTP error can still prove HTTPS reachability while failing application uptime).
+2. A current certificate-matched A/B grade assessment plus locally validated strong TLS.
+3. An enforcing HSTS max-age greater than zero.
+4. An enforcing CSP header; report-only does not count.
+5. Frame protection plus nosniff; a wildcard frame-ancestors policy does not pass.
+6. DNSSEC authenticated DNS response validation (AD), not just a DNSKEY lookup.
+7. An AAAA record and an actual IPv6 HTTPS response. A runner without an IPv6 route produces unknown, not a confirmed endpoint failure.
+8. SPF at the exact hostname. Parent SPF is never assumed to apply to a subdomain.
+9. A valid DMARC record, with organizational-domain fallback only when the exact subdomain has no DMARC record. Duplicate/invalid records do not earn a point.
+10. A public text/plain security.txt with Contact and a future Expires date; SPA HTML fallback pages do not pass.
 
-Subscription opens the repository's existing GitHub watch preferences; no email signup service or invented subscription backend is introduced.
+Unknown checks are never passed or silently normalized into a perfect score. A partial score is explicitly labeled with its unknown count. Colors are used only when the possible score range is in one band: at least 8 verified points is green, fewer than 5 possible points is red, an entirely 5–7 range is amber; uncertain cross-band results are muted.
 
-## Deployment and maintenance
+Certificate validity, expiry and issuer are obtained from validated TLS. HTTP/2 refers to an actually negotiated ALPN capability. HTTP/3 is shown only as advertised unless a completed measurement exists. A single TLS handshake cannot establish a full SSL grade. To supply a grade, configure `SSL_ASSESSMENT_URL` (repository variable) and optional `SSL_ASSESSMENT_TOKEN` (secret) for a trusted HTTPS assessment service returning `{host,grade,fingerprint,checkedAt}`. The fingerprint must match the current certificate and the assessment must be less than 24 hours old. Missing assessments remain unknown. No A/A+ grade is fabricated.
 
-Rifzki Status CI tests and builds on PRs but publishes only from master, through the existing gh-pages branch and domain CNAME. GitHub App / GH_PAT / GITHUB_TOKEN deployment authentication is retained. It runs after monitoring/summary runs, source and issue changes, and every five minutes (GitHub scheduling may be delayed). Frontend concurrency is separate from the monitoring queue.
+This score is a transparent checklist, not a claim that a service is immune to attacks. Regional threat metrics are not used as proof of account-level protection.
 
-Upptime checks, response tracking, summaries, graphs and notifications stay in GitHub. Automatic upstream template generation remains disabled in favor of manual review because it would overwrite site.yml and restore the legacy Sapper publishing step in setup.yml. Review upstream updates on a branch and retain this deployment boundary.
+## Regional intelligence
 
-## Assets and validation
+See `backend/README.md`. The frontend can use `INTELLIGENCE_PROXY_URL` (repository variable) or the configured URL in operations.json. A read-only Radar credential stays only in the proxy's `RADAR_API_TOKEN` secret; it never enters frontend source, public JSON, logs or the preview. The token value offered during authoring was rejected by the API and was not saved to this repository.
 
-Local brand asset source: https://ik.imagekit.io/1999/CDN/img/Logo_Web.svg (logo.svg and favicon.svg).
-Location directory source: rifzkiadiyaksa/speedtest, src/lib/server-locations.ts (the directory only; no private configuration or secrets are copied).
-Local land geometry: Natural Earth 1:110m land, public-domain source https://github.com/nvkelso/natural-earth-vector. Leaflet's license is included in dist/vendor. CARTO/OpenStreetMap credit remains visible when their tiles are used.
+The deployed proxy is prepared at https://rifzki-status-intelligence.re-open.workers.dev/api/network-intelligence and deliberately returns an explicit unconfigured state until a valid runtime secret is installed. It covers ID/SG outages/anomalies, speed/IQI latency, L7 attack mitigation mix, regional BGP leaks and HTTP/3/TLS 1.3/IPv6 adoption. Regional events are possible correlation evidence, not proof of an ISP causing a Rifzki outage. Network RTT and application response time are labeled as different measurements. Radar regional data cannot assert account-specific DDoS protection or the health of a specific route.
 
-Validation includes model tests for UTC downtime, partial-day coverage, overlap union, missing boundaries, stale checks, sample retention, percentiles and maintenance scope. Browser checks cover desktop/mobile themes and tabs, no horizontal overflow, day tooltips, graph controls, map selection and filters, calendar filtering, language toggle and subscription modal.
+## UI, locations, maintenance and history
+
+The four tabs are Overview, Services & Sites, Locations and History. Dark/light themes, EN/ID selection, desktop pill tabs and an icon-only glass bottom dock at widths up to 768px remain. Logo/favicon/PWA icons are local SVG assets downloaded from the requested URL. Footer text is exactly `Runs on the infrastructure of Rifzki Adiyaksa`.
+
+Service bars support 30/60/90 days, and their bounded floating tooltips show actual observed coverage, downtime and incident context. Overlapping incident intervals are unioned; today's availability is clipped to observed minutes. A selected-period percentage is weighted by actual observed minutes, excluding unknown history. Charts support 24h/7d/30d/90d, leave gaps rather than interpolate missing observations, and require 20/100 valid samples for p95/p99.
+
+`frontend/operations.json` supports:
+
+- `maintenance`: `{id,title,start,end,services}` windows, with ISO times and endpoint slugs. Windows drive countdowns, affected components, historical blue bars, calendar markers and a monthly maintenance log.
+- `probes`: verified `{code,ping,routing,checkedAt}` records, populated by a trusted regional probe collector. Old records become unconfirmed after 30 minutes.
+- `map.cartoApiKey` or repository variable `CARTO_API_KEY`: a public origin-restricted basemap key. Theme selects dark_all/light_all. Without one, bundled Natural Earth geography keeps the Leaflet map interactive.
+- `intelligence.proxyUrl`: public proxy URL, with fixed ID/SG regions.
+
+The 39 city coordinates are reused from the actual SpeedTest directory. That directory does not provide independent per-city probe targets. No city ping, route change or unverified Edge PoP is invented; a requested example such as SJC must be backed by a real location/probe source before being claimed as an active PoP. Required geographic attribution is retained.
+
+Incident snapshots contain up to 500 recent status issues plus open reports, filtered to the 13 monitored services. A full archive link remains available for older records. Subscription opens existing GitHub watch preferences; no email delivery backend is invented.
+
+## Deployment boundary and validation
+
+Rifzki Status CI tests PRs and publishes only on master to the existing gh-pages branch and CNAME. Setup CI cannot regenerate workflow templates or publish the legacy UI; template upgrades are reviewed manually. The separate `Rifzki Intelligence Backend` workflow deploys backend modules only on manual dispatch from master and preserves existing secret bindings. Source changes are prepared locally and pushed in one atomic commit.
+
+Validation covers exact endpoint/group membership, observed downtime, stale data, score evidence, unknown handling, certificate-grade freshness, DNS/email policy parsing, security.txt validation, proxy input/CORS restrictions, missing telemetry and the custom deployment boundary. Browser QA checks the actual 13-service list, grouped security report, both themes, mobile dock, tooltips, regional widgets and history.
+
+To export a standalone snapshot for review: `node frontend/export-preview.mjs /absolute/path/preview.html`. The export embeds the logo, measured data, map geometry and scripts and clearly labels itself as a frozen snapshot.

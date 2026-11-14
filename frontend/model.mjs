@@ -3,7 +3,7 @@ export function dailyHistory(service, days, now = new Date()) {
   return Array.from({ length: days }, (_, i) => {
     const date = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() - days + 1 + i));
     const key = dayKey(date);
-    const start = new Date(service.startTime);
+    const start = new Date(service.startTime||NaN);
     const last = new Date(service.lastUpdated);
     const known = Number.isFinite(+start) && Number.isFinite(+last) && key >= dayKey(start) && key <= dayKey(last);
     const from=Math.max(+date,+start),to=Math.min(+date+86400000,+last,+now);
@@ -34,7 +34,8 @@ export function activeMaintenance(items, now = new Date(), slug) {
 }
 export function uptimeFor(history) {
   const known = history.filter(d => d.uptime !== null);
-  return known.length ? known.reduce((n,d)=>n+d.uptime,0)/known.length : null;
+  const weight=d=>Number.isFinite(d.observedMinutes)&&d.observedMinutes>0?d.observedMinutes:1440;
+  return known.length ? known.reduce((n,d)=>n+d.uptime*weight(d),0)/known.reduce((n,d)=>n+weight(d),0) : null;
 }
 export function health(service, now = new Date()) {
   if (!Number.isFinite(Date.parse(service.lastUpdated)) || +now - Date.parse(service.lastUpdated) > 30 * 60 * 1000) return 'unknown';

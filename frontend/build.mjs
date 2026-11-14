@@ -1,7 +1,8 @@
 import { readFile, mkdir, cp, writeFile, rm } from 'node:fs/promises';
-import tls from 'node:tls';
 import { parse } from 'yaml';
 import { mergeSamples } from './model.mjs';
+import { inspectEndpoint } from './inspect.mjs';
+import { collectIntelligence } from '../backend/intelligence.mjs';
 const config = parse(await readFile('.upptimerc.yml', 'utf8'));
 const operations = JSON.parse(await readFile('frontend/operations.json', 'utf8'));
 const locations = JSON.parse(await readFile('frontend/locations.json', 'utf8'));
@@ -26,33 +27,24 @@ if (process.env.CI) {
   if (response.ok) previous = await response.json();
   else if (response.status !== 404) throw new Error(`Previous telemetry unavailable (${response.status})`);
 }
-const summary = JSON.parse(await readFile('history/summary.json', 'utf8'));
-const certs = new Map();
-function certificate(host) {
-  if (!certs.has(host)) certs.set(host, new Promise(resolve => {
-    let finished = false;
-    const done = value => { if (!finished) { finished=true; socket.destroy(); resolve(value); } };
-    const socket = tls.connect({host,port:443,servername:host,rejectUnauthorized:true},()=>{
-      const cert=socket.getPeerCertificate();
-      done({valid:true,expires:cert.valid_to ? new Date(cert.valid_to).toISOString():null,checkedAt:now.toISOString()});
-    });
-    socket.setTimeout(8000,()=>done({valid:null,checkedAt:now.toISOString()}));
-    socket.on('error', error => done({valid:['CERT_HAS_EXPIRED','ERR_TLS_CERT_ALTNAME_INVALID','DEPTH_ZERO_SELF_SIGNED_CERT','UNABLE_TO_VERIFY_LEAF_SIGNATURE'].includes(error.code)?false:null,checkedAt:now.toISOString()}));
-  }));
-  return certs.get(host);
-}
-const telemetry = {};
-const services = await Promise.all(summary.map(async s => {
-  if (!/^[a-z0-9-]+$/.test(s.slug)) throw new Error('Invalid service slug');
-  const current = parse(await readFile(`history/${s.slug}.yml`, 'utf8'));
-  telemetry[s.slug]=mergeSamples(previous[s.slug],{at:current.lastUpdated,ms:current.responseTime,status:current.status},now);
-  const url = /^https:\/\//.test(s.url) ? new URL(s.url) : null;
-  const ssl = url ? await certificate(url.hostname) : null;
-  const group = url ? 'Core Web & App' : /cdn|sg-server|kl-server|krw-server/.test(s.slug) ? 'Rifzki Edge & DNS Network' : 'Internal Infrastructure';
-  // Expose only public UI fields, never the backend generator or upstream branding.
-  return {name:s.name.replace(/^🔵\s*/,''),slug:s.slug,group,status:current.status,lastUpdated:current.lastUpdated,startTime:current.startTime,
-    responseTime:current.responseTime,dailyMinutesDown:s.dailyMinutesDown||{},uptimeMonth:s.uptimeMonth,ssl,domainExpiry:url ? operations.domainExpiry[url.hostname]||null : null};
+const summary = JSON.parse(await readFile('history/summary.json','utf8'));
+const endpoints=JSON.parse(await readFile('frontend/endpoints.json','utf8'));
+if(config.sites.length!==endpoints.length||endpoints.some(e=>!config.sites.some(s=>s.slug===e.slug&&s.url==='https://'+e.host)))throw Error('Monitoring configuration and endpoint manifest differ');
+for(const window of operations.maintenance)if(!window.services.length||window.services.some(slug=>!endpoints.some(e=>e.slug===slug)))throw Error('Maintenance must reference configured endpoints');
+const telemetry={};
+async function readCurrent(slug){try{return parse(await readFile('history/'+slug+'.yml','utf8'));}catch{return null;}}
+const inspections=[];
+for(let i=0;i<endpoints.length;i+=4)inspections.push(...await Promise.all(endpoints.slice(i,i+4).map(inspectEndpoint)));
+const services=await Promise.all(endpoints.map(async(e,i)=>{
+  const old=summary.find(s=>s.slug===e.slug),history=await readCurrent(e.slug),current=inspections[i];
+  telemetry[e.slug]=mergeSamples(previous[e.slug],{at:current.lastUpdated,ms:current.responseTime,status:current.status},new Date());
+  return {name:e.host,host:e.host,slug:e.slug,group:e.group,...current,startTime:history?.startTime||previous[e.slug]?.[0]?.at||null,dailyMinutesDown:old?.dailyMinutesDown||{},uptimeMonth:old?.uptimeMonth||null,domainExpiry:operations.domainExpiry[e.host]||null};
 }));
+let intelligence=[];
+const proxyUrl=process.env.INTELLIGENCE_PROXY_URL||operations.intelligence?.proxyUrl||'';
+if(proxyUrl){
+  intelligence=await Promise.all(['ID','SG'].map(async region=>{try{const u=new URL(proxyUrl);if(u.protocol!=='https:')throw Error('HTTPS required');u.searchParams.set('region',region);const r=await fetch(u,{signal:AbortSignal.timeout(15000)});const value=await r.json();if(value.source!=='Rifzki Network Intelligence'||value.region!==region)throw Error('Invalid proxy snapshot');return value;}catch{return {source:'Rifzki Network Intelligence',region,status:'unavailable'};}}));
+}else intelligence=await Promise.all(['ID','SG'].map(region=>collectIntelligence(region,process.env.RADAR_API_TOKEN)));
 let incidents=[],incidentsAvailable=false,incidentsUpdatedAt=null;
 try {
   // Keep recent and active incidents, with pagination, independent of visitors' API quotas.
@@ -86,14 +78,15 @@ try {
   }catch{}
   console.warn(`Incident API unavailable (${error.message}); ${incidentsAvailable?'using the previous verified local snapshot':'showing unavailable state'}.`);
 }
+incidents=incidents.filter(i=>i.services?.some(slug=>services.some(s=>s.slug===slug)));
 for(const service of services){service.outageIntervals=incidents.filter(i=>i.services.includes(service.slug)&&(i.closed||service.status==='down')).map(i=>({start:i.created,end:i.closed||service.lastUpdated}));}
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist/vendor',{recursive:true});
-for (const file of ['index.html','styles.css','app.mjs','model.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
+for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
 await cp('frontend/public','dist/public',{recursive:true});
 for (const file of ['leaflet.css','leaflet.js']) await cp(`node_modules/leaflet/dist/${file}`,`dist/vendor/${file}`);
 await cp('node_modules/leaflet/LICENSE','dist/vendor/leaflet-LICENSE.txt');
-await writeFile('dist/status.json',JSON.stringify({generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,incidents,incidentsAvailable,incidentsUpdatedAt,locations,maintenance:operations.maintenance,probes:operations.probes,map:{cartoApiKey:process.env.CARTO_API_KEY||operations.map.cartoApiKey||''}}));
+await writeFile('dist/status.json',JSON.stringify({generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,intelligence,intelligenceProxyUrl:proxyUrl,incidents,incidentsAvailable,incidentsUpdatedAt,locations,maintenance:operations.maintenance,probes:operations.probes,map:{cartoApiKey:process.env.CARTO_API_KEY||operations.map.cartoApiKey||''}}));
 await writeFile('dist/telemetry.json',JSON.stringify(telemetry));
 await writeFile('dist/manifest.webmanifest',JSON.stringify({name:'Rifzki System Status',short_name:'Rifzki Status',start_url:'./',display:'standalone',background_color:'#09090b',theme_color:'#f97316',icons:[{src:'./public/logo.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]}));
 await writeFile('dist/.nojekyll','');

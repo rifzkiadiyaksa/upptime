@@ -5,6 +5,7 @@ on:
     branches: [master]
     paths:
       - "frontend/**"
+      - "backend/**"
       - "package*.json"
       - ".github/workflows/site.yml"
       - ".upptimerc.yml"
@@ -15,6 +16,7 @@ on:
   pull_request:
     paths:
       - "frontend/**"
+      - "backend/**"
       - "package*.json"
       - ".github/workflows/site.yml"
   issues:
@@ -63,6 +65,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
           CARTO_API_KEY: ${{ vars.CARTO_API_KEY }}
+          RADAR_API_TOKEN: ${{ secrets.RADAR_API_TOKEN }}
+          INTELLIGENCE_PROXY_URL: ${{ vars.INTELLIGENCE_PROXY_URL }}
+          SSL_ASSESSMENT_URL: ${{ vars.SSL_ASSESSMENT_URL }}
+          SSL_ASSESSMENT_TOKEN: ${{ secrets.SSL_ASSESSMENT_TOKEN }}
       - uses: peaceiris/actions-gh-pages@v4
         name: GitHub Pages Deploy
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'

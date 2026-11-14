@@ -2,5 +2,14 @@
   "maintenance": [],
   "domainExpiry": {},
   "probes": [],
-  "map": { "cartoApiKey": "" }
+  "map": {
+    "cartoApiKey": ""
+  },
+  "intelligence": {
+    "proxyUrl": "https://rifzki-status-intelligence.re-open.workers.dev/api/network-intelligence",
+    "regions": [
+      "ID",
+      "SG"
+    ]
+  }
 }

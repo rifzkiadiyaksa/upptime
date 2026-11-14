@@ -29,6 +29,9 @@ test('selected-period uptime excludes unknown days',()=>{
   assert.equal(uptimeFor([{uptime:100},{uptime:50},{uptime:null}]),75);
   assert.equal(uptimeFor([{uptime:null}]),null);
 });
+test('selected-period uptime weights partial days by actual observed minutes',()=>{
+  assert.ok(Math.abs(uptimeFor([{uptime:0,observedMinutes:1},{uptime:100,observedMinutes:1440}])-99.9306)<0.001);
+});
 test('ongoing incidents cover the observed portion of today and overlap is not double-counted',()=>{
   const s={...service,status:'down',dailyMinutesDown:{},outageIntervals:[{start:'2026-11-13T00:00:00Z',end:service.lastUpdated},{start:'2026-11-14T02:00:00Z',end:service.lastUpdated}]};
   const day=dailyHistory(s,1,now)[0];
