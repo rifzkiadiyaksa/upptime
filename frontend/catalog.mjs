@@ -309,5 +309,39 @@ TLS verification timed out.|Verifikasi TLS kehabisan waktu.|TLS 验证超时。|
 TLS verification did not complete.|Verifikasi TLS tidak selesai.|TLS 验证未完成。|TLS 검증이 완료되지 않았습니다.|การยืนยัน TLS ไม่เสร็จสมบูรณ์|لم يكتمل التحقق من TLS.
 Country-level network context|Konteks jaringan tingkat negara|国家级网络背景|국가 수준 네트워크 상황|บริบทเครือข่ายระดับประเทศ|سياق الشبكة على مستوى الدولة
 Preview snapshot · Data is frozen at export time|Snapshot preview · Data dibekukan saat ekspor|预览快照 · 数据固定于导出时间|미리보기 스냅샷 · 내보내기 시점의 데이터|ภาพรวมตัวอย่าง · ข้อมูลคงที่ ณ เวลาเอ็กซ์พอร์ต|لقطة معاينة · البيانات ثابتة عند التصدير
+Observed Edges|Edge Teramati|已观测边缘节点|관측된 엣지|เอดจ์ที่ตรวจพบ|الحواف المرصودة
+Observed serving edges|Edge yang melayani situs|已观测的服务边缘节点|서비스를 제공한 엣지|เอดจ์ที่ให้บริการ|حواف الخدمة المرصودة
+Edges serving your sites|Edge yang melayani situsmu|为你的网站提供服务的边缘节点|사이트에 서비스를 제공하는 엣지|เอดจ์ที่ให้บริการเว็บไซต์ของคุณ|الحواف التي تخدم مواقعك
+These locations were reported by actual HTTPS responses. Response time is measured from the monitoring runner, not from every city.|Lokasi ini dilaporkan oleh respons HTTPS nyata. Waktu respons diukur dari runner monitoring, bukan dari setiap kota.|位置来自实际 HTTPS 响应。响应时间由监控节点测量，并非从每个城市测量。|실제 HTTPS 응답의 위치입니다. 응답 시간은 모든 도시가 아닌 모니터링 실행기에서 측정합니다.|ตำแหน่งจากคำตอบ HTTPS จริง วัดจากตัวตรวจสอบ ไม่ใช่ทุกเมือง|هذه المواقع من استجابات HTTPS فعلية. يُقاس الزمن من مشغل المراقبة وليس من كل مدينة.
+Services without an exposed edge identifier remain listed with an unknown location.|Layanan tanpa identitas edge tetap tampil dengan lokasi belum diketahui.|未公开边缘标识的服务仍列出，位置未知。|엣지 식별자가 없는 서비스도 위치 미확인으로 표시합니다.|บริการที่ไม่เปิดเผยเอดจ์ยังแสดงโดยไม่ทราบตำแหน่ง|تظل الخدمات دون معرّف حافة مدرجة بموقع مجهول.
+Provider unverified|Penyedia belum terverifikasi|提供商未验证|제공업체 미확인|ยังไม่ยืนยันผู้ให้บริการ|المزود غير موثق
+Edge code observed; coordinates unavailable|Kode edge teramati; koordinat belum tersedia|已观测边缘代码；无坐标|엣지 코드 관측됨; 좌표 없음|พบรหัสเอดจ์ ไม่มีพิกัด|رُصد رمز الحافة؛ الإحداثيات غير متاحة
+Edge location not exposed|Lokasi edge tidak diungkapkan|未公开边缘位置|엣지 위치 비공개|ไม่เปิดเผยตำแหน่งเอดจ์|موقع الحافة غير معلن
+HTTPS time to headers|Waktu hingga header HTTPS|HTTPS 标头到达时间|HTTPS 헤더 도착 시간|เวลาจนได้รับส่วนหัว HTTPS|زمن وصول ترويسات HTTPS
+Evidence|Bukti|证据|근거|หลักฐาน|الدليل
+Cache status|Status cache|缓存状态|캐시 상태|สถานะแคช|حالة التخزين المؤقت
+Measurement origin|Asal pengukuran|测量起点|측정 출발점|ต้นทางการวัด|مصدر القياس
+Last checked|Terakhir diperiksa|上次检查|마지막 검사|ตรวจสอบล่าสุด|آخر فحص
+Local preview runner|Runner preview lokal|本地预览节点|로컬 미리보기 실행기|ตัวตรวจสอบตัวอย่างในเครื่อง|مشغل المعاينة المحلي
+GitHub Actions runner|Runner GitHub Actions|GitHub Actions 监控节点|GitHub Actions 실행기|ตัวตรวจสอบ GitHub Actions|مشغل GitHub Actions
+{0} observed locations|{0} lokasi teramati|{0} 个已观测位置|관측 위치 {0}개|{0} ตำแหน่งที่ตรวจพบ|{0} موقع مرصود
+Observed edge evidence|Bukti edge teramati|已观测边缘证据|관측 엣지 근거|หลักฐานเอดจ์ที่ตรวจพบ|دليل الحافة المرصود
+One monitoring origin. Only edge locations observed in actual responses are shown.|Satu asal pengukuran. Hanya lokasi edge yang teramati pada respons nyata yang ditampilkan.|单一测量起点，仅显示实际响应中观测到的位置。|하나의 측정 출발점입니다. 실제 응답에서 관측된 위치만 표시합니다.|ต้นทางวัดเดียว แสดงเฉพาะเอดจ์ที่พบในคำตอบจริง|مصدر قياس واحد. تُعرض فقط مواقع الحافة المرصودة في الاستجابات الفعلية.
+Only observed edge locations are mapped. Unlocated services remain in the list.|Peta hanya memuat edge teramati. Layanan tanpa lokasi tetap ada dalam daftar.|地图仅显示已观测位置，未知位置服务仍在列表中。|관측 위치만 지도에 표시합니다. 위치 미확인 서비스는 목록에 유지합니다.|แผนที่แสดงเฉพาะเอดจ์ที่พบ บริการไม่ทราบตำแหน่งยังอยู่ในรายการ|تُرسم الحواف المرصودة فقط. تبقى الخدمات مجهولة الموقع في القائمة.
+An observed response does not measure server-internal speed or connectivity from every location.|Respons teramati tidak mengukur kecepatan internal server atau konektivitas dari semua lokasi.|观测响应不代表服务器内部速度或所有位置的连接。|관측 응답은 서버 내부 속도나 모든 위치의 연결을 측정하지 않습니다.|คำตอบที่พบไม่ได้วัดความเร็วภายในเซิร์ฟเวอร์หรือจากทุกตำแหน่ง|لا تقيس الاستجابة سرعة الخادم الداخلية أو الاتصال من جميع المواقع.
+Observed HTTPS response|Respons HTTPS teramati|已观测 HTTPS 响应|관측된 HTTPS 응답|คำตอบ HTTPS ที่ตรวจพบ|استجابة HTTPS مرصودة
+Mixed service responses|Respons layanan beragam|服务响应不一致|서비스 응답 혼합|คำตอบบริการผสม|استجابات خدمات مختلطة
+Failed service responses|Respons layanan gagal|服务响应失败|서비스 응답 실패|คำตอบบริการล้มเหลว|استجابات خدمات فاشلة
+Eight reports per page. Details load only when you open History.|Delapan laporan per halaman. Detail dimuat saat membuka Riwayat.|每页八份报告，打开历史时才加载详情。|페이지당 8개 보고서. 기록을 열 때만 상세 내용을 불러옵니다.|แปดรายงานต่อหน้า โหลดรายละเอียดเมื่อเปิดประวัติ|ثمانية تقارير لكل صفحة. تُحمّل التفاصيل عند فتح السجل.
+Loading reports…|Memuat laporan…|正在加载报告…|보고서 불러오는 중…|กำลังโหลดรายงาน…|جارٍ تحميل التقارير…
+Previous|Sebelumnya|上一页|이전|ก่อนหน้า|السابق
+Next|Berikutnya|下一页|다음|ถัดไป|التالي
+Archive pages|Halaman arsip|档案分页|기록 페이지|หน้าคลังข้อมูล|صفحات الأرشيف
+Page {0} of {1} · {2} reports|Halaman {0} dari {1} · {2} laporan|第 {0} 页，共 {1} 页 · {2} 份报告|{1}페이지 중 {0} · 보고서 {2}개|หน้า {0} จาก {1} · {2} รายงาน|صفحة {0} من {1} · {2} تقرير
+Archive could not be loaded. Refresh status to retry.|Arsip gagal dimuat. Perbarui status untuk mencoba lagi.|无法加载档案，请刷新状态重试。|기록을 불러오지 못했습니다. 상태를 새로고침하세요.|โหลดคลังข้อมูลไม่ได้ รีเฟรชสถานะเพื่อลองอีกครั้ง|تعذر تحميل الأرشيف. حدّث الحالة لإعادة المحاولة.
+Security inspections|Pemeriksaan keamanan|安全检查|보안 검사|การตรวจสอบความปลอดภัย|فحوص الأمان
+Verified service evidence|Bukti layanan terverifikasi|已验证服务证据|검증된 서비스 근거|หลักฐานบริการที่ยืนยันแล้ว|أدلة الخدمة الموثقة
+See History for incident reports|Lihat Riwayat untuk laporan insiden|事件报告请查看历史|장애 보고서는 기록에서 확인하세요|ดูรายงานเหตุการณ์ในประวัติ|راجع السجل لتقارير الحوادث
+Monitor received HTTP 429; user-wide availability is unconfirmed.|Monitor menerima HTTP 429; ketersediaan untuk seluruh pengunjung belum dapat dipastikan.|监控收到 HTTP 429；尚不能确认所有用户的可用性。|모니터가 HTTP 429를 받았습니다. 전체 사용자 가용성은 확인되지 않았습니다.|ตัวตรวจสอบได้รับ HTTP 429 ยังไม่ยืนยันความพร้อมสำหรับผู้ใช้ทั้งหมด|تلقى المراقب HTTP 429؛ لم يتأكد التوافر لجميع المستخدمين.
 `.trim().split('\n').map(row=>row.split('|'));
 

@@ -10,19 +10,9 @@
     "slug": "laci-rifzki-my-id"
   },
   {
-    "host": "link.rifzki.my.id",
-    "group": "Dashboard & Core App",
-    "slug": "link-rifzki-my-id"
-  },
-  {
     "host": "s.rifzki.my.id",
     "group": "Dashboard & Core App",
     "slug": "s-rifzki-my-id"
-  },
-  {
-    "host": "s3.rifzki.my.id",
-    "group": "Dashboard & Core App",
-    "slug": "s3-rifzki-my-id"
   },
   {
     "host": "ai.rifzki.my.id",
