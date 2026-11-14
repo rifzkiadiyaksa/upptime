@@ -38,7 +38,7 @@ export function uptimeFor(history) {
   return known.length ? known.reduce((n,d)=>n+d.uptime*weight(d),0)/known.reduce((n,d)=>n+weight(d),0) : null;
 }
 export function health(service, now = new Date()) {
-  if (!Number.isFinite(Date.parse(service.lastUpdated)) || +now - Date.parse(service.lastUpdated) > 30 * 60 * 1000) return 'unknown';
+  if (!Number.isFinite(Date.parse(service.lastUpdated)) || Date.parse(service.lastUpdated) > +now + 60000 || +now - Date.parse(service.lastUpdated) > 30 * 60 * 1000) return 'unknown';
   return ['up', 'down', 'degraded'].includes(service.status) ? service.status : 'unknown';
 }
 export function overall(services, now = new Date()) {

@@ -343,5 +343,9 @@ Security inspections|Pemeriksaan keamanan|安全检查|보안 검사|การ�
 Verified service evidence|Bukti layanan terverifikasi|已验证服务证据|검증된 서비스 근거|หลักฐานบริการที่ยืนยันแล้ว|أدلة الخدمة الموثقة
 See History for incident reports|Lihat Riwayat untuk laporan insiden|事件报告请查看历史|장애 보고서는 기록에서 확인하세요|ดูรายงานเหตุการณ์ในประวัติ|راجع السجل لتقارير الحوادث
 Monitor received HTTP 429; user-wide availability is unconfirmed.|Monitor menerima HTTP 429; ketersediaan untuk seluruh pengunjung belum dapat dipastikan.|监控收到 HTTP 429；尚不能确认所有用户的可用性。|모니터가 HTTP 429를 받았습니다. 전체 사용자 가용성은 확인되지 않았습니다.|ตัวตรวจสอบได้รับ HTTP 429 ยังไม่ยืนยันความพร้อมสำหรับผู้ใช้ทั้งหมด|تلقى المراقب HTTP 429؛ لم يتأكد التوافر لجميع المستخدمين.
+Monitoring data is delayed.|Data pemantauan terlambat.|监控数据延迟。|모니터링 데이터가 지연되었습니다.|ข้อมูลการตรวจสอบล่าช้า|بيانات المراقبة متأخرة.
+Current availability is unconfirmed. This does not establish a service outage.|Ketersediaan saat ini belum dapat dipastikan. Ini tidak membuktikan gangguan layanan.|当前可用性尚未确认。这并不代表服务中断。|현재 가용성은 확인되지 않았습니다. 서비스 장애를 의미하지 않습니다.|ยังไม่ยืนยันความพร้อมในขณะนี้ ไม่ได้ยืนยันว่าบริการขัดข้อง|لم يتأكد التوافر الحالي. هذا لا يثبت انقطاع الخدمة.
+Check monitoring workflow ↗|Lihat alur pemantauan ↗|查看监控工作流程 ↗|모니터링 워크플로 확인 ↗|ดูเวิร์กโฟลว์การตรวจสอบ ↗|راجع سير عمل المراقبة ↗
+Open incident reports require follow-up.|Laporan insiden terbuka perlu ditindaklanjuti.|未关闭的事件报告需要跟进。|진행 중인 사고 보고서에 후속 조치가 필요합니다.|รายงานเหตุการณ์ที่เปิดอยู่ต้องติดตามต่อ|تقارير الحوادث المفتوحة تحتاج إلى متابعة.
 `.trim().split('\n').map(row=>row.split('|'));
 
