@@ -21,3 +21,17 @@ test('frontend validates PRs and publishes only the custom build on master',asyn
   assert.match(publish.if,/github\.ref == 'refs\/heads\/master'/);
   assert.match(publish.if,/github\.event_name != 'pull_request'/);
 });
+
+test('uptime completion refreshes the public snapshot and duplicate triggers are bounded',async()=>{
+ const site=parse(await readFile('.github/workflows/site.yml','utf8'));
+ assert.deepEqual(site.on.workflow_run.workflows,['Uptime CI']);
+ assert.deepEqual(site.on.workflow_run.branches,['master']);
+ assert.match(site.jobs.release.if,/conclusion == 'success'/);
+ const steps=site.jobs.release.steps;
+ assert.equal(steps.find(s=>s.id==='freshness').run,'node frontend/freshness.mjs');
+ for(const step of steps.filter(s=>['npm ci','npm test','npm run build'].includes(s.run)||s.uses?.includes('actions-gh-pages')))assert.match(step.if,/freshness.outputs.refresh == 'true'/);
+ const config=parse(await readFile('.upptimerc.yml','utf8'));
+ const uptime=parse(await readFile('.github/workflows/uptime.yml','utf8'));
+ assert.equal(config.workflowSchedule.uptime,uptime.on.schedule[0].cron);
+ assert.equal(config.workflowSchedule.staticSite,site.on.schedule[0].cron);
+});

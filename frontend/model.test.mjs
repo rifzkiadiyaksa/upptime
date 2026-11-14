@@ -52,3 +52,5 @@ test('current health distinguishes full, partial, healthy and stale monitoring',
   assert.equal(overall([service], new Date('2026-11-14T12:30:01Z')), 'unknown');
   assert.equal(overall([], now), 'unknown');
 });
+
+test('a check timestamp in the future cannot imply healthy monitoring',()=>{assert.equal(overall([{...service,lastUpdated:'2030-01-01T00:00:00Z'}],now),'unknown');});

@@ -10,7 +10,11 @@ on:
       - ".github/workflows/site.yml"
       - ".upptimerc.yml"
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "4-59/5 * * * *"
+  workflow_run:
+    workflows: ["Uptime CI"]
+    types: [completed]
+    branches: [master]
   repository_dispatch:
     types: [static_site]
   pull_request:
@@ -30,7 +34,7 @@ jobs:
   release:
     name: Build and deploy site
     runs-on: ubuntu-latest
-    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    if: github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success'
     env:
       GH_APP_PRIVATE_KEY: ${{ secrets.GH_APP_PRIVATE_KEY }}
     steps:
@@ -54,9 +58,15 @@ jobs:
         with:
           node-version: "22"
           cache: npm
+      - name: Avoid duplicate monitoring builds
+        id: freshness
+        run: node frontend/freshness.mjs
       - run: npm ci
+        if: steps.freshness.outputs.refresh == 'true'
       - run: npm test
+        if: steps.freshness.outputs.refresh == 'true'
       - run: npm run build
+        if: steps.freshness.outputs.refresh == 'true'
         env:
           GITHUB_TOKEN: ${{ github.token }}
           RADAR_API_TOKEN: ${{ secrets.RADAR_API_TOKEN }}
@@ -65,7 +75,7 @@ jobs:
           SSL_ASSESSMENT_TOKEN: ${{ secrets.SSL_ASSESSMENT_TOKEN }}
       - uses: peaceiris/actions-gh-pages@v4
         name: GitHub Pages Deploy
-        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+        if: steps.freshness.outputs.refresh == 'true' && github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
         with:
           github_token: ${{ steps.app_token.outputs.token || secrets.GH_PAT || github.token }}
           publish_dir: "dist"

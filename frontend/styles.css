@@ -33,3 +33,5 @@ body::before{background-size:280px 220px}
 .health-banner::after{border:0;outline:0;border-radius:0;transform:translateY(-50%);background:radial-gradient(ellipse,#b98a500d,transparent 70%)}
 html[data-theme=light] .health-banner::before{opacity:.22}
 @media(max-width:600px){.language-control select{width:158px;max-width:158px;height:36px;min-height:36px;font-size:11px;padding-block:0;padding-inline:10px 30px}.language-control::after{inset-inline-end:12px}.health-banner::before{background-size:148px 116px}body::before{background-size:224px 176px}}
+
+.stale-data{padding:14px 18px;margin-bottom:20px;border:1px solid #f59e0b44;border-radius:10px;background:#f59e0b0b;color:var(--muted);font-size:11px;line-height:1.8}.stale-data strong{color:var(--amber)}.stale-data a{color:var(--orange);white-space:nowrap}.group-state.up,.group-state.down,.group-state.degraded,.group-state.unknown{background:transparent}@media(max-width:768px){.page-heading{flex-wrap:wrap}.last-check{font-size:9px;padding-top:0;gap:8px}.stale-data{font-size:10px}}

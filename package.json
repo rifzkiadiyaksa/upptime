@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "node frontend/build.mjs",
-    "test": "node --test frontend/model.test.mjs frontend/workflow.test.mjs frontend/security.test.mjs frontend/endpoints.test.mjs backend/intelligence.test.mjs frontend/i18n-network.test.mjs frontend/archive.test.mjs",
+    "test": "node --test frontend/freshness.test.mjs frontend/model.test.mjs frontend/workflow.test.mjs frontend/security.test.mjs frontend/endpoints.test.mjs backend/intelligence.test.mjs frontend/i18n-network.test.mjs frontend/archive.test.mjs",
     "preview": "node frontend/serve.mjs"
   },
   "dependencies": {

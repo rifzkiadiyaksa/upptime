@@ -21,3 +21,11 @@ Evidence: https://github.com/rifzkiadiyaksa/upptime/issues/1746 , https://github
 ## Validation and publication
 
 Run npm ci, npm test and npm run build. Monitoring cadence remains five minutes and visible-tab dashboard refresh remains sixty seconds. All six languages and Arabic RTL remain supported. This revision is prepared for review before publication.
+
+## Freshness audit — 14 November 2026
+
+The public snapshot remained at 10:25 UTC until a manual rerun published fresh checks at 14:01 UTC. All eleven runner checks returned HTTP 200. Both regional Radar proxy responses were ready after token rotation; stale snapshots were not evidence of token failure. Workflows were active, but actual scheduled Uptime runs were separated by hours despite a five-minute cron. GitHub scheduling is best effort: https://docs.github.com/en/actions/how-tos/troubleshoot-workflows .
+
+Uptime runs are requested at minutes 2,7,...,57; public snapshot fallback at 4,9,...,59. Successful master-branch Uptime completion also triggers snapshot collection. Scheduled/completion triggers skip expensive builds only when every configured service has a real check less than three minutes old. Push, PR and manual checks always run. API reads retry transient failures at most three times. A stale-data notice remains visible across all tabs and last-check time remains readable on mobile; the thirty-minute uncertainty threshold is unchanged. An open Upptime incident may coexist with a passing independent HTTP check, so incident reports require follow-up rather than asserting every visitor is affected.
+
+No external scheduler, credentials, paid bindings, or plan changes were introduced. These changes reduce missed refreshes but cannot guarantee five-minute execution when GitHub's scheduler itself is delayed. Verify automatic events separately from successful manual/push runs.

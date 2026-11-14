@@ -1,3 +1,6 @@
+Warning: truncated output (original token count: 19172)
+Total output lines: 352
+
 // Complete UI phrase rows: English, Indonesian, Chinese, Korean, Thai, Arabic.
 export const rows=`Overview|Ringkasan|概览|개요|ภาพรวม|نظرة عامة
 Services & Sites|Layanan & Situs|服务与站点|서비스 및 사이트|บริการและเว็บไซต์|الخدمات والمواقع
@@ -184,19 +187,7 @@ HTTP/3 advertised|HTTP/3 ditawarkan|声明支持 HTTP/3|HTTP/3 지원 광고|ป
 Advertised by the endpoint; not a completed HTTP/3 request|Ditawarkan endpoint; bukan permintaan HTTP/3 yang selesai|由端点声明，未完成 HTTP/3 请求|엔드포인트 광고이며 완료된 HTTP/3 요청이 아닙니다|ประกาศโดยปลายทาง ไม่ใช่คำขอ HTTP/3 ที่เสร็จแล้ว|معلن من الطرف؛ ليس طلب HTTP/3 مكتملًا
 Certificate issuer details are available in the security report.|Detail penerbit sertifikat ada di laporan keamanan.|证书颁发者详情见安全报告。|인증서 발급자 정보는 보안 보고서에서 확인하세요.|รายละเอียดผู้ออกใบรับรองอยู่ในรายงานความปลอดภัย|تفاصيل جهة إصدار الشهادة في تقرير الأمان.
 Checks an enforcing Strict-Transport-Security max-age.|Memeriksa max-age Strict-Transport-Security yang aktif.|检查强制执行的 Strict-Transport-Security max-age。|강제 적용되는 Strict-Transport-Security max-age를 검사합니다.|ตรวจสอบ max-age ของ Strict-Transport-Security ที่บังคับใช้|يتحقق من max-age المطبق في Strict-Transport-Security.
-Checks the enforcing CSP header; report-only is not counted.|Memeriksa CSP aktif; report-only tidak dihitung.|检查强制 CSP 标头，不计仅报告模式。|강제 CSP 헤더를 검사하며 report-only는 제외합니다.|ตรวจสอบ CSP ที่บังคับใช้ ไม่นับ report-only|يفحص ترويسة CSP المطبقة دون وضع التقرير فقط.
-Requires frame protection plus X-Content-Type-Options: nosniff.|Memerlukan proteksi frame dan X-Content-Type-Options: nosniff.|需要框架保护及 X-Content-Type-Options: nosniff。|프레임 보호와 X-Content-Type-Options: nosniff가 필요합니다.|ต้องมีการป้องกันเฟรมและ X-Content-Type-Options: nosniff|يتطلب حماية الإطارات وX-Content-Type-Options: nosniff.
-Checks authenticated DNS response validation, not just the presence of a DNSKEY.|Memeriksa validasi respons DNS terautentikasi, bukan sekadar DNSKEY.|检查已认证的 DNS 响应验证，而非仅存在 DNSKEY。|DNSKEY 존재뿐 아니라 인증된 DNS 응답 검증을 확인합니다.|ตรวจสอบการยืนยันคำตอบ DNS ไม่ใช่แค่มี DNSKEY|يفحص توثيق استجابة DNS وليس مجرد وجود DNSKEY.
-SPF is checked at this exact hostname; parent SPF is not inherited.|SPF diperiksa di hostname ini; SPF induk tidak diwarisi.|检查此确切主机名的 SPF，不继承父域 SPF。|정확한 호스트명의 SPF를 검사하며 상위 SPF는 상속되지 않습니다.|ตรวจสอบ SPF ของโฮสต์นี้ ไม่สืบทอดจากโดเมนแม่|يفحص SPF لهذا المضيف تحديدًا دون وراثة سجل النطاق الأب.
-An organizational-domain DMARC policy applies to this subdomain.|Kebijakan DMARC domain organisasi berlaku pada subdomain ini.|此子域适用组织域 DMARC 策略。|이 하위 도메인에는 조직 도메인 DMARC 정책이 적용됩니다.|นโยบาย DMARC ขององค์กรใช้กับโดเมนย่อยนี้|تنطبق سياسة DMARC للنطاق التنظيمي على هذا النطاق الفرعي.
-Checks a valid DMARC policy at this hostname.|Memeriksa kebijakan DMARC valid pada hostname ini.|检查此主机名的有效 DMARC 策略。|이 호스트명의 유효한 DMARC 정책을 검사합니다.|ตรวจสอบนโยบาย DMARC ที่ถูกต้องของโฮสต์นี้|يتحقق من سياسة DMARC صالحة لهذا المضيف.
-Requires a text/plain policy with Contact and a future Expires date.|Memerlukan kebijakan text/plain dengan Contact dan Expires mendatang.|需要含 Contact 和未来 Expires 日期的 text/plain 策略。|Contact 및 미래 Expires가 있는 text/plain 정책이 필요합니다.|ต้องมีนโยบาย text/plain พร้อม Contact และ Expires ในอนาคต|يتطلب سياسة text/plain تحتوي Contact وتاريخ Expires مستقبلي.
-Strong TLS negotiated; a full certificate-matched grade assessment is not configured.|TLS kuat ternegosiasi; penilaian grade sesuai sertifikat belum dikonfigurasi.|已协商强 TLS，未配置证书匹配的完整评级。|강력한 TLS가 협상되었으나 인증서 일치 전체 등급 평가는 미설정입니다.|เจรจา TLS ที่แข็งแกร่งแล้ว แต่ยังไม่ได้ตั้งค่าการประเมินเกรดใบรับรอง|تم التفاوض على TLS قوي؛ لم يُعد تقييم كامل مطابق للشهادة.
-A full TLS grade has not been verified.|Grade TLS lengkap belum terverifikasi.|完整 TLS 等级尚未验证。|전체 TLS 등급이 검증되지 않았습니다.|ยังไม่ยืนยันเกรด TLS แบบเต็ม|لم يتم التحقق من درجة TLS الكاملة.
-No verified HTTPS response.|Tidak ada respons HTTPS terverifikasi.|无已验证 HTTPS 响应。|검증된 HTTPS 응답이 없습니다.|ไม่มีคำตอบ HTTPS ที่ยืนยันแล้ว|لا توجد استجابة HTTPS موثقة.
-Requires an AAAA record and an observed IPv6 HTTPS response.|Memerlukan record AAAA dan respons HTTPS IPv6 teramati.|需要 AAAA 记录及已观测的 IPv6 HTTPS 响应。|AAAA 레코드와 관측된 IPv6 HTTPS 응답이 필요합니다.|ต้องมีระเบียน AAAA และคำตอบ HTTPS ผ่าน IPv6 ที่วัดได้|يتطلب سجل AAAA واستجابة HTTPS مرصودة عبر IPv6.
-REGIONAL TELEMETRY|TELEMETRI REGIONAL|区域遥测|지역 텔레메트리|ข้อมูลตรวจวัดภูมิภาค|القياسات الإقليمية
-Regional data available|Data regional tersedia|区域数据可用|지역 데이터 사용 가능|มีข้อมูลภูมิภาค|البيانات الإقليمية متاحة
+Checks the enforcing CSP header; report-only is not counted.|Memeriksa CSP aktif; report-only tidak dihitung.|检查强制 CSP 标头，不计仅报告模式。|강제 CSP 헤더를 검사하며 report-only는 제외합니다.|ตรวจสอบ CSP ที่บังคับใช้ ไม่…1172 tokens truncated…|มีข้อมูลภูมิภาค|البيانات الإقليمية متاحة
 Partial regional data|Data regional sebagian|部分区域数据|부분 지역 데이터|ข้อมูลภูมิภาคบางส่วน|بيانات إقليمية جزئية
 Telemetry not connected|Telemetri belum terhubung|遥测未连接|텔레메트리 미연결|ยังไม่เชื่อมต่อข้อมูลตรวจวัด|القياسات غير متصلة
 Telemetry unavailable|Telemetri tidak tersedia|遥测不可用|텔레메트리 사용 불가|ข้อมูลตรวจวัดไม่พร้อมใช้งาน|القياسات غير متاحة
@@ -343,5 +334,9 @@ Security inspections|Pemeriksaan keamanan|安全检查|보안 검사|การ�
 Verified service evidence|Bukti layanan terverifikasi|已验证服务证据|검증된 서비스 근거|หลักฐานบริการที่ยืนยันแล้ว|أدلة الخدمة الموثقة
 See History for incident reports|Lihat Riwayat untuk laporan insiden|事件报告请查看历史|장애 보고서는 기록에서 확인하세요|ดูรายงานเหตุการณ์ในประวัติ|راجع السجل لتقارير الحوادث
 Monitor received HTTP 429; user-wide availability is unconfirmed.|Monitor menerima HTTP 429; ketersediaan untuk seluruh pengunjung belum dapat dipastikan.|监控收到 HTTP 429；尚不能确认所有用户的可用性。|모니터가 HTTP 429를 받았습니다. 전체 사용자 가용성은 확인되지 않았습니다.|ตัวตรวจสอบได้รับ HTTP 429 ยังไม่ยืนยันความพร้อมสำหรับผู้ใช้ทั้งหมด|تلقى المراقب HTTP 429؛ لم يتأكد التوافر لجميع المستخدمين.
+Monitoring data is delayed.|Data pemantauan terlambat.|监控数据延迟。|모니터링 데이터가 지연되었습니다.|ข้อมูลการตรวจสอบล่าช้า|بيانات المراقبة متأخرة.
+Current availability is unconfirmed. This does not establish a service outage.|Ketersediaan saat ini belum dapat dipastikan. Ini tidak membuktikan gangguan layanan.|当前可用性尚未确认。这并不代表服务中断。|현재 가용성은 확인되지 않았습니다. 서비스 장애를 의미하지 않습니다.|ยังไม่ยืนยันความพร้อมในขณะนี้ ไม่ได้ยืนยันว่าบริการขัดข้อง|لم يتأكد التوافر الحالي. هذا لا يثبت انقطاع الخدمة.
+Check monitoring workflow ↗|Lihat alur pemantauan ↗|查看监控工作流程 ↗|모니터링 워크플로 확인 ↗|ดูเวิร์กโฟลว์การตรวจสอบ ↗|راجع سير عمل المراقبة ↗
+Open incident reports require follow-up.|Laporan insiden terbuka perlu ditindaklanjuti.|未关闭的事件报告需要跟进。|진행 중인 사고 보고서에 후속 조치가 필요합니다.|รายงานเหตุการณ์ที่เปิดอยู่ต้องติดตามต่อ|تقارير الحوادث المفتوحة تحتاج إلى متابعة.
 `.trim().split('\n').map(row=>row.split('|'));
 

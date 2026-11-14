@@ -14,9 +14,18 @@ const now = new Date();
 const repo = `${config.owner}/${config.repo}`;
 const headers = { Accept: 'application/vnd.github+json', ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}) };
 async function github(path) {
-  const response = await fetch(`https://api.github.com/repos/${repo}/${path}`, { headers, signal: AbortSignal.timeout(20000) });
-  if (!response.ok) throw new Error(`GitHub request failed (${response.status})`);
-  return response.json();
+  for(let attempt=0;attempt<3;attempt++){
+    try{
+      const response=await fetch(`https://api.github.com/repos/${repo}/${path}`,{headers,signal:AbortSignal.timeout(20000)});
+      if(response.ok)return await response.json();
+      const retryable=[429,500,502,503,504].includes(response.status)||(response.status===403&&response.headers.get('x-ratelimit-remaining')==='0');
+      if(!retryable||attempt===2)throw new Error(`GitHub request failed (${response.status})`);
+      await new Promise(resolve=>setTimeout(resolve,Math.min(10000,Math.max(1000,Number(response.headers.get('retry-after')||attempt+1)*1000))));
+    }catch(error){
+      if(attempt===2||!/fetch failed|timeout|aborted/i.test(error.message))throw error;
+      await new Promise(resolve=>setTimeout(resolve,(attempt+1)*1000));
+    }
+  }
 }
 // Explicitly fall back only on the first deployment (404), never silently erase stored telemetry.
 let previous = {};
