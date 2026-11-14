@@ -45,6 +45,10 @@ const proxyUrl=process.env.INTELLIGENCE_PROXY_URL||operations.intelligence?.prox
 if(proxyUrl){
   intelligence=await Promise.all(['ID','SG'].map(async region=>{try{const u=new URL(proxyUrl);if(u.protocol!=='https:')throw Error('HTTPS required');u.searchParams.set('region',region);const r=await fetch(u,{signal:AbortSignal.timeout(15000)});const value=await r.json();if(value.source!=='Rifzki Network Intelligence'||value.region!==region)throw Error('Invalid proxy snapshot');return value;}catch{return {source:'Rifzki Network Intelligence',region,status:'unavailable'};}}));
 }else intelligence=await Promise.all(['ID','SG'].map(region=>collectIntelligence(region,process.env.RADAR_API_TOKEN)));
+let infrastructure={networks:[]};
+if(proxyUrl){try{const r=await fetch(new URL('/api/infrastructure',proxyUrl),{signal:AbortSignal.timeout(60000)});const value=await r.json();if(value.source==='Rifzki Network Intelligence')infrastructure=value;}catch{}}
+const regionalTelemetry=[];
+if(proxyUrl){const countries=[...new Set(locations.map(l=>l.countryCode))];for(let i=0;i<countries.length;i+=3)regionalTelemetry.push(...await Promise.all(countries.slice(i,i+3).map(async region=>{try{const u=new URL('/api/location-intelligence',proxyUrl);u.searchParams.set('region',region);const r=await fetch(u,{signal:AbortSignal.timeout(20000)});const value=await r.json();if(value.source!=='Rifzki Network Intelligence'||value.region!==region)throw Error('Invalid snapshot');return value;}catch{return {region,status:'unavailable'};}})));}
 let incidents=[],incidentsAvailable=false,incidentsUpdatedAt=null;
 try {
   // Keep recent and active incidents, with pagination, independent of visitors' API quotas.
@@ -82,13 +86,14 @@ incidents=incidents.filter(i=>i.services?.some(slug=>services.some(s=>s.slug===s
 for(const service of services){service.outageIntervals=incidents.filter(i=>i.services.includes(service.slug)&&(i.closed||service.status==='down')).map(i=>({start:i.created,end:i.closed||service.lastUpdated}));}
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist/vendor',{recursive:true});
-for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
+for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','i18n.mjs','catalog.mjs','locations-ui.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
 await cp('frontend/public','dist/public',{recursive:true});
 for (const file of ['leaflet.css','leaflet.js']) await cp(`node_modules/leaflet/dist/${file}`,`dist/vendor/${file}`);
 await cp('node_modules/leaflet/LICENSE','dist/vendor/leaflet-LICENSE.txt');
-await writeFile('dist/status.json',JSON.stringify({generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,intelligence,intelligenceProxyUrl:proxyUrl,incidents,incidentsAvailable,incidentsUpdatedAt,locations,maintenance:operations.maintenance,probes:operations.probes,map:{cartoApiKey:process.env.CARTO_API_KEY||operations.map.cartoApiKey||''}}));
+await writeFile('dist/status.json',JSON.stringify({generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,intelligence,regionalTelemetry,infrastructure,incidents,incidentsAvailable,incidentsUpdatedAt,locations,maintenance:operations.maintenance,probes:operations.probes,map:{cartoApiKey:process.env.CARTO_API_KEY||operations.map.cartoApiKey||''}}));
 await writeFile('dist/telemetry.json',JSON.stringify(telemetry));
 await writeFile('dist/manifest.webmanifest',JSON.stringify({name:'Rifzki System Status',short_name:'Rifzki Status',start_url:'./',display:'standalone',background_color:'#09090b',theme_color:'#f97316',icons:[{src:'./public/logo.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]}));
 await writeFile('dist/.nojekyll','');
 if (config['status-website']?.cname) await writeFile('dist/CNAME',config['status-website'].cname+'\n');
 console.log(`Built Rifzki System Status: ${services.length} services, ${incidents.length} incidents, ${locations.length} locations.`);
+

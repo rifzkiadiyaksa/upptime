@@ -5,7 +5,8 @@
     "country": "Indonesia",
     "lat": -6.2088,
     "lng": 106.8456,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "ID"
   },
   {
     "code": "SIN",
@@ -13,7 +14,8 @@
     "country": "Singapore",
     "lat": 1.3521,
     "lng": 103.8198,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "SG"
   },
   {
     "code": "KUL",
@@ -21,7 +23,8 @@
     "country": "Malaysia",
     "lat": 3.139,
     "lng": 101.6869,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "MY"
   },
   {
     "code": "BKK",
@@ -29,7 +32,8 @@
     "country": "Thailand",
     "lat": 13.7563,
     "lng": 100.5018,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "TH"
   },
   {
     "code": "SGN",
@@ -37,7 +41,8 @@
     "country": "Vietnam",
     "lat": 10.8231,
     "lng": 106.6297,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "VN"
   },
   {
     "code": "MNL",
@@ -45,7 +50,8 @@
     "country": "Philippines",
     "lat": 14.5995,
     "lng": 120.9842,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "PH"
   },
   {
     "code": "HKG",
@@ -53,7 +59,8 @@
     "country": "Hong Kong",
     "lat": 22.3193,
     "lng": 114.1694,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "HK"
   },
   {
     "code": "TPE",
@@ -61,7 +68,8 @@
     "country": "Taiwan",
     "lat": 25.033,
     "lng": 121.5654,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "TW"
   },
   {
     "code": "NRT",
@@ -69,7 +77,8 @@
     "country": "Japan",
     "lat": 35.6762,
     "lng": 139.6503,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "JP"
   },
   {
     "code": "ICN",
@@ -77,7 +86,8 @@
     "country": "South Korea",
     "lat": 37.5665,
     "lng": 126.978,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "KR"
   },
   {
     "code": "SYD",
@@ -85,7 +95,8 @@
     "country": "Australia",
     "lat": -33.8688,
     "lng": 151.2093,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "AU"
   },
   {
     "code": "MEL",
@@ -93,7 +104,8 @@
     "country": "Australia",
     "lat": -37.8136,
     "lng": 144.9631,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "AU"
   },
   {
     "code": "AKL",
@@ -101,7 +113,8 @@
     "country": "New Zealand",
     "lat": -36.8509,
     "lng": 174.7645,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "NZ"
   },
   {
     "code": "DEL",
@@ -109,7 +122,8 @@
     "country": "India",
     "lat": 28.6139,
     "lng": 77.209,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "IN"
   },
   {
     "code": "BOM",
@@ -117,7 +131,8 @@
     "country": "India",
     "lat": 19.076,
     "lng": 72.8777,
-    "region": "apac"
+    "region": "apac",
+    "countryCode": "IN"
   },
   {
     "code": "DXB",
@@ -125,7 +140,8 @@
     "country": "United Arab Emirates",
     "lat": 25.2048,
     "lng": 55.2708,
-    "region": "other"
+    "region": "other",
+    "countryCode": "AE"
   },
   {
     "code": "DOH",
@@ -133,7 +149,8 @@
     "country": "Qatar",
     "lat": 25.2854,
     "lng": 51.531,
-    "region": "other"
+    "region": "other",
+    "countryCode": "QA"
   },
   {
     "code": "JNB",
@@ -141,7 +158,8 @@
     "country": "South Africa",
     "lat": -26.2041,
     "lng": 28.0473,
-    "region": "other"
+    "region": "other",
+    "countryCode": "ZA"
   },
   {
     "code": "CPT",
@@ -149,7 +167,8 @@
     "country": "South Africa",
     "lat": -33.9249,
     "lng": 18.4241,
-    "region": "other"
+    "region": "other",
+    "countryCode": "ZA"
   },
   {
     "code": "LHR",
@@ -157,7 +176,8 @@
     "country": "United Kingdom",
     "lat": 51.5072,
     "lng": -0.1276,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "GB"
   },
   {
     "code": "AMS",
@@ -165,7 +185,8 @@
     "country": "Netherlands",
     "lat": 52.3676,
     "lng": 4.9041,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "NL"
   },
   {
     "code": "FRA",
@@ -173,7 +194,8 @@
     "country": "Germany",
     "lat": 50.1109,
     "lng": 8.6821,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "DE"
   },
   {
     "code": "CDG",
@@ -181,7 +203,8 @@
     "country": "France",
     "lat": 48.8566,
     "lng": 2.3522,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "FR"
   },
   {
     "code": "MAD",
@@ -189,7 +212,8 @@
     "country": "Spain",
     "lat": 40.4168,
     "lng": -3.7038,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "ES"
   },
   {
     "code": "MIL",
@@ -197,7 +221,8 @@
     "country": "Italy",
     "lat": 45.4642,
     "lng": 9.19,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "IT"
   },
   {
     "code": "ARN",
@@ -205,7 +230,8 @@
     "country": "Sweden",
     "lat": 59.3293,
     "lng": 18.0686,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "SE"
   },
   {
     "code": "WAW",
@@ -213,7 +239,8 @@
     "country": "Poland",
     "lat": 52.2297,
     "lng": 21.0122,
-    "region": "europe"
+    "region": "europe",
+    "countryCode": "PL"
   },
   {
     "code": "SFO",
@@ -221,7 +248,8 @@
     "country": "United States",
     "lat": 37.7749,
     "lng": -122.4194,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "US"
   },
   {
     "code": "LAX",
@@ -229,7 +257,8 @@
     "country": "United States",
     "lat": 34.0522,
     "lng": -118.2437,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "US"
   },
   {
     "code": "DFW",
@@ -237,7 +266,8 @@
     "country": "United States",
     "lat": 32.7767,
     "lng": -96.797,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "US"
   },
   {
     "code": "ORD",
@@ -245,7 +275,8 @@
     "country": "United States",
     "lat": 41.8781,
     "lng": -87.6298,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "US"
   },
   {
     "code": "IAD",
@@ -253,7 +284,8 @@
     "country": "United States",
     "lat": 39.0438,
     "lng": -77.4874,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "US"
   },
   {
     "code": "NYC",
@@ -261,7 +293,8 @@
     "country": "United States",
     "lat": 40.712,
     "lng": -74.006,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "US"
   },
   {
     "code": "MIA",
@@ -269,7 +302,8 @@
     "country": "United States",
     "lat": 25.7617,
     "lng": -80.1918,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "US"
   },
   {
     "code": "YYZ",
@@ -277,7 +311,8 @@
     "country": "Canada",
     "lat": 43.6532,
     "lng": -79.3832,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "CA"
   },
   {
     "code": "MEX",
@@ -285,15 +320,17 @@
     "country": "Mexico",
     "lat": 19.4326,
     "lng": -99.1332,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "MX"
   },
   {
     "code": "GRU",
-    "name": "São Paulo",
+    "name": "S\u00c3\u00a3o Paulo",
     "country": "Brazil",
     "lat": -23.5505,
     "lng": -46.6333,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "BR"
   },
   {
     "code": "EZE",
@@ -301,7 +338,8 @@
     "country": "Argentina",
     "lat": -34.6037,
     "lng": -58.3816,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "AR"
   },
   {
     "code": "SCL",
@@ -309,6 +347,8 @@
     "country": "Chile",
     "lat": -33.4489,
     "lng": -70.6693,
-    "region": "americas"
+    "region": "americas",
+    "countryCode": "CL"
   }
 ]
+

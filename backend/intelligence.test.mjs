@@ -17,3 +17,17 @@ test('proxy rejects arbitrary paths, regions, origins and mutation methods',asyn
 });
 test('proxy returns a branded explicit unconfigured response with correct CORS',async()=>{const r=await handleRequest(new Request('https://example.com/api/network-intelligence?region=SG',{headers:{Origin:'https://status.rifzki.my.id'}}),{},{waitUntil(){}},{cache:null});assert.equal(r.status,503);assert.equal(r.headers.get('Access-Control-Allow-Origin'),'https://status.rifzki.my.id');const d=await r.json();assert.equal(d.source,'Rifzki Network Intelligence');assert.equal(d.region,'SG');assert.equal(d.status,'unconfigured');assert.doesNotMatch(JSON.stringify(d),/Bearer|RADAR_API_TOKEN/);});
 test('requested Radar alias paths remain constrained and branded',async()=>{for(const path of ['/radar/quality/iqi','/radar/attacks/layer7/summary','/radar/http/summary/']){const r=await handleRequest(new Request('https://example.com'+path),{},{waitUntil(){}},{cache:null});assert.equal(r.status,503);assert.equal((await r.json()).source,'Rifzki Network Intelligence');}});
+
+test('shared cache prevents repeated Radar fan-out and caches failures for a bounded TTL',async()=>{
+ const entries=new Map(),pending=[],cache={match:async key=>entries.get(key.url)?.clone(),put:async(key,value)=>{entries.set(key.url,value.clone());}};
+ let calls=0;const fetcher=async()=>{calls++;return Response.json({success:true,result:{}});};
+ const request=new Request('https://example.com/api/location-intelligence?region=ID'),env={RADAR_API_TOKEN:'test-only'},ctx={waitUntil:p=>pending.push(p)};
+ const first=await handleRequest(request,env,ctx,{cache,fetcher});await Promise.all(pending);const after=calls;await handleRequest(request,env,ctx,{cache,fetcher});assert.equal(calls,after);assert.equal(after,4);assert.match(first.headers.get('Cache-Control'),/s-maxage=300, stale-while-revalidate=600/);assert.match([...entries.values()][0].headers.get('Cache-Control'),/max-age=300/);
+});
+
+
+test('ASN anomalies use ASN-only filtering because the upstream rejects ASN plus location',async()=>{
+ const urls=[];const fetcher=async target=>{const u=new URL(target);urls.push(u);if(u.pathname==='/client/v4/radar/entities/asns')return Response.json({success:true,result:{asns:[{asn:23693,name:'Example ISP',country:'ID'}]}});if(u.pathname.endsWith('/annotations/outages'))return Response.json({success:true,result:{annotations:[]}});if(u.pathname.endsWith('/traffic_anomalies')){assert.ok(!(u.searchParams.has('asn')&&u.searchParams.has('location')));return Response.json({success:true,result:{trafficAnomalies:[]}});}return Response.json({success:true,result:{summary_0:{latencyIdle:30}}});};
+ const result=await collectIntelligence('ID','test-only',{fetcher,now});assert.equal(result.networks[0].status,'clear');assert.ok(urls.some(u=>u.searchParams.get('asn')==='23693'));
+});
+

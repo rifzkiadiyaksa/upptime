@@ -19,11 +19,6 @@ on:
       - "backend/**"
       - "package*.json"
       - ".github/workflows/site.yml"
-  issues:
-    types: [opened, closed, reopened, edited, labeled, unlabeled]
-  workflow_run:
-    workflows: ["Uptime CI", "Summary CI"]
-    types: [completed]
   workflow_dispatch:
 permissions:
   contents: write
@@ -78,3 +73,4 @@ jobs:
           force_orphan: "false"
           user_name: "Rifzki Status"
           user_email: "73812536+upptime-bot@users.noreply.github.com"
+

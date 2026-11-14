@@ -16,10 +16,14 @@ html=html.replace('<script src="./vendor/leaflet.js"></script>',`<script>${scrip
 const model=(await read('dist/model.mjs')).replaceAll('export function','function');
 const securityUi=(await read('dist/security-ui.mjs')).replaceAll('export function','function');
 const networkUi=(await read('dist/network-ui.mjs')).replaceAll('export async function','async function').replaceAll('export function','function');
+const catalog=(await read('dist/catalog.mjs')).replaceAll('export const','const');
+const i18n=(await read('dist/i18n.mjs')).replace(/^import[^\n]+\n/gm,'').replaceAll('export function','function').replaceAll('export const','const');
+const locationUi=(await read('dist/locations-ui.mjs')).replaceAll('export function','function').replaceAll('export const','const');
 const app=(await read('dist/app.mjs')).replace(/^import[^\n]+\n/gm,'');
 const data=`window.__RIFZKI_PREVIEW__={status:${jsonSafe(await read('dist/status.json'))},telemetry:${jsonSafe(await read('dist/telemetry.json'))}};window.__RIFZKI_LAND__=${jsonSafe(await read('dist/public/land.geojson'))};`;
-html=html.replace('<script type="module" src="./app.mjs"></script>',`<script>${scriptSafe(data)}</script><script type="module">${scriptSafe(model+'\n'+securityUi+'\n'+networkUi+'\n'+app)}</script>`);
+html=html.replace('<script type="module" src="./app.mjs"></script>',()=>`<script>${scriptSafe(data)}</script><script type="module">${scriptSafe(model+'\n'+securityUi+'\n'+networkUi+'\n'+catalog+'\n'+i18n+'\n'+locationUi+'\n'+app)}</script>`);
 html=html.replace('<main class="shell"', '<aside style="text-align:center;padding:8px;font:10px sans-serif;color:#f97316;background:#f973160b">Preview snapshot · Data is frozen at export time</aside><main class="shell"');
 await mkdir(dirname(resolve(target)),{recursive:true});
 await writeFile(resolve(target),html);
 console.log(`Exported standalone preview: ${resolve(target)}`);
+

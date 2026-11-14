@@ -1,33 +1,16 @@
-# Rifzki Network Intelligence proxy
+# Rifzki Network Intelligence backend
 
-Module Worker: `rifzki-status-intelligence`. Public normalized endpoint:
+`worker.mjs` exposes fixed read-only routes; no arbitrary host, URL, ASN or IP input is accepted:
 
-`https://rifzki-status-intelligence.re-open.workers.dev/api/network-intelligence?region=ID`
+- `/api/network-intelligence?region=ID|SG`: regional aggregates, five major ISPs, actual ASN names and ASN-specific event/latency evidence.
+- `/api/location-intelligence?region=CC`: four datasets for a fixed 30-country directory allowlist.
+- `/api/infrastructure`: current public DNS edge ownership for the 13 configured service hosts, plus up to four ASN-specific speed/event queries. Registration country is not physical server location.
 
-Only ID and SG are accepted. GET/OPTIONS only; mutation methods, arbitrary target URLs, arbitrary query parameters and unrelated browser origins are rejected. The frontend origin and the local preview origin are allowed. The server fetches only fixed provider API paths and returns a branded field allowlist. Upstream JSON is bounded to 2 MiB. Public regional snapshots are cached for five minutes; tokens and raw errors never reach the response or logs. Logs/traces are enabled.
+The existing compatibility aliases return normalized branded snapshots. Supported browsers retain exact-origin CORS; unknown methods, paths and query parameters are rejected. All upstream responses are bounded to 2 MiB, DNS queries use a fixed host allowlist, and every fetch has a timeout. Missing or malformed metrics stay null. A result cap makes event coverage partial, never conclusively clean.
 
-## Activate the data source
+Responses carry `Cache-Control: public, max-age=60, s-maxage=300, stale-while-revalidate=600`. The shared per-colo `caches.default` key ignores compatibility aliases and browser origins; only fixed route mode and allowed region affect it. Ready, partial and error/unconfigured snapshots are cached for five minutes. The dashboard itself reads GitHub Pages snapshots and never polls this Worker directly.
 
-Add a valid read-only Radar API token as the Worker runtime secret `RADAR_API_TOKEN` using the provider dashboard. The existing SpeedTest runtime secret cannot be read back or copied through the connected API, and the candidate supplied during authoring was rejected. Never put the token in source, operations.json, a browser request, a preview, or a frontend variable. Without a valid secret, the endpoint returns HTTP 503 with `status: unconfigured` and null metrics, rather than a false healthy/zero result.
+Secret `RADAR_API_TOKEN` is installed in the Worker only. Upload metadata retains `secret_text` bindings. `node backend/deploy.mjs` accepts `CLOUDFLARE_ACCOUNT_ID` and a separate deployment credential `CLOUDFLARE_API_TOKEN`; it never logs secret values. The manual backend workflow runs from master. No paid binding or paid plan is added. Cached API responses reduce upstream queries, but do not guarantee zero Worker invocations or enforce a global billing limit. See the frontend cost boundaries.
 
-The frontend uses the configured proxy URL. For an alternative snapshot-only integration, clear the proxy URL in operations.json and the INTELLIGENCE_PROXY_URL repository variable, then set GitHub repository secret `RADAR_API_TOKEN`. This keeps the credential server-side and refreshes published snapshots. The normal proxy mode still requires its own runtime secret for browser refreshes.
+Country speed/IQI data is a published aggregate measurement, not a direct edge ping. ASN-specific active reports, country context and direct service checks are separate evidence. No lack of reports establishes that a route or network is 100% healthy.
 
-## API coverage
-
-- `/radar/annotations/outages` and `/radar/traffic_anomalies`
-- `/radar/quality/speed/summary` and `/radar/quality/iqi/summary`
-- `/radar/attacks/layer7/summary/mitigation_product`
-- `/radar/bgp/leaks/events`
-- `/radar/http/summary/http_version`, `/tls_version`, `/ip_version`
-
-Requested abbreviated paths `/radar/quality/iqi`, `/radar/attacks/layer7/summary`, and `/radar/http/summary/` are constrained compatibility aliases for the normalized snapshot. They do not expose a generic authenticated proxy.
-
-Source timestamps and data availability remain visible. A failed dataset is unknown. An active regional anomaly suggests correlation and never proves the cause of an application outage. Regional L7 mitigation mix is not a claim of Rifzki account protection. BGP queries are bounded and flagged partial when pagination is incomplete. TLS/HTTP/IPv6 percentages describe regional traffic, not an endpoint's negotiated protocol.
-
-## Deploy updates
-
-`backend/deployment.json` is the API metadata descriptor; source consists of worker.mjs and intelligence.mjs. All modules are uploaded atomically. Existing secret_text bindings are retained during updates.
-
-The GitHub workflow `Rifzki Intelligence Backend` can be dispatched on master after setting repository variable `CLOUDFLARE_ACCOUNT_ID` and repository secret `CLOUDFLARE_API_TOKEN` with access to deploy this Worker in the correct account. That deployment credential is separate from the read-only Radar runtime token. The workflow never prints either value. A direct API deployment through the connected provider tool is also supported.
-
-The static dashboard remains hosted on GitHub Pages; only the secret-bearing proxy runs on the Worker platform.
