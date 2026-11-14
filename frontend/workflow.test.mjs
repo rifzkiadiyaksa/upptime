@@ -46,3 +46,19 @@ test('fresh monitor workflow registers the native five-minute schedule and repor
  const {readdir}=await import('node:fs/promises');
  assert.ok(!(await readdir('.github/workflows')).includes('uptime.yml'));
 });
+
+test('monitor API errors retry at most three times and independent snapshots still refresh on failure',async()=>{
+ const monitor=parse(await readFile('.github/workflows/monitor.yml','utf8'));
+ const attempts=monitor.jobs.release.steps.filter(s=>s.uses==='upptime/uptime-monitor@v1.46.5');
+ assert.equal(attempts.length,3);
+ assert.equal(attempts[0]['continue-on-error'],true);
+ assert.equal(attempts[1]['continue-on-error'],true);
+ assert.equal(attempts[2]['continue-on-error'],undefined);
+ assert.match(attempts[1].if,/monitor_1.outcome == 'failure'/);
+ assert.match(attempts[2].if,/monitor_2.outcome == 'failure'/);
+ assert.deepEqual(attempts[0].env,attempts[1].env);
+ assert.deepEqual(attempts[0].env,attempts[2].env);
+ const site=parse(await readFile('.github/workflows/site.yml','utf8'));
+ assert.match(site.jobs.release.if,/conclusion == 'failure'/);
+ assert.deepEqual(site.on.workflow_run.branches,['master']);
+});
