@@ -251,18 +251,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/s3.rifzki.my.id.ico",
     "slug": "s3-rifzki-my-id",
     "status": "down",
-    "uptime": "40.51%",
-    "uptimeDay": "40.51%",
-    "uptimeWeek": "40.51%",
-    "uptimeMonth": "40.51%",
-    "uptimeYear": "40.51%",
+    "uptime": "28.97%",
+    "uptimeDay": "28.97%",
+    "uptimeWeek": "28.97%",
+    "uptimeMonth": "28.97%",
+    "uptimeYear": "28.97%",
     "time": 479,
     "timeDay": 479,
     "timeWeek": 479,
     "timeMonth": 479,
     "timeYear": 479,
     "dailyMinutesDown": {
-      "2026-11-14": 0
+      "2026-11-14": 1
     }
   },
   {
