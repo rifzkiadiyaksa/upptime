@@ -9,7 +9,7 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "53.07%",
+    "uptimeYear": "53.08%",
     "time": 250,
     "timeDay": 190,
     "timeWeek": 252,
@@ -249,15 +249,15 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "up",
+    "status": "down",
     "uptime": "98.64%",
-    "uptimeDay": "79.28%",
-    "uptimeWeek": "67.65%",
-    "uptimeMonth": "83.66%",
+    "uptimeDay": "82.40%",
+    "uptimeWeek": "68.09%",
+    "uptimeMonth": "83.67%",
     "uptimeYear": "94.55%",
-    "time": 415,
-    "timeDay": 330,
-    "timeWeek": 345,
+    "time": 416,
+    "timeDay": 329,
+    "timeWeek": 344,
     "timeMonth": 350,
     "timeYear": 405,
     "dailyMinutesDown": {
@@ -318,7 +318,7 @@
       "2026-11-10": 500,
       "2026-11-14": 940,
       "2026-11-13": 155,
-      "2026-11-15": 131
+      "2026-11-15": 126
     }
   },
   {
