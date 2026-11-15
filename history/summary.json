@@ -250,19 +250,19 @@
     "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
     "slug": "blog-rifzki-adiyaksa",
     "status": "up",
-    "uptime": "98.57%",
-    "uptimeDay": "43.81%",
-    "uptimeWeek": "60.20%",
-    "uptimeMonth": "83.36%",
-    "uptimeYear": "94.28%",
+    "uptime": "98.56%",
+    "uptimeDay": "45.02%",
+    "uptimeWeek": "60.38%",
+    "uptimeMonth": "83.40%",
+    "uptimeYear": "94.27%",
     "time": 423,
     "timeDay": 320,
     "timeWeek": 365,
     "timeMonth": 362,
     "timeYear": 413,
     "dailyMinutesDown": {
+      "2026-08-07": 94,
       "2026-08-08": 1086,
-      "2026-08-07": 19,
       "2026-08-09": 1117,
       "2026-08-10": 554,
       "2026-08-11": 1033,
@@ -320,7 +320,7 @@
       "2026-11-10": 500,
       "2026-11-14": 940,
       "2026-11-13": 155,
-      "2026-11-15": 96
+      "2026-11-15": 81
     }
   },
   {
