@@ -73,7 +73,6 @@ jobs:
         if: steps.freshness.outputs.refresh == 'true'
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          RADAR_API_TOKEN: ${{ secrets.RADAR_API_TOKEN }}
           INTELLIGENCE_PROXY_URL: ${{ vars.INTELLIGENCE_PROXY_URL }}
           SSL_ASSESSMENT_URL: ${{ vars.SSL_ASSESSMENT_URL }}
           SSL_ASSESSMENT_TOKEN: ${{ secrets.SSL_ASSESSMENT_TOKEN }}

@@ -1,11 +1,9 @@
 import {createHash} from 'node:crypto';
-import {fetchRegionalSnapshot} from './intelligence-fetch.mjs';
 import {buildArchive} from './archive-build.mjs';
 import { readFile, mkdir, cp, writeFile, rm } from 'node:fs/promises';
 import { parse } from 'yaml';
 import { mergeSamples } from './model.mjs';
 import { inspectEndpoint } from './inspect.mjs';
-import { collectIntelligence } from '../backend/intelligence.mjs';
 const config = parse(await readFile('.upptimerc.yml', 'utf8'));
 const operations = JSON.parse(await readFile('frontend/operations.json', 'utf8'));
 for (const m of operations.maintenance) {
@@ -48,18 +46,9 @@ const services=await Promise.all(endpoints.map(async(e,i)=>{
   telemetry[e.slug]=mergeSamples(previous[e.slug],{at:current.lastUpdated,ms:current.responseTime,status:current.status},new Date());
   return {name:e.host,host:e.host,slug:e.slug,group:e.group,...current,startTime:history?.startTime||previous[e.slug]?.[0]?.at||null,dailyMinutesDown:old?.dailyMinutesDown||{},uptimeMonth:old?.uptimeMonth||null,domainExpiry:operations.domainExpiry[e.host]||null};
 }));
-let intelligence=[];
-const proxyUrl=process.env.INTELLIGENCE_PROXY_URL||operations.intelligence?.proxyUrl||'';
-if(proxyUrl){
-  let previousRegional=[];
-  if(process.env.CI){
-    try{
-      const response=await fetch(`https://api.github.com/repos/${repo}/contents/status.json?ref=gh-pages`,{headers:{...headers,Accept:'application/vnd.github.raw+json'},signal:AbortSignal.timeout(10000)});
-      if(response.ok){const value=(await response.json()).intelligence;if(Array.isArray(value))previousRegional=value;}
-    }catch{console.warn('Previous regional snapshot unavailable; fresh collection will continue.');}
-  }
-  intelligence=await Promise.all(['ID','SG'].map(region=>fetchRegionalSnapshot(proxyUrl,region,{previous:previousRegional.find(s=>s.region===region)})));
-}else intelligence=await Promise.all(['ID','SG'].map(region=>collectIntelligence(region,process.env.RADAR_API_TOKEN)));
+// Radar is fetched only by visitors viewing the regional telemetry panel.
+const intelligence=[];
+const intelligenceProxyUrl=process.env.INTELLIGENCE_PROXY_URL||operations.intelligence?.proxyUrl||'';
 let incidents=[],incidentsAvailable=false,incidentsUpdatedAt=null;
 try {
   // Keep recent and active incidents, with pagination, independent of visitors' API quotas.
@@ -97,7 +86,7 @@ incidents=incidents.filter(i=>i.services?.some(slug=>services.some(s=>s.slug===s
 for(const service of services){service.outageIntervals=incidents.filter(i=>i.services.includes(service.slug)&&(i.closed||service.status==='down')).map(i=>({start:i.created,end:i.closed||service.lastUpdated}));}
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist',{recursive:true});
-for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','i18n.mjs','catalog.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
+for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','intelligence-client.mjs','intelligence-fetch.mjs','i18n.mjs','catalog.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
 const cssRevision=createHash('sha256').update(await readFile('dist/styles.css')).digest('hex').slice(0,12);
 await writeFile('dist/index.html',(await readFile('dist/index.html','utf8')).replace('./styles.css','./styles.css?v='+cssRevision));
 await mkdir('dist/public',{recursive:true});for(const asset of ['logo.svg','favicon.svg'])await cp('frontend/public/'+asset,'dist/public/'+asset);
@@ -105,7 +94,7 @@ const archive=buildArchive(incidents,operations.maintenance,now);
 for(const [path,value]of Object.entries(archive.files)){await mkdir(path.slice(0,path.lastIndexOf('/')).replace(/^archive/,'dist/archive'),{recursive:true});await writeFile('dist/'+path,JSON.stringify(value));}
 await mkdir('dist/archive',{recursive:true});await writeFile('dist/archive/index.json',JSON.stringify(archive.index));
 const publicIncidents=incidents.filter((i,index)=>i.state==='open'||index<3).map(i=>i.state==='open'?i:{...i,timeline:[]});
-await writeFile('dist/status.json',JSON.stringify({measurementOrigin:process.env.GITHUB_ACTIONS?'GitHub Actions runner':'Local preview runner',generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,intelligence,archiveVersion:archive.index.version,incidents:publicIncidents,incidentsAvailable,incidentsUpdatedAt,maintenance:operations.maintenance}));
+await writeFile('dist/status.json',JSON.stringify({measurementOrigin:process.env.GITHUB_ACTIONS?'GitHub Actions runner':'Local preview runner',generatedAt:now.toISOString(),repository:`https://github.com/${repo}`,services,intelligence,intelligenceProxyUrl,archiveVersion:archive.index.version,incidents:publicIncidents,incidentsAvailable,incidentsUpdatedAt,maintenance:operations.maintenance}));
 await writeFile('dist/telemetry.json',JSON.stringify(telemetry));
 await writeFile('dist/manifest.webmanifest',JSON.stringify({name:'Rifzki System Status',short_name:'Rifzki Status',start_url:'./',display:'standalone',background_color:'#09090b',theme_color:'#f97316',icons:[{src:'./public/logo.svg',sizes:'any',type:'image/svg+xml',purpose:'any'}]}));
 await writeFile('dist/.nojekyll','');

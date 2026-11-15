@@ -39,3 +39,11 @@ A successful push/manual run is not proof of automatic scheduling. Confirm new `
 The fresh workflow's first manual validation exposed another GitHub HTTP 500 at the commits/history API, with 4,971 of 5,000 API requests still available. Monitor attempts now retry at most three times, with 10 s and 30 s backoff; the last failure remains a real job failure. Both successful and failed monitor completions request a fresh independent frontend snapshot. This avoids making public HTTP/security observations depend on Upptime summary generation succeeding, while preserving the default-branch guard and duplicate-build prevention.
 
 Duplicate-trigger freshness reads the latest `gh-pages` snapshot through the authenticated GitHub contents API, rather than the public Pages hostname. Pages propagation lag must not cause a second build immediately after publication. Only scheduling/completion triggers can be skipped; source pushes and manual validation always run.
+
+## Visitor-driven regional telemetry
+
+Static builds never request Radar or the intelligence proxy. The public status snapshot publishes only the proxy URL and an empty intelligence list. Service monitoring, security checks and incident snapshots retain their existing schedule.
+
+The browser requests only the selected ID/SG region when the overview telemetry panel intersects the viewport and the document is visible. It checks eligibility every two minutes and on panel entry, region changes and tab visibility changes. A per-page cache suppresses requests while verified evidence is under five minutes old; overlapping requests are deduplicated and failures have a two-minute retry delay. The existing proxy independently caches each regional result for five minutes at the responding Cloudflare location. Recent fallback evidence keeps its original timestamp and label, and expires after 15 minutes. No token is shipped to the browser, and static preview exports stay offline.
+
+There is no scheduled Radar collection without visitors. Edge caches are local rather than a globally shared quota, so traffic from multiple locations can cause separate upstream collections. Each uncached selected region uses nine Radar requests.
