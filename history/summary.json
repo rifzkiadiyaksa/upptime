@@ -251,14 +251,14 @@
     "slug": "blog-rifzki-adiyaksa",
     "status": "up",
     "uptime": "98.60%",
-    "uptimeDay": "78.17%",
-    "uptimeWeek": "67.40%",
-    "uptimeMonth": "83.69%",
+    "uptimeDay": "78.47%",
+    "uptimeWeek": "67.49%",
+    "uptimeMonth": "83.70%",
     "uptimeYear": "94.42%",
-    "time": 420,
-    "timeDay": 328,
-    "timeWeek": 346,
-    "timeMonth": 351,
+    "time": 419,
+    "timeDay": 327,
+    "timeWeek": 344,
+    "timeMonth": 350,
     "timeYear": 407,
     "dailyMinutesDown": {
       "2026-08-08": 351,
@@ -319,7 +319,7 @@
       "2026-11-10": 500,
       "2026-11-14": 940,
       "2026-11-13": 155,
-      "2026-11-15": 116
+      "2026-11-15": 112
     }
   },
   {
