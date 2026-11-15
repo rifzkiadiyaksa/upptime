@@ -87,6 +87,11 @@ for(const service of services){service.outageIntervals=incidents.filter(i=>i.ser
 await rm('dist',{recursive:true,force:true});
 await mkdir('dist',{recursive:true});
 for (const file of ['index.html','styles.css','security-styles.css','app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','intelligence-client.mjs','intelligence-fetch.mjs','i18n.mjs','catalog.mjs']) await cp(`frontend/${file}`,`dist/${file}`);
+const browserModules=['app.mjs','model.mjs','security-ui.mjs','network-ui.mjs','intelligence-client.mjs','intelligence-fetch.mjs','i18n.mjs','catalog.mjs'];
+const moduleContents=await Promise.all(browserModules.map(file=>readFile('dist/'+file,'utf8')));
+const scriptRevision=createHash('sha256').update(JSON.stringify(moduleContents)).digest('hex').slice(0,12);
+for(let i=0;i<browserModules.length;i++)await writeFile('dist/'+browserModules[i],moduleContents[i].replace(/(['"])(\.\/[^'"]+\.mjs)\1/g,(_,quote,path)=>quote+path+'?v='+scriptRevision+quote));
+await writeFile('dist/index.html',(await readFile('dist/index.html','utf8')).replace('./app.mjs','./app.mjs?v='+scriptRevision));
 const cssRevision=createHash('sha256').update(await readFile('dist/styles.css')).digest('hex').slice(0,12);
 await writeFile('dist/index.html',(await readFile('dist/index.html','utf8')).replace('./styles.css','./styles.css?v='+cssRevision));
 await mkdir('dist/public',{recursive:true});for(const asset of ['logo.svg','favicon.svg'])await cp('frontend/public/'+asset,'dist/public/'+asset);

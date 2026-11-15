@@ -17,3 +17,5 @@ test('failed collections have a two-minute retry delay',async()=>{
 test('static builds publish proxy configuration without fetching Radar or the proxy',async()=>{
  const build=await readFile('frontend/build.mjs','utf8');assert.doesNotMatch(build,/fetchRegionalSnapshot|collectIntelligence|RADAR_API_TOKEN/);assert.match(build,/services,intelligence,intelligenceProxyUrl/);assert.match(build,/'intelligence-client.mjs','intelligence-fetch.mjs'/);
 });
+
+test('browser modules and their imports share a deployment revision to prevent cached mixed versions',async()=>{const build=await readFile('frontend/build.mjs','utf8');assert.match(build,/JSON.stringify\(moduleContents\)/);assert.match(build,/app\.mjs\?v=/);assert.match(build,/path\+'\?v='\+scriptRevision/);});
