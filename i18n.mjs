@@ -1,4 +1,4 @@
-import {rows} from './catalog.mjs';
+import {rows} from './catalog.mjs?v=f79b19b052d5';
 export const LANGUAGES=['en-US','id-ID','zh-CN','ko-KR','th-TH','ar-SA'];
 let locale='en-US',observer;
 const originals=new WeakMap(),attributes=new WeakMap();
