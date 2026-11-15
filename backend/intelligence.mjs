@@ -47,7 +47,7 @@ async function limitedJson(response){
   try{while(true){const {value,done}=await reader.read();if(done)break;bytes+=value.byteLength;if(bytes>2*1024*1024){await reader.cancel();return null;}chunks.push(value);}}finally{reader.releaseLock();}
   const out=new Uint8Array(bytes);let at=0;for(const c of chunks){out.set(c,at);at+=c.length;}return JSON.parse(new TextDecoder().decode(out));
 }
-export async function collectIntelligence(region,token,{fetcher=fetch,now=new Date()}={}){
+export async function collectIntelligence(region,token,{fetcher=fetch,now=new Date(),includeNetworks=false}={}){
   if(!REGIONS.includes(region))throw Error('Unsupported region');
   if(!token)return {...normalizeIntelligence({},region,now),status:'unconfigured'};
   const results=await Promise.all(Object.entries(PLANS).map(async([key,plan])=>{
@@ -56,6 +56,7 @@ export async function collectIntelligence(region,token,{fetcher=fetch,now=new Da
     try{const r=await fetcher(target,{headers:{Authorization:'Bearer '+token},signal:AbortSignal.timeout(12000)});if(!r.ok){await r.body?.cancel();return [key,null];}const data=await limitedJson(r);if(key==='bgp'&&data?.result)data.result.complete=data.result_info?data.result_info.total_count<=(data.result.events?.length||0):(data.result.events?.length||0)<25;return [key,data?.success===true?data.result:null];}catch{return [key,null];}
   }));
   const normalized=normalizeIntelligence(Object.fromEntries(results),region,now);
+  if(!includeNetworks)return normalized;
   const directory=await radar('/radar/entities/asns',{location:region,limit:5,orderBy:'POPULATION'},token,fetcher);
   normalized.networks=await Promise.all((directory?.asns||[]).slice(0,5).map(async entry=>{const metrics=await radar('/radar/quality/speed/summary',{asn:String(entry.asn),location:region},token,fetcher);const evidence=await asnEvents(entry.asn,region,token,fetcher,now);const events=evidence.events;return {asn:entry.asn,name:entry.aka||entry.name,organization:entry.orgName,country:entry.country,city:null,role:'Regional ISP',latencyMs:numeric(metrics?.summary_0?.latencyIdle),jitterMs:numeric(metrics?.summary_0?.jitterIdle),updatedAt:metrics?.meta?.lastUpdated||null,events,status:events.some(e=>e.kind==='outage')?'outage':events.length?'anomaly':evidence.complete?'clear':'unknown'};}));
   return normalized;

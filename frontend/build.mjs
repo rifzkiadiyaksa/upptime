@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {fetchRegionalSnapshot} from './intelligence-fetch.mjs';
 import {buildArchive} from './archive-build.mjs';
 import { readFile, mkdir, cp, writeFile, rm } from 'node:fs/promises';
 import { parse } from 'yaml';
@@ -50,7 +51,14 @@ const services=await Promise.all(endpoints.map(async(e,i)=>{
 let intelligence=[];
 const proxyUrl=process.env.INTELLIGENCE_PROXY_URL||operations.intelligence?.proxyUrl||'';
 if(proxyUrl){
-  intelligence=await Promise.all(['ID','SG'].map(async region=>{try{const u=new URL(proxyUrl);if(u.protocol!=='https:')throw Error('HTTPS required');u.searchParams.set('region',region);const r=await fetch(u,{signal:AbortSignal.timeout(15000)});const value=await r.json();if(value.source!=='Rifzki Network Intelligence'||value.region!==region)throw Error('Invalid proxy snapshot');return value;}catch{return {source:'Rifzki Network Intelligence',region,status:'unavailable'};}}));
+  let previousRegional=[];
+  if(process.env.CI){
+    try{
+      const response=await fetch(`https://api.github.com/repos/${repo}/contents/status.json?ref=gh-pages`,{headers:{...headers,Accept:'application/vnd.github.raw+json'},signal:AbortSignal.timeout(10000)});
+      if(response.ok){const value=(await response.json()).intelligence;if(Array.isArray(value))previousRegional=value;}
+    }catch{console.warn('Previous regional snapshot unavailable; fresh collection will continue.');}
+  }
+  intelligence=await Promise.all(['ID','SG'].map(region=>fetchRegionalSnapshot(proxyUrl,region,{previous:previousRegional.find(s=>s.region===region)})));
 }else intelligence=await Promise.all(['ID','SG'].map(region=>collectIntelligence(region,process.env.RADAR_API_TOKEN)));
 let incidents=[],incidentsAvailable=false,incidentsUpdatedAt=null;
 try {

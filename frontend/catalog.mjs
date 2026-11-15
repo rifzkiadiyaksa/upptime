@@ -347,5 +347,9 @@ Monitoring data is delayed.|Data pemantauan terlambat.|监控数据延迟。|모
 Current availability is unconfirmed. This does not establish a service outage.|Ketersediaan saat ini belum dapat dipastikan. Ini tidak membuktikan gangguan layanan.|当前可用性尚未确认。这并不代表服务中断。|현재 가용성은 확인되지 않았습니다. 서비스 장애를 의미하지 않습니다.|ยังไม่ยืนยันความพร้อมในขณะนี้ ไม่ได้ยืนยันว่าบริการขัดข้อง|لم يتأكد التوافر الحالي. هذا لا يثبت انقطاع الخدمة.
 Check monitoring workflow ↗|Lihat alur pemantauan ↗|查看监控工作流程 ↗|모니터링 워크플로 확인 ↗|ดูเวิร์กโฟลว์การตรวจสอบ ↗|راجع سير عمل المراقبة ↗
 Open incident reports require follow-up.|Laporan insiden terbuka perlu ditindaklanjuti.|未关闭的事件报告需要跟进。|진행 중인 사고 보고서에 후속 조치가 필요합니다.|รายงานเหตุการณ์ที่เปิดอยู่ต้องติดตามต่อ|تقارير الحوادث المفتوحة تحتاج إلى متابعة.
+Using last verified regional data|Menggunakan data regional terverifikasi terakhir|使用最近验证的区域数据|최근 검증된 지역 데이터 사용 중|ใช้ข้อมูลภูมิภาคที่ยืนยันล่าสุด|استخدام آخر بيانات إقليمية موثقة
+Regional data request timed out. A later collection will retry.|Permintaan data regional melewati batas waktu. Pengambilan berikutnya akan mencoba lagi.|区域数据请求超时。下次采集将重试。|지역 데이터 요청 시간이 초과되었습니다. 다음 수집에서 다시 시도합니다.|คำขอข้อมูลภูมิภาคหมดเวลา จะลองอีกครั้งในการเก็บข้อมูลถัดไป|انتهت مهلة طلب البيانات الإقليمية. ستتم إعادة المحاولة في الجمع التالي.
+Regional API authentication failed.|Autentikasi API regional gagal.|区域 API 身份验证失败。|지역 API 인증에 실패했습니다.|การยืนยันตัวตน API ภูมิภาคล้มเหลว|فشلت مصادقة واجهة البيانات الإقليمية.
+Regional data source is temporarily unavailable.|Sumber data regional sementara tidak tersedia.|区域数据源暂时不可用。|지역 데이터 소스를 일시적으로 사용할 수 없습니다.|แหล่งข้อมูลภูมิภาคไม่พร้อมใช้งานชั่วคราว|مصدر البيانات الإقليمية غير متاح مؤقتًا.
 `.trim().split('\n').map(row=>row.split('|'));
 

@@ -16,7 +16,7 @@ export async function handleRequest(request,env,ctx,{fetcher=fetch,cache=globalT
   if([...url.searchParams.keys()].some(k=>k!=='region'))return reply({source:'Rifzki Network Intelligence',status:'invalid-query'},400);
   const region=url.searchParams.get('region')||'ID';
   if(!infrastructureMode&&!(locationMode?COUNTRIES:REGIONS).includes(region))return reply({source:'Rifzki Network Intelligence',status:'invalid-region'},400);
-  const key=new Request(`https://rifzki-intelligence.internal/v3/${infrastructureMode?'infrastructure':locationMode?'location':'network'}/${infrastructureMode?'all':region}`);
+  const key=new Request(`https://rifzki-intelligence.internal/v4/${infrastructureMode?'infrastructure':locationMode?'location':'network'}/${infrastructureMode?'all':region}`);
   let data;
   try{const hit=cache?await cache.match(key):null;if(hit)data=await hit.json();}catch{}
   if(!data){

@@ -28,6 +28,12 @@ test('shared cache prevents repeated Radar fan-out and caches failures for a bou
 
 test('ASN anomalies use ASN-only filtering because the upstream rejects ASN plus location',async()=>{
  const urls=[];const fetcher=async target=>{const u=new URL(target);urls.push(u);if(u.pathname==='/client/v4/radar/entities/asns')return Response.json({success:true,result:{asns:[{asn:23693,name:'Example ISP',country:'ID'}]}});if(u.pathname.endsWith('/annotations/outages'))return Response.json({success:true,result:{annotations:[]}});if(u.pathname.endsWith('/traffic_anomalies')){assert.ok(!(u.searchParams.has('asn')&&u.searchParams.has('location')));return Response.json({success:true,result:{trafficAnomalies:[]}});}return Response.json({success:true,result:{summary_0:{latencyIdle:30}}});};
- const result=await collectIntelligence('ID','test-only',{fetcher,now});assert.equal(result.networks[0].status,'clear');assert.ok(urls.some(u=>u.searchParams.get('asn')==='23693'));
+ const result=await collectIntelligence('ID','test-only',{fetcher,now,includeNetworks:true});assert.equal(result.networks[0].status,'clear');assert.ok(urls.some(u=>u.searchParams.get('asn')==='23693'));
 });
 
+
+test('dashboard collection never waits for the removed Locations ASN directory',async()=>{
+ const urls=[];const fetcher=async target=>{const url=new URL(target);urls.push(url.pathname);assert.ok(!url.pathname.endsWith('/entities/asns'));return Response.json({success:true,result:{}});};
+ await collectIntelligence('ID','test-only',{fetcher,now});
+ assert.equal(urls.length,9);
+});
