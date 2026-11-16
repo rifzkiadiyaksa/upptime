@@ -213,11 +213,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/s.rifzki.my.id.ico",
     "slug": "s-rifzki-my-id",
     "status": "up",
-    "uptime": "79.75%",
+    "uptime": "79.77%",
     "uptimeDay": "47.92%",
-    "uptimeWeek": "79.75%",
-    "uptimeMonth": "79.75%",
-    "uptimeYear": "79.75%",
+    "uptimeWeek": "79.77%",
+    "uptimeMonth": "79.77%",
+    "uptimeYear": "79.77%",
     "time": 286,
     "timeDay": 236,
     "timeWeek": 286,
@@ -250,12 +250,12 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "up",
+    "status": "down",
     "uptime": "98.66%",
-    "uptimeDay": "97.93%",
-    "uptimeWeek": "77.35%",
-    "uptimeMonth": "83.60%",
-    "uptimeYear": "94.64%",
+    "uptimeDay": "98.58%",
+    "uptimeWeek": "77.44%",
+    "uptimeMonth": "83.62%",
+    "uptimeYear": "94.65%",
     "time": 410,
     "timeDay": 353,
     "timeWeek": 347,
@@ -320,7 +320,7 @@
       "2026-11-14": 940,
       "2026-11-13": 155,
       "2026-11-15": 126,
-      "2026-11-16": 30
+      "2026-11-16": 21
     }
   },
   {
@@ -383,18 +383,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/webmail.rifzki.my.id.ico",
     "slug": "webmail-rifzki-my-id",
     "status": "down",
-    "uptime": "90.13%",
-    "uptimeDay": "74.63%",
-    "uptimeWeek": "90.13%",
-    "uptimeMonth": "90.13%",
-    "uptimeYear": "90.13%",
+    "uptime": "90.01%",
+    "uptimeDay": "74.28%",
+    "uptimeWeek": "90.01%",
+    "uptimeMonth": "90.01%",
+    "uptimeYear": "90.01%",
     "time": 203,
     "timeDay": 104,
     "timeWeek": 203,
     "timeMonth": 203,
     "timeYear": 203,
     "dailyMinutesDown": {
-      "2026-11-16": 365
+      "2026-11-16": 370
     }
   },
   {
