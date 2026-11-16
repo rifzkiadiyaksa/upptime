@@ -213,18 +213,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/s.rifzki.my.id.ico",
     "slug": "s-rifzki-my-id",
     "status": "down",
-    "uptime": "80.23%",
-    "uptimeDay": "56.57%",
-    "uptimeWeek": "80.23%",
-    "uptimeMonth": "80.23%",
-    "uptimeYear": "80.23%",
+    "uptime": "79.71%",
+    "uptimeDay": "55.16%",
+    "uptimeWeek": "79.71%",
+    "uptimeMonth": "79.71%",
+    "uptimeYear": "79.71%",
     "time": 258,
     "timeDay": 112,
     "timeWeek": 258,
     "timeMonth": 258,
     "timeYear": 258,
     "dailyMinutesDown": {
-      "2026-11-16": 625
+      "2026-11-16": 646
     }
   },
   {
@@ -250,14 +250,14 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "up",
+    "status": "down",
     "uptime": "98.64%",
-    "uptimeDay": "98.32%",
-    "uptimeWeek": "75.56%",
-    "uptimeMonth": "83.64%",
-    "uptimeYear": "94.57%",
+    "uptimeDay": "98.65%",
+    "uptimeWeek": "75.81%",
+    "uptimeMonth": "83.66%",
+    "uptimeYear": "94.58%",
     "time": 411,
-    "timeDay": 356,
+    "timeDay": 357,
     "timeWeek": 350,
     "timeMonth": 355,
     "timeYear": 403,
@@ -320,7 +320,7 @@
       "2026-11-14": 940,
       "2026-11-13": 155,
       "2026-11-15": 126,
-      "2026-11-16": 10
+      "2026-11-16": 5
     }
   },
   {
