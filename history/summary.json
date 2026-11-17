@@ -9,7 +9,7 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "53.37%",
+    "uptimeYear": "53.38%",
     "time": 250,
     "timeDay": 280,
     "timeWeek": 258,
@@ -185,8 +185,7 @@
       "2025-11-21": 1440,
       "2025-11-20": 1440,
       "2025-11-19": 1440,
-      "2025-11-18": 1440,
-      "2025-11-17": 1440
+      "2025-11-18": 1440
     }
   },
   {
@@ -213,11 +212,11 @@
     "icon": "https://icons.duckduckgo.com/ip3/s.rifzki.my.id.ico",
     "slug": "s-rifzki-my-id",
     "status": "up",
-    "uptime": "80.25%",
+    "uptime": "80.54%",
     "uptimeDay": "47.92%",
-    "uptimeWeek": "80.25%",
-    "uptimeMonth": "80.25%",
-    "uptimeYear": "80.25%",
+    "uptimeWeek": "80.54%",
+    "uptimeMonth": "80.54%",
+    "uptimeYear": "80.54%",
     "time": 286,
     "timeDay": 236,
     "timeWeek": 286,
@@ -250,14 +249,14 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "up",
+    "status": "down",
     "uptime": "98.66%",
-    "uptimeDay": "98.29%",
-    "uptimeWeek": "77.40%",
-    "uptimeMonth": "83.61%",
+    "uptimeDay": "98.58%",
+    "uptimeWeek": "77.44%",
+    "uptimeMonth": "83.65%",
     "uptimeYear": "94.65%",
     "time": 409,
-    "timeDay": 353,
+    "timeDay": 354,
     "timeWeek": 347,
     "timeMonth": 351,
     "timeYear": 399,
@@ -320,7 +319,8 @@
       "2026-11-14": 940,
       "2026-11-13": 155,
       "2026-11-15": 126,
-      "2026-11-16": 25
+      "2026-11-16": 20,
+      "2026-11-17": 1
     }
   },
   {
@@ -383,18 +383,19 @@
     "icon": "https://icons.duckduckgo.com/ip3/webmail.rifzki.my.id.ico",
     "slug": "webmail-rifzki-my-id",
     "status": "down",
-    "uptime": "87.89%",
-    "uptimeDay": "68.06%",
-    "uptimeWeek": "87.89%",
-    "uptimeMonth": "87.89%",
-    "uptimeYear": "87.89%",
+    "uptime": "86.62%",
+    "uptimeDay": "64.20%",
+    "uptimeWeek": "86.62%",
+    "uptimeMonth": "86.62%",
+    "uptimeYear": "86.62%",
     "time": 203,
     "timeDay": 104,
     "timeWeek": 203,
     "timeMonth": 203,
     "timeYear": 203,
     "dailyMinutesDown": {
-      "2026-11-16": 460
+      "2026-11-17": 12,
+      "2026-11-16": 504
     }
   },
   {
