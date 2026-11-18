@@ -26,15 +26,8 @@ const intelligenceClient=createIntelligenceClient({
 const refreshIntelligence=()=>intelligenceClient.refresh(data?.intelligenceProxyUrl,intelligenceRegion);
 
 const ranges=new Map(),chartData=new WeakMap();
-function alignDesktopNav(){
- if(!matchMedia('(min-width:769px)').matches)return;
- const nav=document.querySelector('.desktop-tabs'),active=nav.querySelector('[aria-selected=true]');
- if(!active||!nav.offsetWidth)return;
- nav.style.setProperty('--nav-x',active.offsetLeft+'px');nav.style.setProperty('--nav-width',active.offsetWidth+'px');
- requestAnimationFrame(()=>nav.classList.add('indicator-ready'));
-}
 function renderNav(){for(const [selector,mobile] of [['.desktop-tabs',false],['.mobile-dock',true]]){const nav=document.querySelector(selector);nav.setAttribute('role','tablist');nav.innerHTML=Object.keys(viewInfo).map(v=>`<button class="nav-button" role="tab" data-view="${v}" aria-controls="view-${v}" aria-selected="${v===view}" aria-label="${t(v==='services'?'Services & Sites':v[0].toUpperCase()+v.slice(1))}">${icon(v)}<span class="nav-label">${t(v==='services'?'Services & Sites':v[0].toUpperCase()+v.slice(1))}</span></button>`).join('');}}
-function setView(next,updateHash=true){if(!viewInfo[next])next='overview';view=next;for(const v of Object.keys(viewInfo)){$('view-'+v).hidden=v!==view;$('view-'+v).setAttribute('role','tabpanel');}renderNav();requestAnimationFrame(alignDesktopNav);$('view-title').textContent=t(viewInfo[view][0]);$('view-subtitle').textContent=t(viewInfo[view][1]);$('eyebrow').textContent=t('RIFZKI NETWORK INTELLIGENCE');if(updateHash){history.replaceState(null,'','#'+view);window.scrollTo({top:0,behavior:'instant'});}hideTip();if(view==='history'&&data)renderHistory();requestAnimationFrame(refreshIntelligence);}
+function setView(next,updateHash=true){if(!viewInfo[next])next='overview';view=next;for(const v of Object.keys(viewInfo)){$('view-'+v).hidden=v!==view;$('view-'+v).setAttribute('role','tabpanel');}renderNav();$('view-title').textContent=t(viewInfo[view][0]);$('view-subtitle').textContent=t(viewInfo[view][1]);$('eyebrow').textContent=t('RIFZKI NETWORK INTELLIGENCE');if(updateHash){history.replaceState(null,'','#'+view);window.scrollTo({top:0,behavior:'instant'});}hideTip();if(view==='history'&&data)renderHistory();requestAnimationFrame(refreshIntelligence);}
 function renderTheme(){const dark=document.documentElement.dataset.theme==='dark';$('theme').innerHTML=icon(dark?'sun':'moon');document.querySelector('meta[name="theme-color"]').content=dark?'#09090b':'#f8fafc';}
 function statusOf(s){const h=health(s);return h==='up'&&activeMaintenance(data.maintenance,new Date(),s.slug).length?'maintenance':h;}
 function render(){
@@ -122,18 +115,3 @@ $('refresh').innerHTML=icon('refresh');$('refresh').addEventListener('click',loa
 new IntersectionObserver(()=>refreshIntelligence()).observe($('network-intelligence'));
 setInterval(refreshIntelligence,120000);
 document.addEventListener('visibilitychange',()=>refreshIntelligence());
-
-// Desktop listeners are detached on mobile; its original navigation is unchanged.
-const desktopHeader=matchMedia('(min-width:769px)'),header=document.querySelector('.header');
-let headerFrame=0;
-const updateDesktopHeader=()=>{headerFrame=0;header.classList.toggle('is-scrolled',desktopHeader.matches&&window.scrollY>16);};
-const onDesktopScroll=()=>{if(!headerFrame)headerFrame=requestAnimationFrame(updateDesktopHeader);};
-const desktopNavObserver=new ResizeObserver(alignDesktopNav);
-function configureDesktopHeader(){
- window.removeEventListener('scroll',onDesktopScroll);desktopNavObserver.disconnect();
- if(desktopHeader.matches){window.addEventListener('scroll',onDesktopScroll,{passive:true});desktopNavObserver.observe(document.querySelector('.desktop-tabs'));alignDesktopNav();}
- else{cancelAnimationFrame(headerFrame);headerFrame=0;const nav=document.querySelector('.desktop-tabs');nav.classList.remove('indicator-ready');nav.style.removeProperty('--nav-x');nav.style.removeProperty('--nav-width');}
- updateDesktopHeader();
-}
-desktopHeader.addEventListener('change',configureDesktopHeader);
-configureDesktopHeader();
