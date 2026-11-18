@@ -1,14 +1,14 @@
-import {createIntelligenceClient} from './intelligence-client.mjs?v=f79b19b052d5';
-import { dailyHistory,health,overall,percentile,samplesFor,activeMaintenance,uptimeFor } from './model.mjs?v=f79b19b052d5';
-import {securityBadges,securityOverview,openSecurityDetails} from './security-ui.mjs?v=f79b19b052d5';
-import {renderNetworkIntelligence} from './network-ui.mjs?v=f79b19b052d5';
+import {createIntelligenceClient} from './intelligence-client.mjs?v=ad35d9ce4c63';
+import { dailyHistory,health,overall,percentile,samplesFor,activeMaintenance,uptimeFor } from './model.mjs?v=ad35d9ce4c63';
+import {securityBadges,securityOverview,openSecurityDetails} from './security-ui.mjs?v=ad35d9ce4c63';
+import {renderNetworkIntelligence} from './network-ui.mjs?v=ad35d9ce4c63';
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeUrl=v=>{try{const u=new URL(v);return u.protocol==='https:'?esc(u.href):'#'}catch{return '#'}};
 const clean=v=>String(v||'').replace(/Cloudflare/gi,'the upstream provider').replace(/Upptime|Instatus/gi,'Rifzki monitoring').replace(/https?:\/\/\S+/g,'').replace(/[#*`_]/g,'').replace(/<[^>]*>/g,'').trim();
 const paths={overview:'<rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/>',services:'<rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M15 6.5h3M15 17.5h3"/>',locations:'<circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/>',history:'<path d="M3 11a9 9 0 1 1 2.7 7M3 5v6h6M12 7v5l3 2"/>',sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"/>',moon:'<path d="M20.5 14A9 9 0 0 1 10 3.5 9 9 0 1 0 20.5 14Z"/>',check:'<path d="m5 12 4 4 10-10"/>',alert:'<path d="M12 8v5M12 17h.01M10 3 2 18a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3L12 3Z"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',chart:'<path d="M3 18h18M4 14l5-6 5 4 6-8"/>',shield:'<path d="M12 3 4 6v6c0 5 8 9 8 9s8-4 8-9V6l-8-3Z"/><path d="m8 12 3 3 5-6"/>',tool:'<path d="m14 6 4 4M8 14l-5 5 2 2 5-5M14 3a6 6 0 0 0-6 8l5 5a6 6 0 0 0 8-6l-4 3-3-3 3-4-3-3Z"/>',chevron:'<path d="m6 9 6 6 6-6"/>',refresh:'<path d="M20 7v5h-5M4 17v-5h5M5 7a8 8 0 0 1 13-2l2 3M19 17a8 8 0 0 1-13 2l-2-3"/>'};
 const icon=name=>`<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">${paths[name]||paths.services}</svg>`;
-import {translatePage,changeLanguage,startTranslations} from './i18n.mjs?v=f79b19b052d5';
+import {translatePage,changeLanguage,startTranslations} from './i18n.mjs?v=ad35d9ce4c63';
 let lang='en-US';
 const t=s=>s;
 const localize=()=>translatePage();
@@ -26,7 +26,20 @@ const intelligenceClient=createIntelligenceClient({
 const refreshIntelligence=()=>intelligenceClient.refresh(data?.intelligenceProxyUrl,intelligenceRegion);
 
 const ranges=new Map(),chartData=new WeakMap();
-function renderNav(){for(const [selector,mobile] of [['.desktop-tabs',false],['.mobile-dock',true]]){const nav=document.querySelector(selector);nav.setAttribute('role','tablist');nav.innerHTML=Object.keys(viewInfo).map(v=>`<button class="nav-button" role="tab" data-view="${v}" aria-controls="view-${v}" aria-selected="${v===view}" aria-label="${t(v==='services'?'Services & Sites':v[0].toUpperCase()+v.slice(1))}">${icon(v)}<span class="nav-label">${t(v==='services'?'Services & Sites':v[0].toUpperCase()+v.slice(1))}</span></button>`).join('');}}
+function alignDesktopNav(){
+ const nav=document.querySelector('.desktop-tabs'),active=nav.querySelector('[aria-selected=true]');
+ if(!active||!nav.offsetWidth)return;
+ nav.style.setProperty('--nav-x',active.offsetLeft+'px');nav.style.setProperty('--nav-width',active.offsetWidth+'px');
+ requestAnimationFrame(()=>nav.classList.add('indicator-ready'));
+}
+function renderNav(){
+ for(const [selector,mobile] of [['.desktop-tabs',false],['.mobile-dock',true]]){
+  const nav=document.querySelector(selector);nav.setAttribute('role','tablist');
+  if(mobile||!nav.children.length)nav.innerHTML=Object.keys(viewInfo).map(v=>`<button class="nav-button" role="tab" data-view="${v}" aria-controls="view-${v}" aria-selected="${v===view}" aria-label="${t(v==='services'?'Services & Sites':v[0].toUpperCase()+v.slice(1))}">${icon(v)}<span class="nav-label">${t(v==='services'?'Services & Sites':v[0].toUpperCase()+v.slice(1))}</span></button>`).join('');
+  else for(const button of nav.querySelectorAll('[data-view]'))button.setAttribute('aria-selected',String(button.dataset.view===view));
+ }
+ requestAnimationFrame(alignDesktopNav);
+}
 function setView(next,updateHash=true){if(!viewInfo[next])next='overview';view=next;for(const v of Object.keys(viewInfo)){$('view-'+v).hidden=v!==view;$('view-'+v).setAttribute('role','tabpanel');}renderNav();$('view-title').textContent=t(viewInfo[view][0]);$('view-subtitle').textContent=t(viewInfo[view][1]);$('eyebrow').textContent=t('RIFZKI NETWORK INTELLIGENCE');if(updateHash){history.replaceState(null,'','#'+view);window.scrollTo({top:0,behavior:'instant'});}hideTip();if(view==='history'&&data)renderHistory();requestAnimationFrame(refreshIntelligence);}
 function renderTheme(){const dark=document.documentElement.dataset.theme==='dark';$('theme').innerHTML=icon(dark?'sun':'moon');document.querySelector('meta[name="theme-color"]').content=dark?'#09090b':'#f8fafc';}
 function statusOf(s){const h=health(s);return h==='up'&&activeMaintenance(data.maintenance,new Date(),s.slug).length?'maintenance':h;}
@@ -115,3 +128,12 @@ $('refresh').innerHTML=icon('refresh');$('refresh').addEventListener('click',loa
 new IntersectionObserver(()=>refreshIntelligence()).observe($('network-intelligence'));
 setInterval(refreshIntelligence,120000);
 document.addEventListener('visibilitychange',()=>refreshIntelligence());
+
+// Desktop-only chrome state; keep its height fixed to avoid scroll jumps.
+const desktopHeader=matchMedia('(min-width:769px)'),header=document.querySelector('.header');
+let headerFrame=0;
+const updateDesktopHeader=()=>{headerFrame=0;header.classList.toggle('is-scrolled',desktopHeader.matches&&window.scrollY>16);};
+window.addEventListener('scroll',()=>{if(!headerFrame)headerFrame=requestAnimationFrame(updateDesktopHeader);},{passive:true});
+desktopHeader.addEventListener('change',()=>{updateDesktopHeader();alignDesktopNav();});
+new ResizeObserver(alignDesktopNav).observe(document.querySelector('.desktop-tabs'));
+updateDesktopHeader();

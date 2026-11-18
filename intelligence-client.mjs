@@ -1,4 +1,4 @@
-import {fetchRegionalSnapshot} from './intelligence-fetch.mjs?v=f79b19b052d5';
+import {fetchRegionalSnapshot} from './intelligence-fetch.mjs?v=ad35d9ce4c63';
 
 // The page owns this cache: static uptime refreshes never erase live regional evidence.
 export function createIntelligenceClient({active,onChange,fetchSnapshot=fetchRegionalSnapshot,clock=Date.now}){
