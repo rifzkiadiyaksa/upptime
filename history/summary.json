@@ -381,18 +381,18 @@
     "icon": "https://icons.duckduckgo.com/ip3/webmail.rifzki.my.id.ico",
     "slug": "webmail-rifzki-my-id",
     "status": "down",
-    "uptime": "59.73%",
+    "uptime": "59.72%",
     "uptimeDay": "0.00%",
-    "uptimeWeek": "59.73%",
-    "uptimeMonth": "59.73%",
-    "uptimeYear": "59.73%",
+    "uptimeWeek": "59.72%",
+    "uptimeMonth": "59.72%",
+    "uptimeYear": "59.72%",
     "time": 203,
     "timeDay": 0,
     "timeWeek": 203,
     "timeMonth": 203,
     "timeYear": 203,
     "dailyMinutesDown": {
-      "2026-11-18": 306,
+      "2026-11-18": 307,
       "2026-11-17": 1440,
       "2026-11-16": 504
     }
