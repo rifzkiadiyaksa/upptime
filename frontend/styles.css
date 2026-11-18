@@ -35,3 +35,31 @@ html[data-theme=light] .health-banner::before{opacity:.22}
 @media(max-width:600px){.language-control select{width:158px;max-width:158px;height:36px;min-height:36px;font-size:11px;padding-block:0;padding-inline:10px 30px}.language-control::after{inset-inline-end:12px}.health-banner::before{background-size:148px 116px}body::before{background-size:224px 176px}}
 
 .stale-data{padding:14px 18px;margin-bottom:20px;border:1px solid #f59e0b44;border-radius:10px;background:#f59e0b0b;color:var(--muted);font-size:11px;line-height:1.8}.stale-data strong{color:var(--amber)}.stale-data a{color:var(--orange);white-space:nowrap}.group-state.up,.group-state.down,.group-state.degraded,.group-state.unknown{background:transparent}@media(max-width:768px){.page-heading{flex-wrap:wrap}.last-check{font-size:9px;padding-top:0;gap:8px}.stale-data{font-size:10px}}
+
+/* Desktop masthead: quiet glass, stable geometry and a continuous selection indicator. */
+@media(min-width:769px){
+ .header{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--card) 94%,transparent);border-bottom-color:color-mix(in srgb,var(--line) 70%,transparent);transition:background .24s ease,border-color .24s ease,box-shadow .24s ease;isolation:isolate}
+ .header.is-scrolled{background:color-mix(in srgb,var(--card) 88%,transparent);border-bottom-color:var(--line);box-shadow:0 8px 28px -18px #0008;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+ .header-inner{min-height:80px}
+ .header .brand{gap:12px;font-size:23px;font-weight:750;letter-spacing:-.7px}
+ .header .brand img{width:34px;height:34px}
+ .header .brand-sub{margin-top:3px;font-size:8px;font-weight:500;letter-spacing:1.6px;color:var(--faint)}
+ .desktop-tabs{position:relative;isolation:isolate;padding:4px;gap:3px;background:color-mix(in srgb,var(--bg) 65%,transparent);border-color:color-mix(in srgb,var(--line) 75%,transparent);flex-shrink:0}
+ .desktop-tabs::before{content:'';position:absolute;z-index:0;inset-block:4px;left:0;width:var(--nav-width,0px);transform:translateX(var(--nav-x,0px));border:1px solid color-mix(in srgb,var(--line) 70%,transparent);border-radius:100px;background:var(--raised);opacity:0;pointer-events:none}
+ .desktop-tabs.indicator-ready::before{opacity:1;transition:transform .3s cubic-bezier(.22,1,.36,1),width .3s cubic-bezier(.22,1,.36,1)}
+ .desktop-tabs .nav-button{position:relative;z-index:1;min-height:38px;padding:10px 15px;font-size:11px;font-weight:500;gap:8px;transition:color .18s ease}
+ .desktop-tabs .nav-button[aria-selected=true]{background:transparent;box-shadow:none}
+ .desktop-tabs .nav-button:hover{color:var(--text)}
+ .desktop-tabs .nav-button[aria-selected=true]:hover{color:var(--orange)}
+ .header-actions{gap:10px;justify-self:end}
+ .header .language-control select{height:38px;min-height:38px;border-radius:10px;background:transparent;font-size:11px;transition:border-color .18s ease,background .18s ease}
+ .header .language-control select:hover{border-color:var(--faint);background:var(--raised)}
+ .header .icon-button{width:36px;height:36px;border-radius:10px;transition:color .18s ease,background .18s ease}
+ html{scroll-padding-top:100px}
+}
+@media(min-width:1001px){
+ .header-inner{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:24px;padding-inline:36px}
+ .desktop-tabs{margin:0}
+ [dir=rtl] .header-actions{margin-inline-start:0}
+}
+@media(min-width:769px) and (max-width:1000px){html{scroll-padding-top:150px}.header-inner{padding-block:12px}.desktop-tabs .nav-button{padding-inline:18px}}
