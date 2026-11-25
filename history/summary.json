@@ -9,10 +9,10 @@
     "uptimeDay": "100.00%",
     "uptimeWeek": "100.00%",
     "uptimeMonth": "100.00%",
-    "uptimeYear": "55.61%",
+    "uptimeYear": "55.62%",
     "time": 251,
     "timeDay": 147,
-    "timeWeek": 231,
+    "timeWeek": 207,
     "timeMonth": 253,
     "timeYear": 248,
     "dailyMinutesDown": {
@@ -193,7 +193,7 @@
     "uptimeYear": "100.00%",
     "time": 350,
     "timeDay": 239,
-    "timeWeek": 319,
+    "timeWeek": 327,
     "timeMonth": 350,
     "timeYear": 350,
     "dailyMinutesDown": {}
@@ -211,7 +211,7 @@
     "uptimeYear": "95.19%",
     "time": 421,
     "timeDay": 350,
-    "timeWeek": 558,
+    "timeWeek": 421,
     "timeMonth": 421,
     "timeYear": 421,
     "dailyMinutesDown": {
@@ -231,7 +231,7 @@
     "uptimeYear": "100.00%",
     "time": 244,
     "timeDay": 198,
-    "timeWeek": 189,
+    "timeWeek": 186,
     "timeMonth": 244,
     "timeYear": 244,
     "dailyMinutesDown": {}
@@ -241,14 +241,14 @@
     "url": "https://blog.rifzki.my.id",
     "icon": "https://icons.duckduckgo.com/ip3/blog.rifzki.my.id.ico",
     "slug": "blog-rifzki-adiyaksa",
-    "status": "down",
-    "uptime": "98.87%",
-    "uptimeDay": "99.96%",
-    "uptimeWeek": "94.84%",
-    "uptimeMonth": "82.80%",
+    "status": "up",
+    "uptime": "98.86%",
+    "uptimeDay": "99.67%",
+    "uptimeWeek": "94.85%",
+    "uptimeMonth": "82.79%",
     "uptimeYear": "95.44%",
     "time": 388,
-    "timeDay": 330,
+    "timeDay": 331,
     "timeWeek": 350,
     "timeMonth": 353,
     "timeYear": 380,
@@ -307,7 +307,7 @@
       "2026-11-19": 151,
       "2026-11-20": 40,
       "2026-11-22": 70,
-      "2026-11-25": 1
+      "2026-11-25": 5
     }
   },
   {
@@ -323,7 +323,7 @@
     "uptimeYear": "100.00%",
     "time": 108,
     "timeDay": 103,
-    "timeWeek": 109,
+    "timeWeek": 107,
     "timeMonth": 108,
     "timeYear": 108,
     "dailyMinutesDown": {}
@@ -341,7 +341,7 @@
     "uptimeYear": "100.00%",
     "time": 337,
     "timeDay": 834,
-    "timeWeek": 413,
+    "timeWeek": 454,
     "timeMonth": 337,
     "timeYear": 337,
     "dailyMinutesDown": {}
@@ -359,7 +359,7 @@
     "uptimeYear": "100.00%",
     "time": 212,
     "timeDay": 154,
-    "timeWeek": 170,
+    "timeWeek": 137,
     "timeMonth": 212,
     "timeYear": 212,
     "dailyMinutesDown": {}
@@ -381,7 +381,7 @@
     "timeMonth": 203,
     "timeYear": 203,
     "dailyMinutesDown": {
-      "2026-11-25": 231,
+      "2026-11-25": 236,
       "2026-11-24": 1440,
       "2026-11-23": 1440,
       "2026-11-22": 1440,
@@ -406,7 +406,7 @@
     "uptimeYear": "100.00%",
     "time": 156,
     "timeDay": 114,
-    "timeWeek": 150,
+    "timeWeek": 125,
     "timeMonth": 156,
     "timeYear": 156,
     "dailyMinutesDown": {}
@@ -424,7 +424,7 @@
     "uptimeYear": "100.00%",
     "time": 546,
     "timeDay": 558,
-    "timeWeek": 609,
+    "timeWeek": 544,
     "timeMonth": 546,
     "timeYear": 546,
     "dailyMinutesDown": {}
